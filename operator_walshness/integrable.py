@@ -310,53 +310,83 @@ def cylinder_spectrum(length: int, width: int, beta: float, alpha_samples: int |
     return spectrum / total
 
 
+def cylinder_walshness(length: int, width: int, beta: float, alpha: float) -> float:
+    """Fixed-X Walshness of a classical Ising cylinder.
+
+    The length is open and the circumference is periodic. Each edge is counted
+    once. The value is exact in the computational X basis. It is not an
+    optimized-basis upper bound.
+    """
+    alpha = float(alpha)
+    if alpha == 0.0:
+        step = 1e-6
+        return cylinder_walshness(length, width, beta, step)
+    log_moment = _cylinder_log_generating_value(length, width, beta, np.exp(alpha))
+    return float(log_moment.real / alpha)
+
+
 def _cylinder_generating_value(length: int, width: int, beta: float, z: complex) -> complex:
-    numerator = _cylinder_partition(length, width, beta, z)
-    denominator = _cylinder_partition(length, width, beta, 1.0 + 0.0j)
-    return numerator / denominator
+    return np.exp(_cylinder_log_generating_value(length, width, beta, z))
 
 
-def _cylinder_partition(length: int, width: int, beta: float, z: complex) -> complex:
+def _cylinder_log_generating_value(length: int, width: int, beta: float, z: complex) -> complex:
+    log_numerator = _cylinder_log_partition(length, width, beta, z)
+    log_denominator = _cylinder_log_partition(length, width, beta, 1.0 + 0.0j)
+    return log_numerator - log_denominator
+
+
+def _cylinder_circumference(width: int) -> list[tuple[int, int]]:
+    """Undirected edges of a periodic ring. Width 2 has one edge, not two."""
+    bonds = []
+    seen = set()
+    for site in range(width):
+        other = (site + 1) % width
+        edge = (min(site, other), max(site, other))
+        if edge in seen:
+            continue
+        seen.add(edge)
+        bonds.append(edge)
+    return bonds
+
+
+def _cylinder_log_partition(length: int, width: int, beta: float, z: complex) -> complex:
     p = 0.5 * (1.0 + z)
     q = 0.5 * (1.0 - z)
     same = p * p
     diff = q * q
     row = 1 << width
     dim = row * row
+    circumference = _cylinder_circumference(width)
     # Encode a row of replica s in the low `width` bits and replica t in the high bits.
     transfer = np.zeros((dim, dim), dtype=np.complex128)
-    spins = lambda bits, i: 1.0 if ((bits >> i) & 1) == 0 else -1.0
+
+    def spin(bits: int, site: int) -> float:
+        return 1.0 if ((bits >> site) & 1) == 0 else -1.0
+
+    def row_weight(bits_s: int, bits_t: int) -> complex:
+        weight = 1.0 + 0.0j
+        for site in range(width):
+            equal = ((bits_s >> site) & 1) == ((bits_t >> site) & 1)
+            weight *= same if equal else diff
+        for left_site, right_site in circumference:
+            weight *= np.exp(beta * spin(bits_s, left_site) * spin(bits_s, right_site))
+            weight *= np.exp(beta * spin(bits_t, left_site) * spin(bits_t, right_site))
+        return weight
+
     for left in range(dim):
         s_left, t_left = left % row, left // row
-        # Vertical bonds and on-site B weights live on the destination row,
-        # matching the 1d convention of charging the right site.
         for right in range(dim):
             s_right, t_right = right % row, right // row
-            weight = 1.0 + 0.0j
-            for i in range(width):
-                weight *= np.exp(beta * spins(s_left, i) * spins(s_right, i))
-                weight *= np.exp(beta * spins(t_left, i) * spins(t_right, i))
-                equal_s = ((s_right >> i) & 1) == ((t_right >> i) & 1)
-                weight *= same if equal_s else diff
-                # Circumference bond inside the row.
-                j = (i + 1) % width
-                weight *= np.exp(beta * spins(s_right, i) * spins(s_right, j))
-                weight *= np.exp(beta * spins(t_right, i) * spins(t_right, j))
+            weight = row_weight(s_right, t_right)
+            for site in range(width):
+                weight *= np.exp(beta * spin(s_left, site) * spin(s_right, site))
+                weight *= np.exp(beta * spin(t_left, site) * spin(t_right, site))
             transfer[left, right] = weight
-    # First row has vertical weights from a fictitious empty left neighbor.
-    # Rebuild the first-row vector without incoming vertical bonds, keeping
-    # circumference bonds and B weights.
     vector = np.zeros(dim, dtype=np.complex128)
     for right in range(dim):
-        s_right, t_right = right % row, right // row
-        weight = 1.0 + 0.0j
-        for i in range(width):
-            equal_s = ((s_right >> i) & 1) == ((t_right >> i) & 1)
-            weight *= same if equal_s else diff
-            j = (i + 1) % width
-            weight *= np.exp(beta * spins(s_right, i) * spins(s_right, j))
-            weight *= np.exp(beta * spins(t_right, i) * spins(t_right, j))
-        vector[right] = weight
+        vector[right] = row_weight(right % row, right // row)
+    vector, log_scale = _rescale(vector, 0.0)
     for _ in range(length - 1):
         vector = transfer.T @ vector
-    return np.sum(vector)
+        vector, log_scale = _rescale(vector, log_scale)
+    return np.log(np.sum(vector)) + log_scale

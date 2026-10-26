@@ -18,6 +18,7 @@ from operator_walshness.integrable import (
     classical_chain_boltzmann,
     classical_staggered_z_walshness,
     cylinder_spectrum,
+    cylinder_walshness,
     ising_2d_boltzmann,
     product_x_spectrum,
 )
@@ -79,17 +80,21 @@ def test_open_rectangle_and_cylinder_reduce_to_the_diagonal_formula():
     # Width-2 cylinder of length 2 is a 4-site plaquette with vertical PBC.
     cylinder = cylinder_spectrum(2, 2, beta=0.4)
     idx = np.arange(16)
-    # site = x + 2*y, circumference along x, length along y.
+    # site = x + 2*y, circumference along x, length along y. Each edge once.
     energy = np.zeros(16)
     spin = lambda s, i: 1 - 2 * ((s >> i) & 1)
     for y in range(2):
-        for x in range(2):
-            s = x + 2 * y
-            energy += -spin(idx, s) * spin(idx, (x + 1) % 2 + 2 * y)
-            if y == 0:
-                energy += -spin(idx, s) * spin(idx, x + 2 * 1)
+        energy += -spin(idx, 2 * y) * spin(idx, 1 + 2 * y)
+    for x in range(2):
+        energy += -spin(idx, x) * spin(idx, x + 2)
     explicit = classical_diagonal_spectrum_from_boltzmann(np.exp(-0.4 * energy))
     assert np.allclose(cylinder, explicit, atol=1e-8)
+    assert cylinder_walshness(4, 2, 0.0, 1.0) == pytest.approx(identity_walshness(8, 1.0))
+    assert cylinder_walshness(2, 2, 0.4, 1.0) == pytest.approx(
+        walshness_from_spectrum(explicit, 1.0), abs=1e-8
+    )
+    cooled = cylinder_walshness(32, 4, 16.0, 1.0)
+    assert np.isfinite(cooled)
 
 
 def test_staggered_z_matches_identity_and_dense_moment():
