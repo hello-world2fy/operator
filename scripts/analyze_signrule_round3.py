@@ -74,6 +74,12 @@ def main():
         'phase_score_rows':len(phase_rows),'jobs':status,'verified_physical_discoveries':0,
         'interpretation':'No completed cross-temperature/geometry non-Marshall certificate yet.',
         'scope_register':'registration/progress.json'}
+    supplemental=out/'supplementary_summary.json'
+    if supplemental.exists():
+        extra=json.loads(supplemental.read_text());summary['supplementary_results']=extra
+        validated=extra.get('F_independent',{}).get('all_temperature_size_seed_threshold_targets_pass',False)
+        summary['validated_bounded_non_Marshall_candidate_count']=int(validated)
+        if validated:summary['interpretation']='A boundary-CZ correction at lambda0.4 passed independent beta/size tests; coupling range and application benefit remain limited. No established topological/SPT/path-rule recovery is claimed.'
     atomic_json(out/'summary.json',summary)
     progress=json.loads((out/'registration/progress.json').read_text())
     status_table=pd.DataFrame([{'job':k,'status':v} for k,v in status.items()]).to_html(index=False,escape=True)
@@ -81,11 +87,15 @@ def main():
     body=f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>Operator Walshness Round 3 — progress</title>
 <style>body{{font:16px system-ui;max-width:1100px;margin:35px auto;line-height:1.6}}table{{border-collapse:collapse}}td,th{{border:1px solid #ccc;padding:5px 10px}}img{{max-width:100%}}.notice{{padding:18px;background:#fff5d6}}pre{{white-space:pre-wrap}}</style>
 <h1>第三轮非 Marshall 符号探索：运行中报告</h1><p>更新时间：{html.escape(summary['updated_utc'])}</p>
-<div class="notice">本报告是运行进度，尚未完成独立温度与尺寸验证。没有已验收的物理发现。已知 Cluster 控制的 CZ 恢复仅用于工具校验。</div>
+<div class="notice">本报告仍是运行进度。受控受挫链 λ=0.4 的边界 CZ 修正在独立温度与尺寸上优于最佳一次规则，但没有通过全部相邻耦合检验；不能扩大为整个参数区间的结论。已知 Cluster 控制仅用于工具校验。</div>
 <p>优化输入只有算符、几何和预算。各候选先写入冻结文件，之后才评分。矩阵元留出用于后验相位拟合；Walsh 优化读取完整算符，所以它不能代替独立模型/温度验证。</p>
 <p>Qubit Walshness 与 qutrit Z3 指标分别列出。纯态 TC/DS 仅是 pure-state carryover，不计入 operator-specific 结果。对角电路每层级使用相同非零门数和函数评估上限。</p>
 {count_table}<img src="figures/walsh_gain_vs_purity.png" alt="Preliminary Walsh gain versus purity">
 <p><a href="tables/all_metrics.csv">全部标量</a> · <a href="tables/phase_scores.csv">后验相位评分</a> · <a href="registration/progress.json">完整范围与未完成项</a> · <a href="registration/full_pytest.xml">测试记录</a></p>
+<h2>独立验证、物理对照和学习应用</h2>
+<p>Levin–Gu 的冻结电路未通过全部新温度与尺寸检验。受控受挫链的有限范围候选已进入条件性 MLP 对照；已学习相位仍有不可消除的误差下界，oracle 则使用完整矩阵元相位查表。普通局域 SU2 基底 MLP 是必须比较的基线。</p>
+<p><a href="supplementary_summary.json">补充汇总</a> · <a href="tables/F_independent_transfer.csv">受控受挫链迁移</a> · <a href="tables/B_projector_transfer.csv">三角格纯态迁移</a> · <a href="tables/C_thermal_sector_pairs.csv">TC/DS 热态扇区</a> · <a href="tables/E_actual_closed_paths.csv">t-J 真正闭合路径</a> · <a href="tables/same_spectrum_nulls.csv">固定谱随机对照</a> · <a href="tables/learning_seed_summary.csv">学习结果与种子统计</a></p>
+<img src="figures/learning_error_vs_parameters.png" alt="学习误差与有效参数量">
 <h2>任务状态</h2>{status_table}<h2>尚需完成</h2><pre>{html.escape(json.dumps(progress,ensure_ascii=False,indent=2))}</pre></html>'''
     (out/'report.html').write_text(body)
     print(json.dumps(summary,ensure_ascii=False,indent=2))

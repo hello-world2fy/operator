@@ -23,3 +23,8 @@ def test_grouped_bootstrap_has_same_mean_and_sampling_law():
     ordinary=paired_improvement_ci(entries,reference,candidate,draws=5000)
     assert abs(grouped['improvement']-ordinary['improvement'])<1e-14
     assert np.allclose(grouped['ci95'],ordinary['ci95'],atol=.007)
+def test_open_target_catalog_matches_geometry():
+    from operator_walshness.signrule.geometry import triangular,local_gate_supports
+    from operator_walshness.signrule.transfer import triangular_catalog
+    g=triangular(3,4,False)
+    assert {x[3] for x in triangular_catalog(3,4,False)}==set(local_gate_supports(g,3))

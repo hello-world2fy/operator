@@ -1,0 +1,273 @@
+{
+  "files": [
+    {
+      "path": "Levin_Gu_transfer.json",
+      "bytes": 1147
+    },
+    {
+      "path": "README.txt",
+      "bytes": 1801
+    },
+    {
+      "path": "acceptance_progress.json",
+      "bytes": 40274
+    },
+    {
+      "path": "diagnostics/part_000.jsonl.gz",
+      "bytes": 170821
+    },
+    {
+      "path": "diagnostics/part_001.jsonl.gz",
+      "bytes": 29013
+    },
+    {
+      "path": "diagnostics/part_002.jsonl.gz",
+      "bytes": 192322
+    },
+    {
+      "path": "diagnostics/part_003.jsonl.gz",
+      "bytes": 142229
+    },
+    {
+      "path": "diagnostics/part_004.jsonl.gz",
+      "bytes": 38152
+    },
+    {
+      "path": "diagnostics/part_005.jsonl.gz",
+      "bytes": 40689
+    },
+    {
+      "path": "diagnostics/part_006.jsonl.gz",
+      "bytes": 45952
+    },
+    {
+      "path": "diagnostics/part_007.jsonl.gz",
+      "bytes": 37722
+    },
+    {
+      "path": "diagnostics/part_008.jsonl.gz",
+      "bytes": 38815
+    },
+    {
+      "path": "diagnostics/part_009.jsonl.gz",
+      "bytes": 24088
+    },
+    {
+      "path": "diagnostics/part_010.jsonl.gz",
+      "bytes": 50299
+    },
+    {
+      "path": "diagnostics/part_011.jsonl.gz",
+      "bytes": 261787
+    },
+    {
+      "path": "diagnostics/part_012.jsonl.gz",
+      "bytes": 586529
+    },
+    {
+      "path": "diagnostics/part_013.jsonl.gz",
+      "bytes": 19168
+    },
+    {
+      "path": "figures/learning_error_vs_parameters.pdf",
+      "bytes": 25456
+    },
+    {
+      "path": "figures/learning_error_vs_parameters.png",
+      "bytes": 101912
+    },
+    {
+      "path": "figures/walsh_gain_vs_purity.pdf",
+      "bytes": 50088
+    },
+    {
+      "path": "figures/walsh_gain_vs_purity.png",
+      "bytes": 179479
+    },
+    {
+      "path": "records/A_00.jsonl.gz",
+      "bytes": 173869
+    },
+    {
+      "path": "records/A_01.jsonl.gz",
+      "bytes": 160911
+    },
+    {
+      "path": "records/A_02.jsonl.gz",
+      "bytes": 70781
+    },
+    {
+      "path": "records/B_00.jsonl.gz",
+      "bytes": 170506
+    },
+    {
+      "path": "records/C_00.jsonl.gz",
+      "bytes": 200614
+    },
+    {
+      "path": "records/D_00.jsonl.gz",
+      "bytes": 387263
+    },
+    {
+      "path": "records/D_01.jsonl.gz",
+      "bytes": 29542
+    },
+    {
+      "path": "records/E_00.jsonl.gz",
+      "bytes": 160916
+    },
+    {
+      "path": "records/E_01.jsonl.gz",
+      "bytes": 146084
+    },
+    {
+      "path": "records/E_02.jsonl.gz",
+      "bytes": 156399
+    },
+    {
+      "path": "records/E_03.jsonl.gz",
+      "bytes": 157510
+    },
+    {
+      "path": "records/E_04.jsonl.gz",
+      "bytes": 146824
+    },
+    {
+      "path": "records/E_05.jsonl.gz",
+      "bytes": 30722
+    },
+    {
+      "path": "records/F_00.jsonl.gz",
+      "bytes": 168547
+    },
+    {
+      "path": "records/F_01.jsonl.gz",
+      "bytes": 175649
+    },
+    {
+      "path": "records/F_02.jsonl.gz",
+      "bytes": 148820
+    },
+    {
+      "path": "records/F_03.jsonl.gz",
+      "bytes": 142378
+    },
+    {
+      "path": "registration/C_thermal_backend_transition.json",
+      "bytes": 352
+    },
+    {
+      "path": "registration/design.txt",
+      "bytes": 17474
+    },
+    {
+      "path": "registration/flux_solver_validation.json",
+      "bytes": 1267
+    },
+    {
+      "path": "registration/jobs.json",
+      "bytes": 18485
+    },
+    {
+      "path": "registration/phase3_gate.json",
+      "bytes": 1601
+    },
+    {
+      "path": "registration/progress.json",
+      "bytes": 4792
+    },
+    {
+      "path": "registration/publish_tests.xml",
+      "bytes": 13131
+    },
+    {
+      "path": "registration/references.json",
+      "bytes": 720
+    },
+    {
+      "path": "registration/small_offdiagonal_backend_validation.json",
+      "bytes": 314
+    },
+    {
+      "path": "registration/specification.yaml",
+      "bytes": 11305
+    },
+    {
+      "path": "report.html",
+      "bytes": 2013
+    },
+    {
+      "path": "summary.json",
+      "bytes": 10708
+    },
+    {
+      "path": "supplementary_summary.json",
+      "bytes": 6761
+    },
+    {
+      "path": "tables/A_metrics.csv.gz",
+      "bytes": 59008
+    },
+    {
+      "path": "tables/B_metrics.csv.gz",
+      "bytes": 21744
+    },
+    {
+      "path": "tables/B_projector_transfer.csv.gz",
+      "bytes": 1516
+    },
+    {
+      "path": "tables/C_metrics.csv.gz",
+      "bytes": 18640
+    },
+    {
+      "path": "tables/C_thermal_sector_pairs.csv.gz",
+      "bytes": 676
+    },
+    {
+      "path": "tables/D_metrics.csv.gz",
+      "bytes": 54621
+    },
+    {
+      "path": "tables/E_actual_closed_paths.csv.gz",
+      "bytes": 897
+    },
+    {
+      "path": "tables/E_metrics.csv.gz",
+      "bytes": 83880
+    },
+    {
+      "path": "tables/F_independent_transfer.csv.gz",
+      "bytes": 3607
+    },
+    {
+      "path": "tables/F_metrics.csv.gz",
+      "bytes": 94387
+    },
+    {
+      "path": "tables/all_metrics.csv.gz",
+      "bytes": 331276
+    },
+    {
+      "path": "tables/learning_metrics.csv.gz",
+      "bytes": 163828
+    },
+    {
+      "path": "tables/learning_seed_summary.csv.gz",
+      "bytes": 18131
+    },
+    {
+      "path": "tables/phase_scores.csv.gz",
+      "bytes": 86116
+    },
+    {
+      "path": "tables/points.csv.gz",
+      "bytes": 42770
+    },
+    {
+      "path": "tables/same_spectrum_nulls.csv.gz",
+      "bytes": 7823
+    }
+  ],
+  "total_bytes": 5782921
+}

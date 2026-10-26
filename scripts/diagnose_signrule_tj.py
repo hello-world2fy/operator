@@ -21,7 +21,7 @@ from operator_walshness.signrule.physical_diagnostics import (tj_binary_encoding
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--geometry',type=int);args=parser.parse_args()
     out=ROOT/'results/signrule_round3'
-    for geometry_index,g in enumerate([square(3,2),chain(8),chain(8,True)]):
+    for geometry_index,g in enumerate([square(3,2),chain(8),chain(8,True),square(4,2)]):
         if args.geometry is not None and args.geometry!=geometry_index:continue
         geometry=g.name+'_'+'x'.join(map(str,g.shape))+'_'+g.boundary
         for t in [1.,2.,3.]:

@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-26T19:42:00.578263+00:00",
+  "deliberately_terminated_pids": [
+    1053270,
+    1053271,
+    1053272,
+    1053273
+  ],
+  "reason": "exact small-offdiagonal decomposition validated on full n12 value and gradient; same optimization budgets; resume completed/frozen points",
+  "validation": "small_offdiagonal_backend_validation.json"
+}

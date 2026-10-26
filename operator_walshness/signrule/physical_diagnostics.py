@@ -129,6 +129,26 @@ def qutrit_full_spectrum(rho,digits):
     return spectrum
 
 
+def qutrit_degree_moments(rho,digits,device='cpu'):
+    """Exact local support-degree mean/covariance from the moment-generating kernel."""
+    import torch
+    op=torch.tensor(rho,dtype=torch.complex128,device=device)
+    states=torch.tensor(digits,dtype=torch.int64,device=device);n=digits.shape[1]
+    norm=torch.vdot(op.ravel(),op.ravel()).real
+    def log_moment(parameters):
+        kernel=torch.ones_like(op)
+        for i in range(n):
+            local=torch.exp(parameters[i])*torch.eye(3,dtype=torch.float64,device=device)+(1-torch.exp(parameters[i]))*torch.ones((3,3),dtype=torch.float64,device=device)/3
+            kernel=kernel*local[states[:,i,None],states[None,:,i]]
+        numerator=(op.conj()*(kernel@op@kernel)).sum().real
+        return torch.log(numerator/norm)
+    zero=torch.zeros(n,dtype=torch.float64,device=device,requires_grad=True)
+    mean=torch.autograd.functional.jacobian(log_moment,zero).detach().cpu().numpy()
+    covariance=torch.autograd.functional.hessian(log_moment,zero).detach().cpu().numpy()
+    return {'Z3_degree_mean':mean,'Z3_degree_correlation':covariance,
+            'Z3_degree_second':covariance+np.outer(mean,mean)}
+
+
 def sparse_operator_entropy(operator,n,cut=None):
     """Exact OSEE via connected blocks of the sparse spatial Gram matrix."""
     from scipy.sparse.csgraph import connected_components

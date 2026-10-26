@@ -1,0 +1,266 @@
+{
+  "updated_utc": "2026-10-26T20:19:54.244689+00:00",
+  "status": "completed_first_scan_snapshot_pending_full_scope_acceptance",
+  "points_frozen": 3438,
+  "points_by_track": {
+    "A": 594,
+    "C": 144,
+    "E": 1296,
+    "F": 972,
+    "D": 270,
+    "B": 162
+  },
+  "representation_rows": 7686,
+  "phase_score_rows": 8388,
+  "jobs": {
+    "026_controlled_frustration_n6_p0.2": "blind_complete",
+    "030_j1j2_n8_p0.5": "blind_complete",
+    "004_random_quadratic_n6_p0": "blind_complete",
+    "015_levin_gu_n9_p0.2": "blind_complete",
+    "020_j1j2_n6_p0.3": "blind_complete",
+    "001_cluster_n6_p0": "blind_complete",
+    "027_controlled_frustration_n6_p0.4": "blind_complete",
+    "special_C": "initial_special_scan_complete",
+    "036_controlled_frustration_n8_p0.4": "blind_complete",
+    "special_E_ladder2x4": "initial_special_scan_complete",
+    "016_levin_gu_n9_p0.5": "blind_complete",
+    "012_triangular_n9_p0.1": "blind_complete",
+    "031_j1j2_n8_p1": "blind_complete",
+    "007_paramagnet_n8_p0": "blind_complete",
+    "C_thermal_worker0": "blind_complete",
+    "009_random_quadratic_n8_p0": "blind_complete",
+    "008_random_linear_n8_p0": "blind_complete",
+    "011_triangular_n9_p0": "blind_complete",
+    "003_random_linear_n6_p0": "blind_complete",
+    "002_paramagnet_n6_p0": "blind_complete",
+    "005_bipartite_n8_p0": "blind_complete",
+    "C_thermal_worker3": "blind_complete",
+    "special_E": "initial_special_scan_complete",
+    "028_j1j2_n8_p0": "blind_complete",
+    "022_j1j2_n6_p1": "blind_complete",
+    "025_controlled_frustration_n6_p0.1": "blind_complete",
+    "C_thermal_worker1": "blind_complete",
+    "033_controlled_frustration_n8_p0.05": "blind_complete",
+    "023_controlled_frustration_n6_p0": "blind_complete",
+    "018_paramagnet_n9_p0": "blind_complete",
+    "010_random_positive_n6_p0": "blind_complete",
+    "024_controlled_frustration_n6_p0.05": "blind_complete",
+    "C_thermal_worker2": "blind_complete",
+    "014_levin_gu_n9_p0": "blind_complete",
+    "021_j1j2_n6_p0.5": "blind_complete",
+    "019_j1j2_n6_p0": "blind_complete",
+    "029_j1j2_n8_p0.3": "blind_complete",
+    "000_bipartite_n6_p0": "blind_complete",
+    "034_controlled_frustration_n8_p0.1": "blind_complete",
+    "006_cluster_n8_p0": "blind_complete",
+    "013_triangular_n9_p0.2": "blind_complete",
+    "017_levin_gu_n9_p1": "blind_complete",
+    "032_controlled_frustration_n8_p0": "blind_complete",
+    "035_controlled_frustration_n8_p0.2": "blind_complete"
+  },
+  "verified_physical_discoveries": 0,
+  "interpretation": "A boundary-CZ correction at lambda0.4 passed independent beta/size tests; coupling range and application benefit remain limited. No established topological/SPT/path-rule recovery is claimed.",
+  "scope_register": "registration/progress.json",
+  "supplementary_results": {
+    "updated_utc": "2026-10-26T20:19:30.974657+00:00",
+    "status": "in_progress_not_final",
+    "F_independent": {
+      "created_utc": "2026-10-26T19:25:03.965038+00:00",
+      "target_rows": 108,
+      "all_temperature_size_seed_threshold_targets_pass": true,
+      "all_perturbed_targets_pass": false,
+      "minimum_primary_improvement": 0.006914004400149677,
+      "minimum_primary_ci95_low": 0.0020308797229268943,
+      "minimum_perturbed_improvement": -0.011896184521067077,
+      "passed_mixed_primary_targets": 36,
+      "classification": "independent_boundary_phase_rule_validation; not a known topological/SPT/path rule",
+      "MLP_gate": "requires robust interpretation and null-control review in addition to these tests",
+      "no_target_optimization": true
+    },
+    "F_independent_n12": {
+      "created_utc": "2026-10-26T20:12:46.713219+00:00",
+      "target_rows": 12,
+      "all_temperature_size_seed_threshold_targets_pass": true,
+      "all_perturbed_targets_pass": null,
+      "minimum_primary_improvement": 0.005522016814876589,
+      "minimum_primary_ci95_low": 0.0033442376470710455,
+      "minimum_perturbed_improvement": null,
+      "passed_mixed_primary_targets": 12,
+      "classification": "independent_boundary_phase_rule_validation; not a known topological/SPT/path rule",
+      "MLP_gate": "requires robust interpretation and null-control review in addition to these tests",
+      "no_target_optimization": true
+    },
+    "D_independent": {
+      "created_utc": "2026-10-26T18:59:23.203184+00:00",
+      "certificates": {
+        "circuit_L1": {
+          "passed_all_target_seeds_temperatures_sizes_thresholds": false,
+          "rows": 24,
+          "minimum_improvement": -0.024804029882003576,
+          "minimum_ci95_low": -0.03872563483623128
+        },
+        "circuit_L2": {
+          "passed_all_target_seeds_temperatures_sizes_thresholds": false,
+          "rows": 24,
+          "minimum_improvement": -0.024500326941867778,
+          "minimum_ci95_low": -0.03128097983721744
+        },
+        "circuit_L3": {
+          "passed_all_target_seeds_temperatures_sizes_thresholds": false,
+          "rows": 24,
+          "minimum_improvement": -0.024892591835351176,
+          "minimum_ci95_low": -0.031375753675636824
+        },
+        "circuit_symmetric": {
+          "passed_all_target_seeds_temperatures_sizes_thresholds": false,
+          "rows": 24,
+          "minimum_improvement": -0.006426804629390097,
+          "minimum_ci95_low": -0.012795047947315041
+        }
+      },
+      "screening_scope": "frozen circuits at g0, n9 beta0.5 alpha1, transferred to beta0.75/1.5 and n12",
+      "not_a_global_nonexistence_claim": true,
+      "needs_perturbation_validation_before_MLP_gate": true
+    },
+    "learning_gate": {
+      "registered_utc": "2026-10-26T19:49:05.132191+00:00",
+      "status": "enabled_for_bounded_controlled_frustration_application",
+      "evidence": {
+        "created_utc": "2026-10-26T19:25:03.965038+00:00",
+        "target_rows": 108,
+        "all_temperature_size_seed_threshold_targets_pass": true,
+        "all_perturbed_targets_pass": false,
+        "minimum_primary_improvement": 0.006914004400149677,
+        "minimum_primary_ci95_low": 0.0020308797229268943,
+        "minimum_perturbed_improvement": -0.011896184521067077,
+        "passed_mixed_primary_targets": 36,
+        "classification": "independent_boundary_phase_rule_validation; not a known topological/SPT/path rule",
+        "MLP_gate": "requires robust interpretation and null-control review in addition to these tests",
+        "no_target_optimization": true
+      },
+      "null_draws": 60,
+      "nulls_with_positive_ci95_lower_bound": 0,
+      "scope": "lambda0.4 open-chain boundary CZ correction; not a topological, SPT or phase-string discovery",
+      "coupling_caveat": "not all lambda0.35/0.45 targets pass; no claim across the full parameter interval",
+      "statistical_caveat": "20 draws per family and finite-entry bootstrap are descriptive; not a corrected discovery p-value",
+      "source_target": {
+        "n": 6,
+        "beta": 4.0
+      },
+      "independent_learning_target": {
+        "n": 8,
+        "beta": 3.0
+      },
+      "alpha": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "width": [
+        64,
+        128
+      ],
+      "depth": [
+        1,
+        2,
+        3
+      ],
+      "initializations": 8,
+      "checkpoints": [
+        2000,
+        10000,
+        40000
+      ],
+      "objective": "test compression benefit or failure of a frozen non-linear phase correction"
+    },
+    "B_projector_validation": {
+      "frozen_source_projectors": 54,
+      "positive_individual_target_intervals": 0,
+      "all_target_intervals_positive": false,
+      "pure_state_only": true,
+      "finite_sector_degeneracy_caveat": true
+    },
+    "C_thermal_pair": {
+      "spectrum_max_difference": 0.0,
+      "max_same_beta_modulus_Frobenius": 0.0,
+      "max_matched_purity_residual": 1.4155343563970746e-15,
+      "scope": "only the tested projected commuting-projector 2x2 honeycomb realization"
+    },
+    "E_path_validation": {
+      "rows": 96,
+      "phase_string_identity_violations": 0,
+      "sigma_path_violations": 0,
+      "large_geometry_thermal_diagnostics": 72,
+      "large_propagator_coverage": "64 exact propagator columns; full H support checked separately; thermal diagonal estimated with 64 probes"
+    },
+    "same_spectrum_nulls": [
+      {
+        "model": "controlled_frustration",
+        "family": "complex_Haar",
+        "draws": 20,
+        "positive_phase_intervals": 0,
+        "max_phase_improvement": 0.010658341483495435
+      },
+      {
+        "model": "controlled_frustration",
+        "family": "real_orthogonal_Haar",
+        "draws": 20,
+        "positive_phase_intervals": 0,
+        "max_phase_improvement": -0.016413137145313245
+      },
+      {
+        "model": "controlled_frustration",
+        "family": "sector_Haar",
+        "draws": 20,
+        "positive_phase_intervals": 0,
+        "max_phase_improvement": -0.018999585792074693
+      },
+      {
+        "model": "levin_gu",
+        "family": "complex_Haar",
+        "draws": 20,
+        "positive_phase_intervals": 0,
+        "max_phase_improvement": -0.003045001881642387
+      },
+      {
+        "model": "levin_gu",
+        "family": "real_orthogonal_Haar",
+        "draws": 20,
+        "positive_phase_intervals": 0,
+        "max_phase_improvement": -0.0049939352425407806
+      },
+      {
+        "model": "levin_gu",
+        "family": "sector_Haar",
+        "draws": 20,
+        "positive_phase_intervals": 0,
+        "max_phase_improvement": -0.0037040695436788553
+      }
+    ],
+    "C_random_phase_controls": 40,
+    "learning": {
+      "completed_architecture_batches": 36,
+      "planned_architecture_batches": 36,
+      "completed_independent_networks": 1728,
+      "planned_independent_networks": 1728,
+      "phase_floor_checked": true,
+      "Hermitian_partners_share_holdout_split": true,
+      "interpretation": "test a bounded phase correction; oracle lookup storage and nonzero learned-phase error floor are reported"
+    }
+  },
+  "validated_bounded_non_Marshall_candidate_count": 1,
+  "snapshot_utc": "2026-10-26T20:20:04.862979+00:00",
+  "points_with_posthoc_in_snapshot": 2142,
+  "physical_diagnostic_records": 1324,
+  "independent_Levin_Gu_transfer_passed": false,
+  "scope_register_note": "registration/progress.json records completed coverage and outstanding scope; this export is not final research acceptance.",
+  "omitted": [
+    "dense matrices",
+    "NPZ arrays and reliability masks",
+    "optimizer initializations and non-best axes/gate coefficients",
+    "raw logs",
+    "checkpoints",
+    "duplicate source copies"
+  ],
+  "freeze_note": "source_freeze_record refers to the original unabridged candidate JSON, not this compact export. No extra digest sweep was run."
+}

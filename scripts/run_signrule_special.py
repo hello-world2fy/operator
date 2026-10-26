@@ -72,10 +72,10 @@ def scan_loops(out,device):
                     print('FROZEN C',model,shape,alpha,seed,flush=True)
 
 
-def scan_tj(out,device):
+def scan_tj(out,device,geometries=None):
     # Full planned sizes remain registered for adaptive continuation; start with
     # the smallest ladder and the first open/periodic chains, all t/J and beta.
-    for g in [square(3,2),chain(8),chain(8,True)]:
+    for g in (geometries if geometries is not None else [square(3,2),chain(8),chain(8,True)]):
         n=g.n;geometry=g.name+'_'+'x'.join(map(str,g.shape))+'_'+g.boundary
         for t in [1.,2.,3.]:
             for sigma in [False,True]:
@@ -118,11 +118,14 @@ def scan_tj(out,device):
 def main():
     p=argparse.ArgumentParser();p.add_argument('track',choices=['C','E'])
     p.add_argument('--out',type=Path,default=ROOT/'results/signrule_round3');p.add_argument('--device',default='cuda:0')
+    p.add_argument('--E-geometry',choices=['initial','ladder2x4'],default='initial')
     args=p.parse_args();torch.set_num_threads(1)
-    status=args.out/'jobs'/f'special_{args.track}.json'
+    suffix='_ladder2x4' if args.track=='E' and args.E_geometry=='ladder2x4' else ''
+    status=args.out/'jobs'/f'special_{args.track}{suffix}.json'
     atomic_json(status,{'status':'running','pid':os.getpid(),'device':args.device,'started_utc':utc()})
     try:
-        (scan_loops if args.track=='C' else scan_tj)(args.out,args.device)
+        if args.track=='C':scan_loops(args.out,args.device)
+        else:scan_tj(args.out,args.device,[square(4,2)] if args.E_geometry=='ladder2x4' else None)
     except Exception as error:
         import traceback
         atomic_json(status,{'status':'failed','error':str(error),'traceback':traceback.format_exc()});raise

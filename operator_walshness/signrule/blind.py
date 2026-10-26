@@ -110,6 +110,9 @@ def optimize_circuit(operator,alpha,supports,*,starts=16,flips=2000,seed=0,
                      max_gates=None,max_depth=None,symmetric=False,device='cpu',pure=False):
     begin=time.monotonic();operator=np.asarray(operator);n=int(np.log2(len(operator)))
     features,supports=gate_features(n,supports,symmetric)
+    occupied=np.flatnonzero(operator) if pure else None
+    restricted=bool(pure and len(occupied)<len(operator)//4)
+    if restricted:features=features[:,occupied]
     if len(supports)==0:raise ValueError('empty nontrivial gate family')
     rng=np.random.default_rng(seed);coeff=np.zeros((starts,len(supports)),dtype=np.int8)
     max_gates=min(len(supports),n if max_gates is None else max_gates)
@@ -119,7 +122,8 @@ def optimize_circuit(operator,alpha,supports,*,starts=16,flips=2000,seed=0,
             coeff[k,index]=1
             if circuit_depth(supports,coeff[k])>max_depth:coeff[k,index]=0
     initial=coeff.copy();ft=torch.tensor(1.-2*features,dtype=torch.float64,device=device)
-    op=torch.tensor(operator,dtype=torch.complex128 if np.iscomplexobj(operator) else torch.float64,device=device)
+    op=torch.tensor(operator[occupied] if restricted else operator,
+                    dtype=torch.complex128 if np.iscomplexobj(operator) else torch.float64,device=device)
     parity=(coeff.astype(np.int64)@features)%2
     phase=torch.tensor(1.-2*parity,dtype=torch.float64,device=device)
     degree=np.bitwise_count(np.arange(1<<n,dtype=np.uint64)).astype(float)
@@ -127,7 +131,15 @@ def optimize_circuit(operator,alpha,supports,*,starts=16,flips=2000,seed=0,
     shift=n if pure else 2*n
     weight=torch.tensor(np.exp(alpha*(degree-shift)),dtype=torch.float64,device=device)
     norm=float(np.vdot(operator,operator).real)
+    if restricted:
+        distance=np.bitwise_count((occupied[:,None]^occupied[None,:]).astype(np.uint64))
+        a=(1+np.exp(alpha))/2;b=(1-np.exp(alpha))/2
+        kernel=torch.tensor(a**(n-distance)*b**distance,dtype=op.dtype,device=device)
     def objective(phases):
+        if restricted:
+            values=op*phases
+            moment=(values.conj()*(values@kernel.T)).sum(-1).real/norm
+            return 2*torch.log(moment)/alpha
         values=op*phases if pure else op[None,:,:]*phases[:,:,None]*phases[:,None,:]
         transformed=fwht_torch_flat(values.reshape(starts,-1))
         moment=(abs(transformed)**2*weight).sum(-1)/norm
@@ -162,7 +174,7 @@ def optimize_circuit(operator,alpha,supports,*,starts=16,flips=2000,seed=0,
             'max_gates':max_gates,'max_depth':max_depth,'flips_per_start':flips,
             'evaluations':starts*(flips+1),'seconds':time.monotonic()-begin,
             'pure_projector_objective':pure,'objective':'Operator_Walshness_only',
-            'certified_global':False}
+            'certified_global':False,'backend':'exact_supported_pure_kernel' if restricted else 'full_FWHT'}
 
 
 def circuit_phase(n,result):
@@ -196,29 +208,42 @@ def pure_moment_torch(psi,axes,alpha):
     return torch.einsum('j,bj->b',psi.conj(),x).real/torch.vdot(psi,psi).real
 
 
+def supported_pure_moment(psi,configurations,axes,alpha):
+    from ..optimize import _local_factors
+    factors=_local_factors(axes,alpha);bits=(configurations[:,None]>>torch.arange(axes.shape[1],device=axes.device))&1
+    kernel=torch.ones((len(axes),len(psi),len(psi)),dtype=torch.complex128,device=axes.device)
+    for i in range(axes.shape[1]):
+        kernel=kernel*factors[:,i,bits[:,i,None],bits[None,:,i]]
+    return torch.einsum('i,bij,j->b',psi.conj(),kernel,psi).real/torch.vdot(psi,psi).real
+
+
 def optimize_pure_local(psi,alpha,*,starts=24,steps=150,seed=0,device='cpu'):
     """Pure-state carryover, using O(n 2^n) contractions; never form |psi><psi|."""
     begin=time.monotonic();psi=np.asarray(psi,dtype=complex);n=int(np.log2(len(psi)))
     rng=np.random.default_rng(seed);initial=blind_starts(n,starts,rng)
-    vector=torch.tensor(psi,dtype=torch.complex128,device=device)
+    occupied=np.flatnonzero(psi);restricted=len(occupied)<len(psi)//4
+    vector=torch.tensor(psi[occupied] if restricted else psi,dtype=torch.complex128,device=device)
+    states=torch.tensor(occupied,dtype=torch.int64,device=device)
+    moment=(lambda axes:supported_pure_moment(vector,states,axes,alpha)) if restricted else (lambda axes:pure_moment_torch(vector,axes,alpha))
     raw=torch.nn.Parameter(torch.tensor(initial,dtype=torch.float64,device=device))
     optimizer=torch.optim.Adam([raw],lr=.06)
     best_values=np.full(starts,np.inf);best=initial.copy()
     for _ in range(steps):
         optimizer.zero_grad();axes=raw/raw.norm(dim=-1,keepdim=True)
-        w=2*torch.log(pure_moment_torch(vector,axes,alpha))/alpha
+        w=2*torch.log(moment(axes))/alpha
         w.sum().backward();optimizer.step()
         values=w.detach().cpu().numpy();improved=values<best_values
         best_values[improved]=values[improved];best[improved]=axes.detach().cpu().numpy()[improved]
     index=int(np.argmin(best_values))
     raw=torch.tensor(best[index],dtype=torch.float64,device=device,requires_grad=True)
-    ival=2*torch.log(pure_moment_torch(vector,(raw/raw.norm(dim=-1,keepdim=True))[None,:,:],alpha))/alpha
+    ival=2*torch.log(moment((raw/raw.norm(dim=-1,keepdim=True))[None,:,:]))/alpha
     ival.sum().backward()
     return {'kind':'pure_local_SU2','alpha':alpha,'seed':seed,'initial_axes':initial,
             'axes_restarts':best,'axes_best':best[index],'W_restarts':best_values,
             'W_best':float(best_values[index]),'gradient_norm':raw.grad.norm(dim=-1).detach().cpu().numpy(),
             'pure_projector_objective':True,'objective':'Operator_Walshness_only',
-            'steps':steps,'seconds':time.monotonic()-begin,'certified_global':False}
+            'steps':steps,'seconds':time.monotonic()-begin,'certified_global':False,
+            'backend':'exact_supported_pure_kernel' if restricted else 'full_wavefunction_contractions'}
 
 
 def rotate_pure(psi,unitaries):

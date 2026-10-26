@@ -4,21 +4,25 @@ import numpy as np
 from .blind import circuit_depth,gate_features
 
 
-def triangular_catalog(lx,ly):
-    def site(x,y):return (x%lx)+lx*(y%ly)
+def triangular_catalog(lx,ly,periodic=True):
+    def site(x,y):
+        if not periodic and not (0<=x<lx and 0<=y<ly):return None
+        return (x%lx)+lx*(y%ly)
     out=[]
     for y in range(ly):
         for x in range(lx):
             out.append((x,y,'Z',(site(x,y),)))
             for kind,(dx,dy) in enumerate([(1,0),(0,1),(1,-1)]):
-                out.append((x,y,f'edge{kind}',tuple(sorted((site(x,y),site(x+dx,y+dy))))))
-            out.append((x,y,'triangle0',tuple(sorted((site(x,y),site(x+1,y),site(x,y+1))))))
-            out.append((x,y,'triangle1',tuple(sorted((site(x+1,y+1),site(x,y+1),site(x+1,y))))))
+                target=site(x+dx,y+dy)
+                if target is not None:out.append((x,y,f'edge{kind}',tuple(sorted((site(x,y),target)))))
+            if periodic or (x+1<lx and y+1<ly):
+                out.append((x,y,'triangle0',tuple(sorted((site(x,y),site(x+1,y),site(x,y+1))))))
+                out.append((x,y,'triangle1',tuple(sorted((site(x+1,y+1),site(x,y+1),site(x+1,y))))))
     if len({t[3] for t in out})!=len(out):raise ValueError('catalog aliases supports')
     return out
 
 
-def transfer_triangular_circuit(result,source_shape,target_shape):
+def transfer_triangular_circuit(result,source_shape,target_shape,*,target_periodic=True):
     """Repeat source cell coefficients modulo source lengths, using target-local
     bonds/faces (including the target wrap). Enforce a site-proportional gate
     cap by a fixed geometric ordering, never by a target phase/objective score.
@@ -26,7 +30,7 @@ def transfer_triangular_circuit(result,source_shape,target_shape):
     sx,sy=source_shape;tx,ty=target_shape
     learned={tuple(sorted(s)):int(on) for s,on in zip(result['gate_supports'],result['coefficients_best'])}
     source={(x,y,kind):learned.get(support,0) for x,y,kind,support in triangular_catalog(sx,sy)}
-    target=triangular_catalog(tx,ty)
+    target=triangular_catalog(tx,ty,target_periodic)
     supports=[entry[3] for entry in target]
     coefficients=np.array([source[x%sx,y%sy,kind] for x,y,kind,s in target],dtype=np.int8)
     before=int(coefficients.sum());cap=int(np.floor(result['max_gates']*tx*ty/(sx*sy)))

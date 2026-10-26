@@ -9,9 +9,21 @@ from ..walsh import fwht
 
 def phase_entries(operator,relative_threshold=1e-8,seed=913,holdout=.3):
     """Undirected, off-diagonal entry split: Hermitian partners never leak across splits."""
-    operator=np.asarray(operator);d=len(operator)
-    a,b=np.triu_indices(d,1);z=operator[a,b]
-    threshold=relative_threshold*abs(operator).max(initial=0.)
+    if sparse.issparse(operator):
+        operator=operator.tocsr(copy=True);operator.sum_duplicates();operator.sort_indices()
+        upper=sparse.triu(operator,k=1,format='coo')
+        order=np.lexsort((upper.col,upper.row))
+        a,b,z=upper.row[order],upper.col[order],upper.data[order]
+        scale=abs(operator.data).max(initial=0.)
+        total_mass=float(np.vdot(operator.data,operator.data).real)
+        diagonal_mass=float(np.sum(abs(operator.diagonal())**2))
+    else:
+        operator=np.asarray(operator);d=len(operator)
+        a,b=np.triu_indices(d,1);z=operator[a,b]
+        scale=abs(operator).max(initial=0.)
+        total_mass=float(np.vdot(operator,operator).real)
+        diagonal_mass=float(np.sum(abs(np.diag(operator))**2))
+    threshold=relative_threshold*scale
     good=abs(z)>max(threshold,np.finfo(float).tiny)
     a,b,z=a[good],b[good],z[good]
     # Deterministic pair split, independent of numerical values and threshold.
@@ -23,8 +35,7 @@ def phase_entries(operator,relative_threshold=1e-8,seed=913,holdout=.3):
     return {'row':a,'col':b,'phase':z/abs(z),'weight':2*abs(z)**2,'test':test,
             'threshold':threshold,'relative_threshold':relative_threshold,
             'retained_offdiag_mass':float(2*np.sum(abs(z)**2)),
-            'total_mass':float(np.vdot(operator,operator).real),
-            'diagonal_mass':float(np.sum(abs(np.diag(operator))**2))}
+            'total_mass':total_mass,'diagonal_mass':diagonal_mass}
 
 
 def score_phase(entries,phase,split='test'):

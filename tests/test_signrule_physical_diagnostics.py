@@ -52,3 +52,13 @@ def test_sparse_spatial_Gram_entropy_matches_dense_SVD():
     actual=sparse_operator_entropy(sparse.csr_matrix(operator),6)
     expected=schmidt(operator)[1]
     assert actual['OSEE']==pytest.approx(expected,abs=1e-11)
+def test_qutrit_degree_derivatives_match_full_fourier_histogram():
+    from operator_walshness.signrule.physical_diagnostics import qutrit_degree_moments,qutrit_full_spectrum
+    from operator_walshness.signrule.models import tj_hamiltonian,block_eigensystem,block_gibbs
+    from operator_walshness.signrule.geometry import chain
+    import numpy as np
+    h,digits,*_=tj_hamiltonian(chain(3),t=1.4)
+    rho,_=block_gibbs(block_eigensystem(h),.8,len(digits))
+    p=qutrit_full_spectrum(rho,digits);k=np.arange(len(p));m=qutrit_degree_moments(rho,digits)
+    np.testing.assert_allclose(m['Z3_degree_mean'].sum(),p@k,atol=1e-12)
+    np.testing.assert_allclose(m['Z3_degree_correlation'].sum(),p@(k*k)-(p@k)**2,atol=1e-11)

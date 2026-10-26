@@ -1,0 +1,75 @@
+{
+  "status": "active_first_scan_complete_final_scope_audit_pending",
+  "last_update_utc": "2026-10-26T20:19:19.900176+00:00",
+  "specification": "registration/specification.yaml",
+  "design": "registration/design.txt",
+  "points_by_track": {
+    "A": 594,
+    "C": 144,
+    "E": 1296,
+    "F": 972,
+    "D": 270,
+    "B": 162
+  },
+  "first_scan_expected": 3438,
+  "first_scan_completed": 3438,
+  "phase1": {
+    "A": "594 native n6/8 control points complete; n10/12 frozen-rule validation complete, not a native blind grid",
+    "B": "162 n9 thermal points plus 54 ground/excited projector optimizations and frozen n12 open-geometry transfer complete",
+    "C": "36 pure n12/18 points and 108 full n12 Gibbs points complete; no dense n18 thermal operator",
+    "D": "270 n9 thermal points complete; frozen g0 transfer to new temperatures and n12 complete, failed all-target criterion",
+    "E": "1296 qutrit points complete, including 2x4 ladder; 72 n10/12 physical diagnostic cases use 64 exact propagator columns and 64 stochastic trace probes",
+    "F": "972 native n6/8 points complete; controlled-frustration frozen boundary-rule validation extends through n12"
+  },
+  "phase2": {
+    "posthoc": "All 2142 qubit/C point-level posthoc records complete; E endpoint/path scoring stored under physical_E instead.",
+    "B": "HE thermal phase fits, structure factors, pure controls and independent projector transfer complete; no stable HE discovery",
+    "C": "sector topology, thermal purity/spectrum/modulus pairing and 40 same-amplitude random-phase controls complete",
+    "D": "gatewise symmetry comparison and independent strange correlator recorded; no stable transferable LG rule",
+    "E": "96 true closed-path diagnostic rows, no phase-string identity violations; endpoint phase and path phase remain distinct",
+    "F": "lambda0.4 boundary-CZ correction passes independent beta/size checks through n12; nearby-coupling validation is not uniformly positive",
+    "null_controls": "120 fixed-spectrum Haar/real/sector controls complete, 20 per family per selected model",
+    "baselines": "All 3438 frozen points have random and alpha0/reference baseline records."
+  },
+  "phase3": {
+    "gate": "registration/phase3_gate.json",
+    "status": "1728 networks complete, 8 seeds, all 2k/10k/40k checkpoints",
+    "scope": "bounded lambda0.4 correction; not a topological, SPT or path-rule discovery",
+    "interpretation": "positive-amplitude learned phase has a nonzero error floor; no universal advantage over plain local-SU2 MLP is claimed"
+  },
+  "delivery": {
+    "status": "compact snapshot publication; full research acceptance remains open",
+    "tests": "101 tests passed; registration/publish_tests.xml",
+    "large_artifacts": "local only: dense/NPZ arrays, masks, optimizer initialization histories and NN checkpoints",
+    "hash_policy": "no additional full raw-result hash sweep"
+  },
+  "remaining_scope_audit": [
+    "Check completeness of final F physical diagnostics and supplemental baselines against all frozen points.",
+    "Finish matched-resource and paired-seed learning analysis, including uncertainty and interpretation.",
+    "Audit adaptive low-temperature and remaining native large-size requirements under conditional expansion rules; frozen transfer is not a native large-size scan.",
+    "Audit B ground/excited Huse-Elser fits and all required observables.",
+    "Complete final scientific report and end-to-end acceptance; this progress snapshot does not assert the entire design is complete."
+  ],
+  "hard_limits": [
+    "never construct 18-qubit dense thermal operator",
+    "never mix Z3 and qubit W",
+    "never use oracle labels in blind objective",
+    "pure-state results are not operator-specific",
+    "same active-gate budget and evaluation cap across phase-gate levels",
+    "no claimed global optimum",
+    "keep prior rounds unchanged"
+  ],
+  "spectrum_serialization_fix": {
+    "issue": "Initial block Gibbs probabilities were saved in component order while energies were sorted. rho and W are unaffected.",
+    "fixed_in_source": true,
+    "required_after_live_v1_workers_finish": "re-sort all thermal_spectrum eigenvalues descending to match energies ascending; validate p=exp(-beta E)/Z; record repair counts",
+    "already_running_workers_use_initial_imports": true,
+    "final_repair": "All 3438 artifacts checked with zero errors; final pass repaired 492 derived spectra. No freeze digest sweep was run."
+  },
+  "continuation": {
+    "branch": "experiments/signrule-round3-20261027",
+    "native_blind_workers": "all original scan workers finished at snapshot inspection",
+    "do_not_restart_completed_scans": true,
+    "current_small_followups": "incremental scoring/baseline completion and spectrum-order validation only"
+  }
+}

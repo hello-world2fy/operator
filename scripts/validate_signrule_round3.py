@@ -18,9 +18,10 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('--repair-spectrum-order',action='store_true')
     parser.add_argument('--verify-freeze-digests',action='store_true')
     args=parser.parse_args();out=ROOT/'results/signrule_round3'
-    errors=[];repairs=[];checked=0;freeze_checks=0
+    errors=[];repairs=[];checked=0;freeze_checks=0;counts={}
     for metrics_path in out.glob('*/*/n*/*/*/alpha*/seed*/metrics.json'):
         point=metrics_path.parent;m=json.loads(metrics_path.read_text());checked+=1
+        counts[m['track']]=counts.get(m['track'],0)+1
         try:
             results=json.loads((point/'basis_or_circuit.json').read_text())
             frozen=json.loads((point/'blind_frozen.json').read_text())
@@ -72,7 +73,8 @@ def main():
     result={'checked_utc':utc(),'status':'failed' if errors else 'checked_artifacts_pass_scope_still_incomplete',
         'artifacts_checked':checked,'freeze_digests_checked':freeze_checks,'errors':errors,
         'derived_spectra_repaired_this_pass':repairs,'ABDF_expected':expected,'ABDF_complete':ready,
-        'ABDF_missing':len(missing),'C_initial_pure_expected':36,'E_initial_expected':972,
+        'ABDF_missing':len(missing),'C_initial_pure_expected':36,'C_thermal_expected':108,
+        'E_expected_with_ladder2x4':1296,'points_by_track':counts,
         'full_objective_complete':False,
         'pending_requirements':'registration/progress.json; a passing artifact check does not close the research goal'}
     atomic_json(out/'acceptance_progress.json',result)
