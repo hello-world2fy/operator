@@ -1,0 +1,4 @@
+objective,basis,physical_points,points_with_W_reduction,mean_delta_W,max_W_reduction
+W_rho,Walsh_rho,87,0,-2.0417894705750005e-16,1.7763568394002505e-15
+W_delta,Walsh_delta,87,57,-0.48841133652269986,1.513765058593651
+W_H,Walsh_H,87,87,-1.5869700736412673,2.075393568323415

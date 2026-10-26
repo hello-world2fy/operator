@@ -1,0 +1,163 @@
+project: operator_walshness_round2
+version: 1
+status: proposal_only_no_jobs_launched
+reference_repo: https://github.com/hello-world2fy/operator
+reference_branch: main
+reference_head_at_design: 2c860e90e7ee95239fdb2e8640df974f8b52072a
+objective: >
+  Separate local/purity backgrounds from many-body operator-Walsh structure;
+  test whether basis optimization predicts constrained MLP representability
+  and real-worldline QMC average sign in frustrated spin models.
+
+conventions:
+  n: number_of_physical_qubits
+  alpha: positive_dimensionless_walsh_parameter
+  beta: inverse_temperature_with_J1_equal_1
+  operator: arbitrary_complex_nonzero_matrix
+  O_normalization: hilbert_schmidt
+  physical_basis: "O_U = U_dagger O U; U = tensor_i U_i"
+  fixed_walsh: "W = log(sum_(r,q) p(r,q) exp(alpha*(popcount(r)+popcount(q))))/alpha"
+  moment: "exp(alpha*W)=Tr(O_dagger A O A)/Tr(O_dagger O), A=tensor_i[(1+exp(alpha))I/2 - (exp(alpha)-1)n_i.sigma/2]"
+  intrinsic: "min over same physical single-site basis for bra and ket"
+  interpretation: "W optimized numerically is an upper bound; do not label certified without proof"
+
+stage_R0_blocking_qa:
+  tasks:
+    - "Fix optimized operator-MLP target: align_direction_to_z alone is not a fixed-X-Walsh basis. Use U_i = align_direction_to_z(n_i) @ Hadamard and verify conventions."
+    - "Write a regression comparing optimizer moment and fixed_basis_spectrum(rotate_operator(O, U_i)) for random real, complex, Hermitian, Gibbs, and pure projectors."
+    - "Clarify relative_frobenius column: existing MLP training reports squared relative Frobenius loss."
+    - "Check all examples against identity, products, W_op(pure projector)=2 W_state, and alpha=0 analytic identity."
+    - "Confirm fixed physical basis and full local SU2 search are not inadvertently mixed with independent bra/ket rotations."
+  acceptance:
+    moment_vs_rotated_fixed_abs_error: 1.0e-8
+    nonnegative_P_tolerance: 1.0e-12
+    sum_P_minus_one_abs: 1.0e-10
+    mandatory_unit_tests: [single_site, random_complex_operator, optimized_Gibbs, pure_state_projector]
+
+stage_R1_learnability:
+  model: mixed_field_ising
+  spin_H: "H=-sum ZZ-g sum X-h sum Z"
+  parameters_g_h: [[1.05,0.2], [1.05,0.5], [1.2,0.5]]
+  sizes: [8,10,12]
+  beta: [0.25,0.5,1,2,4]
+  alpha_basis: [0.5,1,2]
+  basis_groups: [fixed_X, fixed_Z, random_local, best_numerical_W, nearby_beta_transferred, alpha0_basis]
+  width: [32,64,128,256]
+  hidden_layers: [1,2,3]
+  nonlinearities: [square,tanh]
+  starts: 8
+  optimize_budget_steps: [2000,10000,40000]
+  targets: [rho_beta, normalized_sqrt_rho_beta]
+  metrics: [full_relative_frobenius_squared, predicted_W_spectral_tail, params_to_target_error, FLOPs_to_target_error, held_out_error]
+  required_controls: [same_random_seeds, same_train_FLOPs, same_sample_distribution_or_correct_importance_weights]
+
+stage_R2_spatial_correlations:
+  reuse_existing_npz: "results/round1/spatial"
+  initial_sizes: [6,8,10,12]
+  mpo_sizes_conditional: [16,32,64,128]
+  initial_models: [commuting_zz_ising,transverse_field_ising,mixed_field_ising,disconnected_dimers]
+  beta: [0,0.25,0.5,1,2,4,8]
+  bases: [fixed_X, best_numerical_W, fixed_Z]
+  outputs: [degree_mean_i, degree_connected_Cij, abs_boundary_cross_correlation, signed_boundary_cross_correlation, half_chain_OSEE, thermal_equal_time_correlator, thermal_imaginary_time_correlator]
+  exact_identity_to_validate: "For Hermitian Gibbs O and physical axes, Cij_W for i!=j = 0.5*(connected_thermal_equal_time(2beta)+connected_imaginary_time_tau_beta(2beta)); check transpose/axis conventions for complex bases."
+  hypothesis_neutral: true
+  quantum_information_control: "At small n compare classical Walsh mutual information to 2*OSEE (consistent log bases)."
+
+stage_R3_random_spectral_null:
+  reuse: [exact_gibbs,xxz_sector_results,existing_eigenstates]
+  small_n: [6,8,10]
+  optional_n: [12]
+  beta: [0.25,0.5,1,2,4]
+  microcanonical_rank: [1,2,4,8,16,32,64]
+  random_nulls: [complex_Haar_global,real_Haar_orthogonal,sector_respecting_Haar]
+  random_draws_per_point: 100
+  validation: "Compare sampled exp(alpha*W_fixed) with Haar-twirl closed form; do not confuse log(E G) with E log(G)."
+  matched_variables: [purity,spectrum_or_rank,symmetry_sector,boundary,energy_window_width]
+  outputs: [W_fixed, W_best, OSEE, purity, random_null_mean, random_null_confidence_interval, microcanonical_to_canonical_comparison]
+
+stage_R4_qmc_sign:
+  status: proposed_not_run
+  observable_definition:
+    real_rotated_H: "H_U=U^T H U for real orthogonal on-site rotations"
+    sign_free_comparison: "(H_abs)_ss=(H_U)_ss; (H_abs)_st=-abs((H_U)_st) for s!=t"
+    average_sign: "sbar_U(beta)=Tr exp(-beta H_U)/Tr exp(-beta H_abs)"
+    sign_exponent: "gamma_U(beta)= -log(sbar_U)/(beta*n) for beta>0"
+    valid_for: continuous_time_worldline_expansion_in_specified_basis
+    warning: not_universal_determinant_qmc_sign
+  model_A:
+    name: J1_J2_frustrated_Heisenberg_chain
+    H: "J1 sum_i S_i.S_(i+1) + J2 sum_i S_i.S_(i+2), S=sigma/2, J1=1"
+    geometry: [open_even_chain,periodic_even_chain]
+    n: [6,8,10,12]
+    optional_n: [14]
+    J2_over_J1: [0,0.15,0.3,0.5,0.75,1.0]
+    beta: [0.25,0.5,1,2,4]
+    optional_beta: [8]
+  model_B_conditional:
+    name: triangular_lattice_Heisenberg
+    n: [9,12]
+    geometry: open_small_clusters
+    purpose: geometrical_nonbipartite_frustration_control
+  allowed_basis:
+    main: "Real local O(2): products of R_y(theta_i) with local Z_i flips; common physical basis for H and rho"
+    additional: "Full local SU(2) phase-problem extension only after separate complex-path definition and validation"
+  compared_bases:
+    - original_computational
+    - Marshall_sublattice_Z_gauge
+    - Walsh_optimized_real_basis_using_rho_beta
+    - Walsh_optimized_real_basis_using_centered_Gibbs
+    - Walsh_optimized_real_basis_using_H_minus_trace_part
+    - random_real_local_rotations
+    - directly_sign_optimized_basis_same_budget
+    - sign_surrogate_optimized_basis
+  sign_surrogate: "eta_pos= sum_offdiag(max(H_U_st,0)^2)/sum_offdiag(abs(H_U_st)^2); only a screening statistic, not average sign"
+  walsh_comparators: [W_fixed_rho, W_fixed_rho_minus_identity, W_fixed_H_centered, W_physical_best_rho]
+  special_high_temperature_identity: "rho_beta - I/d ~ -(beta/d)*(H-Tr(H)/d*I) as beta->0"
+  adversarial_controls:
+    - "At J2=0 Marshall basis yields sign=1, up to numerical errors."
+    - "Local diagonal Z sign gauges may change fixed-basis Walshness but leave worldline average sign unchanged."
+    - "Stoquastic mixed-field Ising is sign-free in computational basis even if fixed Walshness is large."
+    - "Do not infer sign mitigation from positive off-diagonal fraction alone."
+    - "Walsh-only basis may be expensive to find if it requires an exact Gibbs matrix; separately assess transfer/cheap proxies."
+  analysis:
+    - "Plot sign exponent gamma against Walsh metrics across bases at fixed (J2,beta,n), not pooled without controls."
+    - "Report paired delta gamma of Walsh-optimal versus Marshall, random, and direct-sign controls."
+    - "Measure rank correlation and out-of-sample performance across held-out beta, J2, and size."
+    - "Report gauge-orbit invariance of sign objective and quantify Walsh gauge sensitivity."
+    - "If improvement survives n, beta, and solver comparisons, then consider actual continuous-time worldline QMC variance/runtimes as a phase-2 follow-up."
+  acceptance:
+    double_precision_logZ_cross_checks: true
+    beta_to_zero_sign_equals_one: true
+    stoquastic_Marshall_sign_equals_one: true
+    gauge_invariant_average_sign: true
+    no_overclaim_universal_sign_solution: true
+
+stage_R5_conditional_scaling:
+  trigger: "Only after stable trends in R1-R4 survive error controls"
+  mpo_sizes: [16,32,64,128]
+  integrable_sizes: [64,128,256,512]
+  targets: [walsh_degree_large_deviation, basis_order_parameters, beta_scaling, spatial_boundary_scaling]
+  numerical_convergence: [bond_dimension,imaginary_time_step,random_restarts,finite_size]
+
+compute_policy:
+  resources: "8 A100 GPUs available; CPU vs GPU benchmarking required for MPO contractions"
+  dispatch: independent_jobs_by_model_size_beta_and_seed
+  gpu_allocation_flexible:
+    exact_or_QMC_ED: 2
+    basis_optimization: 2
+    spatial_and_MPO: 2
+    MLP_training_and_cross_checks: 2
+  do_not_require_dense_full_spectrum_at_n_ge_16: true
+  preserve_random_seeds: true
+
+required_outputs:
+  table: "one row per model, n, beta, alpha, physical basis, seed; no overwritten results"
+  arrays: [full_degree_histogram, degree_correlations, local_axes, operator_schmidt_values, sign_or_phase_diagnostics]
+  code_checks: [git_commit, dependency_versions, config_hash, real_vs_complex_dtype, seed, solver_tolerance, boundary_conventions]
+  figures:
+    - W_opt_vs_basis_and_network_error
+    - spatial_Walsh_correlation_and_OSEE
+    - rank_and_Haar_matched_null
+    - QMC_log_average_sign_vs_Walsh_for_same_basis
+    - J1J2_Frustration_beta_size_scaling
+  reporting: "Every positive outcome accompanied by null controls and numerical uncertainty; negative results preserved"

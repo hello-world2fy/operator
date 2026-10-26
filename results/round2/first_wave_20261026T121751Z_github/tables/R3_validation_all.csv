@@ -1,0 +1,4 @@
+n,beta,alpha,draws,seed,G_exact,G_mean,G_sem,zscore,reason,source_file
+6,1.0,0.5,5000,703194,29.505340872059527,29.36224929564463,0.06250578042423634,-2.2892534969359923,independent post-hoc precision check for largest nondegenerate deviation among initial 100-draw groups,R3_validation/independent_5000_draws.json
+6,1.0,1.0,5000,703194,1825.8392943604783,1807.2581248788017,9.208685332121988,-2.017787426926326,independent post-hoc precision check for largest nondegenerate deviation among initial 100-draw groups,R3_validation/independent_5000_draws.json
+6,1.0,2.0,5000,703194,43599881.15852929,42749805.76114532,602219.615392624,-1.4115704232412774,independent post-hoc precision check for largest nondegenerate deviation among initial 100-draw groups,R3_validation/independent_5000_draws.json

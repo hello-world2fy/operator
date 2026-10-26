@@ -2,7 +2,7 @@
 
 The network fits the matrix elements of a Gibbs operator, optionally after a
 local basis change. Every run uses the same number of Adam steps. The reported
-error is the relative Frobenius residual on the whole matrix.
+error is the squared relative Frobenius residual on the whole matrix.
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from operator_walshness.exact import diagonalize
 from operator_walshness.grid import case_name
 from operator_walshness.walsh import (
-    align_direction_to_z,
+    directions_to_walsh_basis,
     fixed_basis_spectrum,
     gibbs_density,
     rotate_operator,
@@ -64,7 +64,7 @@ def _target(operator: np.ndarray, directions: np.ndarray | None) -> np.ndarray:
     if directions is None:
         matrix = np.asarray(operator, dtype=np.complex128)
     else:
-        unitaries = [align_direction_to_z(directions[site]) for site in range(directions.shape[0])]
+        unitaries = directions_to_walsh_basis(directions)
         matrix = rotate_operator(operator, unitaries)
     return matrix.reshape(-1)
 
@@ -124,6 +124,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--steps", type=int, default=80)
     parser.add_argument("--seeds", type=int, default=4)
+    parser.add_argument("--seed-start", type=int, default=0)
     parser.add_argument("--sizes", type=int, nargs="*", default=[8])
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--out", type=Path, default=Path("results/round1/mlp"))
@@ -172,7 +173,7 @@ def main() -> None:
                     tails = [tail_degree(spectrum, eps) for eps in TAIL_EPSILONS]
                     label = basis if basis != "optimized" else f"optimized_a{alpha:g}"
                     for activation, depth, width in architectures:
-                        for seed in range(args.seeds):
+                        for seed in range(args.seed_start, args.seed_start + args.seeds):
                             started = time.time()
                             error = _fit(features, target, width, depth, activation, seed, args.steps, args.device)
                             row = {
@@ -187,7 +188,8 @@ def main() -> None:
                                 "width": width,
                                 "seed": seed,
                                 "steps": args.steps,
-                                "relative_frobenius": error,
+                                "full_relative_frobenius_squared": error,
+                                "full_relative_frobenius": float(np.sqrt(error)),
                                 "tail_1e-2": tails[0],
                                 "tail_1e-3": tails[1],
                                 "tail_1e-4": tails[2],

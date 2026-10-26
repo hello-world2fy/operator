@@ -1,0 +1,66 @@
+{
+  "checks": {
+    "R1_independent_networks": 3264,
+    "R1_moment_abs_error_max": 8.260059303211165e-14,
+    "R1_square_spectral_floor_min_slack": 4.809117352340669e-05,
+    "R1_extended_networks": 576,
+    "R1_extended_square_floor_min_slack": 3.585745406553542e-05,
+    "R1_repeat_2000_step_max_difference": 0.0,
+    "R2_rows": 276,
+    "R2_thermal_identity_error_max": 1.2982019972906933e-14,
+    "R2_MI_minus_2OSEE_max": 2.5627412030504724e-15,
+    "R2_inter_dimer_cov_max": 4.440892098500626e-15,
+    "R3_random_draws": 7200,
+    "R3_purity_error_max": 3.4416913763379853e-15,
+    "R3_Haar_nonzero_variance_max_abs_z": 3.878349721467622,
+    "R3_Haar_zero_variance_max_relative_error": 1.8081150737678087e-15,
+    "R3_independent_validation_draws": 5000,
+    "R3_validation_max_abs_z": 2.2892534969359923,
+    "R4_physical_points": 87,
+    "R4_basis_evaluations": 1416,
+    "R4_gauge_logsign_error_max": 0.0,
+    "R4_gauge_W_change_max": 4.311709071016114,
+    "R4_Marshall_logsign_abs_max": 2.842170943040401e-14,
+    "R4_stoquastic_logsign_abs_max": 2.842170943040401e-14
+  },
+  "statuses": {
+    "R1": {
+      "status": "complete",
+      "completed_batches": 68,
+      "planned_batches": 68,
+      "elapsed_seconds": 524.3146295547485,
+      "failed": []
+    },
+    "R2": {
+      "stage": "R2",
+      "completed_tasks": 14,
+      "planned_tasks": 14,
+      "failed": [],
+      "not_started": [],
+      "status": "complete"
+    },
+    "R3": {
+      "stage": "R3",
+      "completed_tasks": 72,
+      "planned_tasks": 72,
+      "failed": [],
+      "not_started": [],
+      "status": "complete"
+    },
+    "R4": {
+      "stage": "R4",
+      "completed_tasks": 18,
+      "planned_tasks": 18,
+      "failed": [],
+      "not_started": [],
+      "status": "complete"
+    },
+    "R1_extended": {
+      "status": "complete",
+      "completed_batches": 12,
+      "planned_batches": 12,
+      "elapsed_seconds": 1048.4310081005096,
+      "failed": []
+    }
+  }
+}

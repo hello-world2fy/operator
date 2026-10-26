@@ -143,7 +143,7 @@ def walsh_degree_correlations(density: np.ndarray) -> dict[str, np.ndarray]:
             else:
                 xx[i, j] = float(np.sum(squared[idx, idx ^ (1 << i) ^ (1 << j)]).real / norm)
             shifted = col_shift[idx ^ (1 << i)]
-            cross[i, j] = float(np.sum(density * shifted).real / norm)
+            cross[i, j] = float(np.vdot(density, shifted).real / norm)
     # E[r_i r_j] = (1 - <Xi> - <Xj> + <Xi Xj>)/4
     # E[r_i q_j] = (1 - <Xi> - <Xj> + cross_ij)/4
     # For i==j, r_i² = r_i, so E[r_i r_i] = E[r_i] = (1-<Xi>)/2, and the

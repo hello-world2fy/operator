@@ -1,0 +1,69 @@
+project: operator_walshness_round2_first_wave
+scope: user_approved_first_wave_within_a_few_hours
+seed: 20261026
+max_wall_hours: 3
+reference_plan: operator_walshness_round2_experiment_plan.yaml
+R1:
+  sizes: [8, 10]
+  selected_size_12: true
+  g: 1.05
+  h: 0.5
+  beta: [0.5, 1.0]
+  alpha_basis: 1.0
+  bases: [fixed_X, fixed_Z, random_local, best_numerical_W, nearby_beta_transferred, alpha0_basis]
+  widths: [32, 64]
+  hidden_layers: [1, 2]
+  activations: [square, tanh]
+  seeds: 8
+  checkpoints: [2000]
+  batch_size: 256
+  learning_rate: 0.001
+  targets: [rho_beta, normalized_sqrt_rho_beta]
+  held_out_fraction: 0.1
+  held_out_seed: 19473
+  selected_size_12_details: {beta: 1.0, width: 64, depth: 2, activations: [square, tanh]}
+R2:
+  sizes: [6, 8, 10]
+  selected_size_12: true
+  beta: [0, 0.25, 0.5, 1, 2, 4, 8]
+  models: [commuting_zz_ising, transverse_field_ising, mixed_field_ising, disconnected_dimers]
+  bases: [fixed_X, best_numerical_W, fixed_Z]
+  alpha_basis: 1.0
+R3:
+  sizes: [6, 8]
+  model: xxz
+  delta: 1.0
+  beta: [0.25, 0.5, 1, 2, 4]
+  microcanonical_rank: [1, 2, 4, 8, 16, 32, 64]
+  microcanonical_center: middle_of_full_spectrum
+  nulls: [complex_Haar_global, real_Haar_orthogonal, sector_respecting_Haar]
+  draws: 100
+  alphas: [0.5, 1, 2]
+  optimized_null_draws: 0
+  note: W_best for physical Gibbs reuses round1; finite-alpha random-null optimization deferred.
+R4:
+  sizes: [6, 8]
+  j2: [0, 0.15, 0.3, 0.5, 0.75, 1]
+  beta: [0.25, 0.5, 1, 2, 4]
+  boundary: open
+  periodic_control: {n: 6, j2: [0, 0.5, 1]}
+  size_10_check: {j2: [0, 0.5, 1], beta: [0.5, 1, 2, 4]}
+  alpha: [0.25, 0.5, 1, 2]
+  optimize_alpha: 1.0
+  optimization_starts: 4
+  function_evaluations_per_start: 96
+  size_10_function_evaluations_per_start: 48
+  random_bases: 8
+  transfer: higher_temperature_and_size_minus_two
+  gauges_per_basis: 1
+resources:
+  gpu: 'cuda:7'
+  R2_workers: 4
+  R3_workers: 4
+  R4_workers: 4
+  blas_threads_per_worker: 1
+deferred:
+  - Full R1 parameter, alpha, width, depth and 10000/40000-step grid
+  - R3 n10/12 sampling and optimization of every Haar draw
+  - R4 exhaustive n12, triangular geometry and actual worldline sampling
+  - Conditional R5 and MPO scaling

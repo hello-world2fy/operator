@@ -1,0 +1,131 @@
+{
+  "status": "passed",
+  "checks": {
+    "R1_completed_files": {
+      "value": 68,
+      "passed": true
+    },
+    "R1_status": {
+      "value": "complete",
+      "passed": true
+    },
+    "R2_completed_files": {
+      "value": 14,
+      "passed": true
+    },
+    "R2_status": {
+      "value": "complete",
+      "passed": true
+    },
+    "R3_completed_files": {
+      "value": 72,
+      "passed": true
+    },
+    "R3_status": {
+      "value": "complete",
+      "passed": true
+    },
+    "R4_completed_files": {
+      "value": 18,
+      "passed": true
+    },
+    "R4_status": {
+      "value": "complete",
+      "passed": true
+    },
+    "R1_extended_completed_files": {
+      "value": 12,
+      "passed": true
+    },
+    "R1_extended_status": {
+      "value": "complete",
+      "passed": true
+    },
+    "MLP_2000_independent_networks": {
+      "value": 3264,
+      "passed": true
+    },
+    "MLP_basis_moment_error": {
+      "value": 8.260059303211165e-14,
+      "passed": true
+    },
+    "MLP_finite_error": {
+      "value": true,
+      "passed": true
+    },
+    "square_spectral_floor_min_slack": {
+      "value": 3.585745406553542e-05,
+      "passed": true
+    },
+    "MLP_initialization_seeds_min": {
+      "value": 8,
+      "passed": true
+    },
+    "independent_2000_step_reproduction": {
+      "value": 0.0,
+      "passed": true
+    },
+    "thermal_identity_abs_error": {
+      "value": 1.2982019972906933e-14,
+      "passed": true
+    },
+    "I_W_le_2OSEE_max_violation": {
+      "value": 2.5627412030504724e-15,
+      "passed": true
+    },
+    "inter_dimer_cov_max": {
+      "value": 4.440892098500626e-15,
+      "passed": true
+    },
+    "random_null_draws": {
+      "value": 7200,
+      "passed": true
+    },
+    "random_spectrum_purity_error": {
+      "value": 3.4416913763379853e-15,
+      "passed": true
+    },
+    "QMC_physical_points": {
+      "value": 87,
+      "passed": true
+    },
+    "Marshall_sign_one_log_error": {
+      "value": 2.842170943040401e-14,
+      "passed": true
+    },
+    "gauge_logsign_error": {
+      "value": 0.0,
+      "passed": true
+    },
+    "logZ_independent_diagonalization_error": {
+      "value": 3.197442310920451e-14,
+      "passed": true
+    },
+    "average_sign_upper_bound": {
+      "value": 3.375077994860476e-14,
+      "passed": true
+    },
+    "probability_histograms": {
+      "value": 11856,
+      "passed": true
+    },
+    "minimum_probability": {
+      "value": 0.0,
+      "passed": true
+    },
+    "maximum_probability_defect": {
+      "value": 5.551115123125783e-16,
+      "passed": true
+    },
+    "beta_1e-5_centered_W_minus_H_max": {
+      "value": 2.8205554389870713e-05,
+      "passed": true
+    },
+    "beta_1e-5_logsign_abs_max": {
+      "value": 8.881784197001252e-16,
+      "passed": true
+    }
+  },
+  "failures": [],
+  "note": "finite-alpha optimization is budget-limited; acceptance does not certify global minima or a thermodynamic scaling law"
+}

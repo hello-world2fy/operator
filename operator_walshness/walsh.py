@@ -320,6 +320,17 @@ def rotate_operator(operator: np.ndarray, unitaries: list[np.ndarray]) -> np.nda
     return out
 
 
+def directions_to_walsh_basis(directions: np.ndarray) -> list[np.ndarray]:
+    """Physical U_i with U_i X U_i† = n_i·sigma for fixed-X FWHT.
+
+    align_direction_to_z alone gives U_i Z U_i† = n_i·sigma and therefore
+    must be followed by a Hadamard before applying fixed_basis_spectrum.
+    The same U acts on both matrix indices by physical conjugation.
+    """
+    hadamard = np.array([[1., 1.], [1., -1.]]) / np.sqrt(2.)
+    return [align_direction_to_z(axis) @ hadamard for axis in directions]
+
+
 def moment_by_rotation(operator: np.ndarray, directions: np.ndarray, alpha: float) -> float:
     """Same moment, evaluated after rotating every n_i onto +Z."""
     alpha = float(alpha)
@@ -386,13 +397,16 @@ def normalized_expectations(operator: np.ndarray) -> tuple[np.ndarray, float]:
 
 
 def rho_squared_bloch(operator: np.ndarray) -> tuple[np.ndarray, float]:
-    """Bloch vector of σ = O† O / Tr(O† O) for Hermitian O, via O² when Hermitian.
+    """Bloch vector of (O†O + OO†)/(2 Tr(O†O)).
 
-    The α→0 derivation uses Tr(ρ² σ_i)/Tr(ρ²). For a general nonzero operator
-    the same traces are Tr(O† O σ_i)/Tr(O† O) only after the row/column
-    identification, which needs Hermiticity. Callers pass a Hermitian operator.
+    For Hermitian O this is O²/Tr(O²), as in the original function. Averaging
+    both marginals extends the physical shared-basis alpha=0 identity to
+    arbitrary complex, possibly non-Hermitian operators.
     """
-    squared = operator @ operator
+    if np.allclose(operator, operator.conj().T, atol=1e-14, rtol=1e-14):
+        squared = operator @ operator
+    else:
+        squared = (operator.conj().T @ operator + operator @ operator.conj().T) / 2
     trace = np.trace(squared).real
     if trace <= 0.0:
         raise ValueError("operator is zero")
@@ -406,7 +420,7 @@ def rho_squared_bloch(operator: np.ndarray) -> tuple[np.ndarray, float]:
 
 
 def mean_degree_from_directions(operator: np.ndarray, directions: np.ndarray) -> float:
-    """α→0 Walshness at fixed Bloch axes: sum_i (1 - <n_i·σ_i>_{O²})."""
+    """α→0 Walshness using the average row and column HS marginal."""
     bloch, _ = rho_squared_bloch(operator)
     directions = np.asarray(directions, dtype=np.float64)
     directions = directions / np.linalg.norm(directions, axis=1, keepdims=True)
@@ -418,8 +432,8 @@ def intrinsic_alpha0(operator: np.ndarray) -> tuple[float, np.ndarray]:
     """Globally minimal α→0 Operator Walshness and the aligned axes.
 
     The minimum is sum_i (1-|m_i|), attained by aligning n_i with the Bloch
-    vector of O². Vanishing Bloch vectors are reported as +x, an arbitrary
-    minimum direction.
+    vector of the averaged Hilbert-Schmidt marginals (O² for Hermitian O).
+    Vanishing Bloch vectors are reported as +x, an arbitrary minimum direction.
     """
     bloch, _ = rho_squared_bloch(operator)
     lengths = np.linalg.norm(bloch, axis=1)
@@ -460,4 +474,4 @@ def gibbs_density(evals: np.ndarray, evecs: np.ndarray, beta: float) -> tuple[np
         weights = np.exp(logits)
         probabilities = weights / float(weights.sum())
     density = (evecs * probabilities) @ np.conjugate(evecs).T
-    return np.real_if_close(density, tol=1000).astype(np.float64, copy=False), probabilities
+    return np.real_if_close(density, tol=1000), probabilities
