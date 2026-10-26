@@ -1,0 +1,601 @@
+model,n,boundary,params_json,beta,basis,activation,depth,width,seed,steps,relative_frobenius,tail_1e-2,tail_1e-3,tail_1e-4,runtime_seconds
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,square,1,32,0,80,0.744505763053894,10,12,14,2.4606432914733887
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,square,1,32,1,80,0.744649350643158,10,12,14,1.4269368648529053
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,square,1,32,2,80,0.7444368600845337,10,12,14,1.3531768321990967
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,square,1,32,3,80,0.7444489002227783,10,12,14,1.3477764129638672
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,square,1,64,0,80,0.7442010045051575,10,12,14,2.753241539001465
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,square,1,64,1,80,0.744238018989563,10,12,14,2.680762767791748
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,square,1,64,2,80,0.744409441947937,10,12,14,2.9034101963043213
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,square,1,64,3,80,0.7442401051521301,10,12,14,3.0460119247436523
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,1,32,0,80,0.9457501769065857,10,12,14,0.9648241996765137
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,1,32,1,80,0.9457602500915527,10,12,14,0.988300085067749
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,1,32,2,80,0.9457513689994812,10,12,14,1.0109407901763916
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,1,32,3,80,0.9457486271858215,10,12,14,0.9935426712036133
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,2,32,0,80,0.9457471370697021,10,12,14,1.8112449645996094
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,2,32,1,80,0.9457564353942871,10,12,14,1.8516664505004883
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,2,32,2,80,0.9457516074180603,10,12,14,2.0827126502990723
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,2,32,3,80,0.9457497000694275,10,12,14,1.9621949195861816
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,3,32,0,80,0.9457783699035645,10,12,14,2.784778118133545
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,3,32,1,80,0.9457641839981079,10,12,14,2.9944705963134766
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,3,32,2,80,0.9457619786262512,10,12,14,2.8928959369659424
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,fixed_z,tanh,3,32,3,80,0.9457672238349915,10,12,14,2.673746347427368
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,square,1,32,0,80,0.8889996409416199,16,16,16,1.3298518657684326
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,square,1,32,1,80,0.8889314532279968,16,16,16,1.3330051898956299
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,square,1,32,2,80,0.8889726996421814,16,16,16,1.34055757522583
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,square,1,32,3,80,0.8888433575630188,16,16,16,1.284308910369873
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,square,1,64,0,80,0.8888288140296936,16,16,16,2.998272180557251
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,square,1,64,1,80,0.8888134360313416,16,16,16,2.6658225059509277
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,square,1,64,2,80,0.8888522982597351,16,16,16,2.6872761249542236
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,square,1,64,3,80,0.8888328075408936,16,16,16,2.788457155227661
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,1,32,0,80,0.9494518041610718,16,16,16,0.964277982711792
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,1,32,1,80,0.9494493007659912,16,16,16,0.973294734954834
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,1,32,2,80,0.9494491815567017,16,16,16,0.9595186710357666
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,1,32,3,80,0.9494447112083435,16,16,16,0.9819967746734619
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,2,32,0,80,0.9494628310203552,16,16,16,1.8754754066467285
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,2,32,1,80,0.9494554996490479,16,16,16,1.808136224746704
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,2,32,2,80,0.9494642615318298,16,16,16,1.8619909286499023
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,2,32,3,80,0.9494592547416687,16,16,16,1.8016164302825928
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,3,32,0,80,0.9495440721511841,16,16,16,2.6849517822265625
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,3,32,1,80,0.9495390057563782,16,16,16,2.837695598602295
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,3,32,2,80,0.9495023488998413,16,16,16,2.874744415283203
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a0.5,tanh,3,32,3,80,0.9495728015899658,16,16,16,2.9774608612060547
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,square,1,32,0,80,0.9144951701164246,16,16,16,1.238034725189209
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,square,1,32,1,80,0.9145336151123047,16,16,16,1.2458255290985107
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,square,1,32,2,80,0.9144396185874939,16,16,16,1.3102734088897705
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,square,1,32,3,80,0.9144323468208313,16,16,16,1.359269618988037
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,square,1,64,0,80,0.914412796497345,16,16,16,2.8766908645629883
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,square,1,64,1,80,0.9143922924995422,16,16,16,2.9444451332092285
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,square,1,64,2,80,0.9144559502601624,16,16,16,2.616664171218872
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,square,1,64,3,80,0.9144097566604614,16,16,16,2.445668935775757
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,1,32,0,80,0.9661533236503601,16,16,16,0.9728388786315918
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,1,32,1,80,0.966160774230957,16,16,16,1.0213701725006104
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,1,32,2,80,0.966149091720581,16,16,16,0.9681313037872314
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,1,32,3,80,0.9661555290222168,16,16,16,0.9718585014343262
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,2,32,0,80,0.9661723971366882,16,16,16,1.9244744777679443
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,2,32,1,80,0.9661636352539062,16,16,16,1.8126335144042969
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,2,32,2,80,0.966183602809906,16,16,16,2.0274946689605713
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,2,32,3,80,0.9661670327186584,16,16,16,2.0691988468170166
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,3,32,0,80,0.9662731885910034,16,16,16,2.8624579906463623
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,3,32,1,80,0.9662387371063232,16,16,16,2.873501777648926
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,3,32,2,80,0.9662035703659058,16,16,16,2.8920559883117676
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a1,tanh,3,32,3,80,0.9662743210792542,16,16,16,2.634518623352051
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,square,1,32,0,80,0.9591770768165588,14,16,16,1.2639963626861572
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,square,1,32,1,80,0.9591779112815857,14,16,16,1.197234869003296
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,square,1,32,2,80,0.959187924861908,14,16,16,1.338247537612915
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,square,1,32,3,80,0.9591622352600098,14,16,16,1.3127751350402832
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,square,1,64,0,80,0.9591323137283325,14,16,16,2.707637310028076
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,square,1,64,1,80,0.9591400027275085,14,16,16,2.6731715202331543
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,square,1,64,2,80,0.959144651889801,14,16,16,2.7641382217407227
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,square,1,64,3,80,0.9591351747512817,14,16,16,2.44736647605896
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,1,32,0,80,0.9902316927909851,14,16,16,1.0923902988433838
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,1,32,1,80,0.9902397394180298,14,16,16,1.1195883750915527
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,1,32,2,80,0.9902280569076538,14,16,16,1.0306117534637451
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,1,32,3,80,0.9902244806289673,14,16,16,1.0173892974853516
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,2,32,0,80,0.9902352690696716,14,16,16,1.9070425033569336
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,2,32,1,80,0.9902417063713074,14,16,16,2.0397019386291504
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,2,32,2,80,0.990234375,14,16,16,1.9980835914611816
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,2,32,3,80,0.9902287125587463,14,16,16,1.8298883438110352
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,3,32,0,80,0.9902814030647278,14,16,16,2.8859803676605225
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,3,32,1,80,0.990286111831665,14,16,16,2.795583724975586
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,3,32,2,80,0.9902393817901611,14,16,16,2.672405958175659
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,optimized_a2,tanh,3,32,3,80,0.9902832508087158,14,16,16,2.745701313018799
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,square,1,32,0,80,0.899806559085846,13,15,16,1.1956610679626465
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,square,1,32,1,80,0.8993669748306274,13,15,16,1.1972639560699463
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,square,1,32,2,80,0.8996665477752686,13,15,16,1.1961579322814941
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,square,1,32,3,80,0.8988491296768188,13,15,16,1.2070133686065674
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,square,1,64,0,80,0.8984625339508057,13,15,16,2.56129789352417
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,square,1,64,1,80,0.8984459042549133,13,15,16,2.7433929443359375
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,square,1,64,2,80,0.8986499905586243,13,15,16,2.576793670654297
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,square,1,64,3,80,0.8984652161598206,13,15,16,2.571821689605713
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,1,32,0,80,0.9733119606971741,13,15,16,1.015472173690796
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,1,32,1,80,0.9733187556266785,13,15,16,0.9892408847808838
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,1,32,2,80,0.9733059406280518,13,15,16,1.0160000324249268
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,1,32,3,80,0.9733103513717651,13,15,16,1.037116289138794
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,2,32,0,80,0.9733168482780457,13,15,16,1.8859057426452637
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,2,32,1,80,0.9733191132545471,13,15,16,1.8789863586425781
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,2,32,2,80,0.9733256697654724,13,15,16,2.0125885009765625
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,2,32,3,80,0.9733121991157532,13,15,16,1.848681926727295
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,3,32,0,80,0.9744400382041931,13,15,16,2.7035017013549805
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,3,32,1,80,0.9734241962432861,13,15,16,2.6594038009643555
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,3,32,2,80,0.9733729362487793,13,15,16,2.6603190898895264
+transverse_field_ising,8,open,"{""g"": 1.0}",0.25,random,tanh,3,32,3,80,0.973713755607605,13,15,16,2.6636111736297607
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,square,1,32,0,80,0.4059424102306366,8,10,10,1.2055702209472656
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,square,1,32,1,80,0.4094603955745697,8,10,10,1.204390287399292
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,square,1,32,2,80,0.4017842411994934,8,10,10,1.2170536518096924
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,square,1,32,3,80,0.40670129656791687,8,10,10,1.2153990268707275
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,square,1,64,0,80,0.39793580770492554,8,10,10,2.562931537628174
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,square,1,64,1,80,0.393840491771698,8,10,10,2.5478861331939697
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,square,1,64,2,80,0.39840155839920044,8,10,10,2.61594557762146
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,square,1,64,3,80,0.39888522028923035,8,10,10,2.637944459915161
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,1,32,0,80,0.7929774522781372,8,10,10,0.9845941066741943
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,1,32,1,80,0.7929896116256714,8,10,10,0.9887754917144775
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,1,32,2,80,0.7929743528366089,8,10,10,0.9734318256378174
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,1,32,3,80,0.7929695248603821,8,10,10,0.9674625396728516
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,2,32,0,80,0.7929816842079163,8,10,10,1.7907450199127197
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,2,32,1,80,0.7929926514625549,8,10,10,1.8380928039550781
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,2,32,2,80,0.7929843068122864,8,10,10,1.870945930480957
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,2,32,3,80,0.7929750084877014,8,10,10,1.884972333908081
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,3,32,0,80,0.792944073677063,8,10,10,2.789177417755127
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,3,32,1,80,0.7930006980895996,8,10,10,2.8619637489318848
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,3,32,2,80,0.7929643392562866,8,10,10,2.8106136322021484
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,fixed_z,tanh,3,32,3,80,0.7929717898368835,8,10,10,2.6423275470733643
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,square,1,32,0,80,0.7786675095558167,16,16,16,1.2246100902557373
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,square,1,32,1,80,0.7780274748802185,16,16,16,1.2178606986999512
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,square,1,32,2,80,0.7779828310012817,16,16,16,1.2274360656738281
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,square,1,32,3,80,0.7767450213432312,16,16,16,1.2140941619873047
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,square,1,64,0,80,0.7754034996032715,16,16,16,2.6903154850006104
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,square,1,64,1,80,0.7755163908004761,16,16,16,2.6121811866760254
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,square,1,64,2,80,0.7773151397705078,16,16,16,2.726857900619507
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,square,1,64,3,80,0.7754669189453125,16,16,16,2.5675721168518066
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,1,32,0,80,0.8552592992782593,16,16,16,0.9810833930969238
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,1,32,1,80,0.8552834987640381,16,16,16,0.9786546230316162
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,1,32,2,80,0.8552603721618652,16,16,16,0.984138011932373
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,1,32,3,80,0.8552557826042175,16,16,16,0.9919261932373047
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,2,32,0,80,0.8554216027259827,16,16,16,1.8145458698272705
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,2,32,1,80,0.8553472757339478,16,16,16,1.8167893886566162
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,2,32,2,80,0.8553778529167175,16,16,16,1.8420546054840088
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,2,32,3,80,0.8553709983825684,16,16,16,1.8325891494750977
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,3,32,0,80,0.8561380505561829,16,16,16,2.73856782913208
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,3,32,1,80,0.8557868003845215,16,16,16,2.9300975799560547
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,3,32,2,80,0.8556239604949951,16,16,16,2.7893660068511963
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a0.5,tanh,3,32,3,80,0.8555070757865906,16,16,16,2.6734619140625
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,square,1,32,0,80,0.7786675095558167,16,16,16,1.3119783401489258
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,square,1,32,1,80,0.7780274748802185,16,16,16,1.3122947216033936
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,square,1,32,2,80,0.7779828310012817,16,16,16,1.3249869346618652
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,square,1,32,3,80,0.7767450213432312,16,16,16,1.2330787181854248
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,square,1,64,0,80,0.7754034996032715,16,16,16,2.8219528198242188
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,square,1,64,1,80,0.7755163908004761,16,16,16,2.7012228965759277
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,square,1,64,2,80,0.7773151397705078,16,16,16,2.8027215003967285
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,square,1,64,3,80,0.7754669785499573,16,16,16,2.8002333641052246
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,1,32,0,80,0.8552592396736145,16,16,16,0.9958720207214355
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,1,32,1,80,0.8552834987640381,16,16,16,1.0033490657806396
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,1,32,2,80,0.8552603721618652,16,16,16,0.9970536231994629
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,1,32,3,80,0.8552557826042175,16,16,16,0.9998712539672852
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,2,32,0,80,0.8554216027259827,16,16,16,1.8360342979431152
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,2,32,1,80,0.8553472757339478,16,16,16,1.8607776165008545
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,2,32,2,80,0.8553778529167175,16,16,16,1.8397998809814453
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,2,32,3,80,0.8553709983825684,16,16,16,1.8302464485168457
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,3,32,0,80,0.8561380505561829,16,16,16,2.7626516819000244
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,3,32,1,80,0.8557868003845215,16,16,16,2.658535957336426
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,3,32,2,80,0.8556239604949951,16,16,16,2.7481260299682617
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a1,tanh,3,32,3,80,0.8555070757865906,16,16,16,2.661651372909546
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,square,1,32,0,80,0.952085554599762,15,16,16,1.225428581237793
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,square,1,32,1,80,0.95222008228302,15,16,16,1.2575640678405762
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,square,1,32,2,80,0.9520522356033325,15,16,16,1.2310986518859863
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,square,1,32,3,80,0.9519532918930054,15,16,16,1.243506908416748
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,square,1,64,0,80,0.951909601688385,15,16,16,2.595357894897461
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,square,1,64,1,80,0.9519383907318115,15,16,16,2.8373658657073975
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,square,1,64,2,80,0.9519107341766357,15,16,16,2.7955634593963623
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,square,1,64,3,80,0.9519196152687073,15,16,16,2.6049909591674805
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,1,32,0,80,0.9869343638420105,15,16,16,0.9956033229827881
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,1,32,1,80,0.9869385957717896,15,16,16,1.000718593597412
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,1,32,2,80,0.9869408011436462,15,16,16,0.9933731555938721
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,1,32,3,80,0.9869319796562195,15,16,16,1.0051372051239014
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,2,32,0,80,0.9869624376296997,15,16,16,1.8045270442962646
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,2,32,1,80,0.9869714379310608,15,16,16,1.8119685649871826
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,2,32,2,80,0.9869706034660339,15,16,16,1.8123619556427002
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,2,32,3,80,0.9869539141654968,15,16,16,1.8256871700286865
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,3,32,0,80,0.9870262145996094,15,16,16,2.8701722621917725
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,3,32,1,80,0.9870195984840393,15,16,16,2.6631407737731934
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,3,32,2,80,0.9869658946990967,15,16,16,2.6859586238861084
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,optimized_a2,tanh,3,32,3,80,0.987048327922821,15,16,16,2.703855037689209
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,square,1,32,0,80,0.8485742211341858,12,13,14,1.2580161094665527
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,square,1,32,1,80,0.8489880561828613,12,13,14,1.2220373153686523
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,square,1,32,2,80,0.8485539555549622,12,13,14,1.2194383144378662
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,square,1,32,3,80,0.8475947380065918,12,13,14,1.2627460956573486
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,square,1,64,0,80,0.8472608923912048,12,13,14,2.745929002761841
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,square,1,64,1,80,0.8471923470497131,12,13,14,2.862419605255127
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,square,1,64,2,80,0.8475368618965149,12,13,14,2.790440797805786
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,square,1,64,3,80,0.8473029732704163,12,13,14,2.777596950531006
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,1,32,0,80,0.9388569593429565,12,13,14,1.1282014846801758
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,1,32,1,80,0.9388731122016907,12,13,14,1.0814383029937744
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,1,32,2,80,0.9388596415519714,12,13,14,1.1143684387207031
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,1,32,3,80,0.9388574957847595,12,13,14,1.018589735031128
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,2,32,0,80,0.9388843178749084,12,13,14,1.8320033550262451
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,2,32,1,80,0.9389164447784424,12,13,14,1.8272960186004639
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,2,32,2,80,0.9389320015907288,12,13,14,1.815831184387207
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,2,32,3,80,0.9389093518257141,12,13,14,1.8172788619995117
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,3,32,0,80,0.9391123652458191,12,13,14,2.7035930156707764
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,3,32,1,80,0.9467591047286987,12,13,14,2.9454689025878906
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,3,32,2,80,0.9457468390464783,12,13,14,2.6541473865509033
+transverse_field_ising,8,open,"{""g"": 1.0}",1.0,random,tanh,3,32,3,80,0.9406186938285828,12,13,14,2.988435745239258
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,square,1,32,0,80,0.28861674666404724,6,8,10,1.2136058807373047
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,square,1,32,1,80,0.2941695749759674,6,8,10,1.212984561920166
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,square,1,32,2,80,0.2848910987377167,6,8,10,1.205847978591919
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,square,1,32,3,80,0.2906169295310974,6,8,10,1.2147104740142822
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,square,1,64,0,80,0.2854861617088318,6,8,10,2.863295316696167
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,square,1,64,1,80,0.2832268476486206,6,8,10,2.6364243030548096
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,square,1,64,2,80,0.28161531686782837,6,8,10,2.770382881164551
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,square,1,64,3,80,0.2844114303588867,6,8,10,2.933664083480835
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,1,32,0,80,0.6961097121238708,6,8,10,1.0314381122589111
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,1,32,1,80,0.6961002945899963,6,8,10,1.0132622718811035
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,1,32,2,80,0.6961085200309753,6,8,10,1.0064620971679688
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,1,32,3,80,0.6960973143577576,6,8,10,1.0060973167419434
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,2,32,0,80,0.6960923671722412,6,8,10,1.845764398574829
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,2,32,1,80,0.6961044669151306,6,8,10,1.93363618850708
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,2,32,2,80,0.696099579334259,6,8,10,1.9975860118865967
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,2,32,3,80,0.6960898637771606,6,8,10,1.9103853702545166
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,3,32,0,80,0.6961030960083008,6,8,10,2.7244644165039062
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,3,32,1,80,0.6960957050323486,6,8,10,2.8634536266326904
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,3,32,2,80,0.6960926055908203,6,8,10,2.7686142921447754
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,fixed_z,tanh,3,32,3,80,0.6961442828178406,6,8,10,2.7365684509277344
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,square,1,32,0,80,0.859815239906311,16,16,16,1.1880898475646973
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,square,1,32,1,80,0.860590934753418,16,16,16,1.1144309043884277
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,square,1,32,2,80,0.8596935272216797,16,16,16,1.1037368774414062
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,square,1,32,3,80,0.8581306338310242,16,16,16,1.127807855606079
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,square,1,64,0,80,0.8577580451965332,16,16,16,2.561126470565796
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,square,1,64,1,80,0.8578129410743713,16,16,16,2.7022740840911865
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,square,1,64,2,80,0.8590830564498901,16,16,16,2.665783405303955
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,square,1,64,3,80,0.8579745888710022,16,16,16,2.5889711380004883
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,1,32,0,80,0.9229274988174438,16,16,16,0.9459795951843262
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,1,32,1,80,0.9229398369789124,16,16,16,0.9234194755554199
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,1,32,2,80,0.9229364395141602,16,16,16,0.9142851829528809
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,1,32,3,80,0.9229143261909485,16,16,16,0.935692310333252
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,2,32,0,80,0.9230155944824219,16,16,16,1.7445712089538574
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,2,32,1,80,0.9229898452758789,16,16,16,1.7711644172668457
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,2,32,2,80,0.9230162501335144,16,16,16,1.7674367427825928
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,2,32,3,80,0.9229976534843445,16,16,16,1.7292792797088623
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,3,32,0,80,0.9233205914497375,16,16,16,2.6617629528045654
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,3,32,1,80,0.923262357711792,16,16,16,2.6091628074645996
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,3,32,2,80,0.9231011867523193,16,16,16,2.847676992416382
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a0.5,tanh,3,32,3,80,0.9233500957489014,16,16,16,2.533529758453369
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,square,1,32,0,80,0.859815239906311,16,16,16,1.1386895179748535
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,square,1,32,1,80,0.860590934753418,16,16,16,1.1343739032745361
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,square,1,32,2,80,0.8596935272216797,16,16,16,1.1385769844055176
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,square,1,32,3,80,0.8581308126449585,16,16,16,1.1341915130615234
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,square,1,64,0,80,0.8577580451965332,16,16,16,2.6528329849243164
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,square,1,64,1,80,0.8578129410743713,16,16,16,2.6904563903808594
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,square,1,64,2,80,0.8590830564498901,16,16,16,2.660264492034912
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,square,1,64,3,80,0.8579745888710022,16,16,16,2.5110201835632324
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,1,32,0,80,0.9229275584220886,16,16,16,0.9312307834625244
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,1,32,1,80,0.9229398369789124,16,16,16,0.92622971534729
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,1,32,2,80,0.9229364395141602,16,16,16,0.9236783981323242
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,1,32,3,80,0.9229143261909485,16,16,16,0.92275071144104
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,2,32,0,80,0.9230155944824219,16,16,16,1.7291698455810547
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,2,32,1,80,0.9229898452758789,16,16,16,1.7257435321807861
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,2,32,2,80,0.9230162501335144,16,16,16,1.7240164279937744
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,2,32,3,80,0.9229976534843445,16,16,16,1.7563419342041016
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,3,32,0,80,0.9233206510543823,16,16,16,2.5853095054626465
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,3,32,1,80,0.923262357711792,16,16,16,2.7237935066223145
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,3,32,2,80,0.9231011867523193,16,16,16,2.7451353073120117
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a1,tanh,3,32,3,80,0.9233500957489014,16,16,16,2.6627423763275146
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,square,1,32,0,80,0.9733119606971741,14,15,16,1.16770601272583
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,square,1,32,1,80,0.973308801651001,14,15,16,1.16680908203125
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,square,1,32,2,80,0.9732887148857117,14,15,16,1.1998250484466553
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,square,1,32,3,80,0.9732968807220459,14,15,16,1.2522356510162354
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,square,1,64,0,80,0.9732400178909302,14,15,16,2.6467034816741943
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,square,1,64,1,80,0.9732626676559448,14,15,16,2.5517849922180176
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,square,1,64,2,80,0.9732348322868347,14,15,16,2.573845386505127
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,square,1,64,3,80,0.9732310175895691,14,15,16,2.423678159713745
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,1,32,0,80,0.9938071966171265,14,15,16,0.9396207332611084
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,1,32,1,80,0.9938108921051025,14,15,16,0.9341094493865967
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,1,32,2,80,0.9938152432441711,14,15,16,0.9283308982849121
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,1,32,3,80,0.993810772895813,14,15,16,0.9365649223327637
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,2,32,0,80,0.9938192963600159,14,15,16,1.7058863639831543
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,2,32,1,80,0.99382483959198,14,15,16,1.7284975051879883
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,2,32,2,80,0.9938209652900696,14,15,16,1.7147393226623535
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,2,32,3,80,0.9938125014305115,14,15,16,1.721604824066162
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,3,32,0,80,0.9938509464263916,14,15,16,2.5277984142303467
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,3,32,1,80,0.9938478469848633,14,15,16,2.7268600463867188
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,3,32,2,80,0.9938258528709412,14,15,16,2.51103138923645
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,optimized_a2,tanh,3,32,3,80,0.9938638210296631,14,15,16,2.5212719440460205
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,square,1,32,0,80,0.8744443655014038,11,13,14,1.1257030963897705
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,square,1,32,1,80,0.8757606744766235,11,13,14,1.1362619400024414
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,square,1,32,2,80,0.874572217464447,11,13,14,1.1378891468048096
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,square,1,32,3,80,0.8739893436431885,11,13,14,1.1329808235168457
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,square,1,64,0,80,0.8734238743782043,11,13,14,2.5936098098754883
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,square,1,64,1,80,0.8734802603721619,11,13,14,2.4938721656799316
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,square,1,64,2,80,0.8735736608505249,11,13,14,2.443021774291992
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,square,1,64,3,80,0.8734406232833862,11,13,14,2.702601909637451
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,1,32,0,80,0.9557611346244812,11,13,14,1.006208896636963
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,1,32,1,80,0.9557554721832275,11,13,14,0.9580590724945068
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,1,32,2,80,0.9557582139968872,11,13,14,0.9016292095184326
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,1,32,3,80,0.9557499289512634,11,13,14,0.8975281715393066
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,2,32,0,80,0.9557857513427734,11,13,14,1.6951587200164795
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,2,32,1,80,0.955797553062439,11,13,14,1.6931936740875244
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,2,32,2,80,0.9557915925979614,11,13,14,1.6910085678100586
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,2,32,3,80,0.955786943435669,11,13,14,1.6767170429229736
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,3,32,0,80,0.9559164047241211,11,13,14,2.4731063842773438
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,3,32,1,80,0.9581591486930847,11,13,14,2.6778886318206787
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,3,32,2,80,0.9570789337158203,11,13,14,2.429562568664551
+transverse_field_ising,8,open,"{""g"": 1.0}",4.0,random,tanh,3,32,3,80,0.9572982788085938,11,13,14,2.5040290355682373
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,square,1,32,0,80,0.8230664134025574,12,14,14,1.1280882358551025
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,square,1,32,1,80,0.8231199383735657,12,14,14,1.1453642845153809
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,square,1,32,2,80,0.8230719566345215,12,14,14,1.1356499195098877
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,square,1,32,3,80,0.822981059551239,12,14,14,1.1212999820709229
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,square,1,64,0,80,0.8229621648788452,12,14,14,2.4523532390594482
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,square,1,64,1,80,0.8229436874389648,12,14,14,2.4831933975219727
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,square,1,64,2,80,0.822970986366272,12,14,14,2.395608901977539
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,square,1,64,3,80,0.8229492902755737,12,14,14,2.4694101810455322
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,1,32,0,80,0.9665270447731018,12,14,14,0.9318594932556152
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,1,32,1,80,0.9665266871452332,12,14,14,0.9294781684875488
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,1,32,2,80,0.9665318727493286,12,14,14,0.9321863651275635
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,1,32,3,80,0.9665575623512268,12,14,14,0.9239466190338135
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,2,32,0,80,0.9665389060974121,12,14,14,1.6832058429718018
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,2,32,1,80,0.9665266871452332,12,14,14,1.7066688537597656
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,2,32,2,80,0.9665301442146301,12,14,14,1.6970443725585938
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,2,32,3,80,0.9665277004241943,12,14,14,1.8039250373840332
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,3,32,0,80,0.9665470719337463,12,14,14,2.7461752891540527
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,3,32,1,80,0.9665631651878357,12,14,14,2.450883388519287
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,3,32,2,80,0.9665519595146179,12,14,14,2.4220824241638184
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,fixed_z,tanh,3,32,3,80,0.9665395021438599,12,14,14,2.4632201194763184
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,square,1,32,0,80,0.9255560040473938,16,16,16,1.1158998012542725
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,square,1,32,1,80,0.9255529642105103,16,16,16,1.1281120777130127
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,square,1,32,2,80,0.925530731678009,16,16,16,1.1170709133148193
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,square,1,32,3,80,0.9255131483078003,16,16,16,1.1165244579315186
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,square,1,64,0,80,0.9255057573318481,16,16,16,2.6679599285125732
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,square,1,64,1,80,0.9254956841468811,16,16,16,2.539656639099121
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,square,1,64,2,80,0.9255048632621765,16,16,16,2.5670599937438965
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,square,1,64,3,80,0.9255061745643616,16,16,16,2.602928876876831
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,1,32,0,80,0.9717711210250854,16,16,16,0.9254472255706787
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,1,32,1,80,0.9717643857002258,16,16,16,0.9222841262817383
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,1,32,2,80,0.9717676639556885,16,16,16,0.9190030097961426
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,1,32,3,80,0.9717798233032227,16,16,16,0.9119398593902588
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,2,32,0,80,0.9717745184898376,16,16,16,1.7008934020996094
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,2,32,1,80,0.9717631936073303,16,16,16,1.6965854167938232
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,2,32,2,80,0.9717690944671631,16,16,16,1.6913282871246338
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,2,32,3,80,0.9717661142349243,16,16,16,1.7021348476409912
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,3,32,0,80,0.9718030095100403,16,16,16,2.6460068225860596
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,3,32,1,80,0.9717960357666016,16,16,16,2.459526538848877
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,3,32,2,80,0.9717904329299927,16,16,16,2.585620164871216
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a0.5,tanh,3,32,3,80,0.9717893600463867,16,16,16,2.5823657512664795
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,square,1,32,0,80,0.9577575325965881,16,16,16,1.2322909832000732
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,square,1,32,1,80,0.9577261209487915,16,16,16,1.1827189922332764
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,square,1,32,2,80,0.9577390551567078,16,16,16,1.1351678371429443
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,square,1,32,3,80,0.957695484161377,16,16,16,1.1387510299682617
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,square,1,64,0,80,0.9576879143714905,16,16,16,2.4834351539611816
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,square,1,64,1,80,0.9576826691627502,16,16,16,2.4377222061157227
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,square,1,64,2,80,0.9576914310455322,16,16,16,2.4911160469055176
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,square,1,64,3,80,0.9576862454414368,16,16,16,2.4194862842559814
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,1,32,0,80,0.9876760244369507,16,16,16,0.9167401790618896
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,1,32,1,80,0.9876875281333923,16,16,16,0.927499532699585
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,1,32,2,80,0.9876741766929626,16,16,16,0.9200170040130615
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,1,32,3,80,0.9876811504364014,16,16,16,0.9228017330169678
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,2,32,0,80,0.9876806139945984,16,16,16,1.7357604503631592
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,2,32,1,80,0.9876833558082581,16,16,16,1.6742913722991943
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,2,32,2,80,0.9876830577850342,16,16,16,1.6738922595977783
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,2,32,3,80,0.9876754283905029,16,16,16,1.663062334060669
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,3,32,0,80,0.9877311587333679,16,16,16,2.6098968982696533
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,3,32,1,80,0.9877095222473145,16,16,16,2.473323106765747
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,3,32,2,80,0.9876862168312073,16,16,16,2.5175344944000244
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a1,tanh,3,32,3,80,0.9877111315727234,16,16,16,2.5436952114105225
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,square,1,32,0,80,0.9765872955322266,15,16,16,1.1602671146392822
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,square,1,32,1,80,0.9765952825546265,15,16,16,1.165607213973999
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,square,1,32,2,80,0.9765905737876892,15,16,16,1.128709077835083
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,square,1,32,3,80,0.9765987992286682,15,16,16,1.1383709907531738
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,square,1,64,0,80,0.9765579700469971,15,16,16,2.4415652751922607
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,square,1,64,1,80,0.9765527844429016,15,16,16,2.6281898021698
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,square,1,64,2,80,0.9765558242797852,15,16,16,2.6744229793548584
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,square,1,64,3,80,0.9765542149543762,15,16,16,2.7060561180114746
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,1,32,0,80,0.9961118698120117,15,16,16,0.9238736629486084
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,1,32,1,80,0.996115505695343,15,16,16,0.920428991317749
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,1,32,2,80,0.9961169958114624,15,16,16,0.9529585838317871
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,1,32,3,80,0.9961117506027222,15,16,16,0.9521126747131348
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,2,32,0,80,0.9961161613464355,15,16,16,2.8369646072387695
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,2,32,1,80,0.9961202144622803,15,16,16,2.701633930206299
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,2,32,2,80,0.9961185455322266,15,16,16,1.6999425888061523
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,2,32,3,80,0.9961254000663757,15,16,16,1.6780283451080322
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,3,32,0,80,0.9961330890655518,15,16,16,2.6002559661865234
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,3,32,1,80,0.9961258172988892,15,16,16,2.642932653427124
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,3,32,2,80,0.9961274266242981,15,16,16,2.570725917816162
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,optimized_a2,tanh,3,32,3,80,0.9961358308792114,15,16,16,2.562808036804199
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,square,1,32,0,80,0.880993664264679,13,14,16,1.1444599628448486
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,square,1,32,1,80,0.8807721734046936,13,14,16,1.149566411972046
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,square,1,32,2,80,0.8808057308197021,13,14,16,1.1692349910736084
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,square,1,32,3,80,0.8801289200782776,13,14,16,1.1345548629760742
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,square,1,64,0,80,0.8797775506973267,13,14,16,2.649007558822632
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,square,1,64,1,80,0.8797314763069153,13,14,16,2.6291823387145996
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,square,1,64,2,80,0.8799387812614441,13,14,16,2.487492084503174
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,square,1,64,3,80,0.879737913608551,13,14,16,2.5731360912323
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,1,32,0,80,0.9675215482711792,13,14,16,0.9251194000244141
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,1,32,1,80,0.9675270318984985,13,14,16,0.9225084781646729
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,1,32,2,80,0.9675242304801941,13,14,16,0.9271385669708252
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,1,32,3,80,0.9675202965736389,13,14,16,1.009171724319458
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,2,32,0,80,0.967533528804779,13,14,16,1.7537927627563477
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,2,32,1,80,0.9675369262695312,13,14,16,1.7909677028656006
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,2,32,2,80,0.9675430059432983,13,14,16,1.6811714172363281
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,2,32,3,80,0.9675325751304626,13,14,16,1.6740748882293701
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,3,32,0,80,0.9676467180252075,13,14,16,2.454674243927002
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,3,32,1,80,0.9678343534469604,13,14,16,2.6665141582489014
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,3,32,2,80,0.9676318764686584,13,14,16,2.4537296295166016
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",0.25,random,tanh,3,32,3,80,0.9680519700050354,13,14,16,2.4201152324676514
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,square,1,32,0,80,0.8025969862937927,9,11,12,1.117556095123291
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,square,1,32,1,80,0.8032240271568298,9,11,12,1.1019480228424072
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,square,1,32,2,80,0.8027573823928833,9,11,12,1.0988361835479736
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,square,1,32,3,80,0.8023792505264282,9,11,12,1.092414379119873
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,square,1,64,0,80,0.8018878698348999,9,11,12,2.484231472015381
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,square,1,64,1,80,0.8018118739128113,9,11,12,2.525205135345459
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,square,1,64,2,80,0.8025444746017456,9,11,12,2.3744735717773438
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,square,1,64,3,80,0.8018502593040466,9,11,12,2.4816834926605225
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,1,32,0,80,0.9367275834083557,9,11,12,0.9038758277893066
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,1,32,1,80,0.9367305636405945,9,11,12,0.911097526550293
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,1,32,2,80,0.9367270469665527,9,11,12,0.9141273498535156
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,1,32,3,80,0.9367173314094543,9,11,12,0.9137933254241943
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,2,32,0,80,0.9367955327033997,9,11,12,1.6719434261322021
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,2,32,1,80,0.9367724657058716,9,11,12,1.6483941078186035
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,2,32,2,80,0.936805784702301,9,11,12,1.6496970653533936
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,2,32,3,80,0.9367796778678894,9,11,12,1.6165387630462646
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,3,32,0,80,0.9370285868644714,9,11,12,2.346949815750122
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,3,32,1,80,0.9370288252830505,9,11,12,2.386357069015503
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,3,32,2,80,0.9368933439254761,9,11,12,2.5327868461608887
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,fixed_z,tanh,3,32,3,80,0.9370293617248535,9,11,12,2.6258761882781982
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,square,1,32,0,80,0.9919375777244568,15,16,16,1.096825122833252
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,square,1,32,1,80,0.9919241070747375,15,16,16,1.0822358131408691
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,square,1,32,2,80,0.9919573068618774,15,16,16,1.0942065715789795
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,square,1,32,3,80,0.9919508695602417,15,16,16,1.1049058437347412
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,square,1,64,0,80,0.9919350147247314,15,16,16,2.4420125484466553
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,square,1,64,1,80,0.9919043183326721,15,16,16,2.4206349849700928
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,square,1,64,2,80,0.9919017553329468,15,16,16,2.3442277908325195
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,square,1,64,3,80,0.9919218420982361,15,16,16,2.5020298957824707
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,1,32,0,80,0.9952533841133118,15,16,16,0.8995602130889893
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,1,32,1,80,0.9952545762062073,15,16,16,0.9040017127990723
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,1,32,2,80,0.995257556438446,15,16,16,0.8952138423919678
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,1,32,3,80,0.9952527284622192,15,16,16,0.866581916809082
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,2,32,0,80,0.9952553510665894,15,16,16,1.6155905723571777
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,2,32,1,80,0.9952589869499207,15,16,16,1.6113615036010742
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,2,32,2,80,0.995254397392273,15,16,16,1.586540937423706
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,2,32,3,80,0.9952543377876282,15,16,16,1.5938305854797363
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,3,32,0,80,0.9952725172042847,15,16,16,2.3556337356567383
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,3,32,1,80,0.9952572584152222,15,16,16,2.3239834308624268
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,3,32,2,80,0.995267391204834,15,16,16,2.3464980125427246
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a0.5,tanh,3,32,3,80,0.9952557682991028,15,16,16,2.515834093093872
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,square,1,32,0,80,0.9949557185173035,16,16,16,1.0658960342407227
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,square,1,32,1,80,0.9949830770492554,16,16,16,1.0717015266418457
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,square,1,32,2,80,0.9949584007263184,16,16,16,1.0730395317077637
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,square,1,32,3,80,0.994988739490509,16,16,16,1.0701472759246826
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,square,1,64,0,80,0.9949563145637512,16,16,16,2.3917551040649414
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,square,1,64,1,80,0.994937002658844,16,16,16,2.501282215118408
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,square,1,64,2,80,0.9949395060539246,16,16,16,2.69472599029541
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,square,1,64,3,80,0.9949369430541992,16,16,16,2.2607386112213135
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,1,32,0,80,0.996338963508606,16,16,16,0.8791160583496094
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,1,32,1,80,0.9963392615318298,16,16,16,0.8700270652770996
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,1,32,2,80,0.9963415265083313,16,16,16,0.8641929626464844
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,1,32,3,80,0.9963350296020508,16,16,16,0.8919188976287842
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,2,32,0,80,0.996337890625,16,16,16,1.6137135028839111
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,2,32,1,80,0.9963390827178955,16,16,16,1.6025879383087158
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,2,32,2,80,0.9963431358337402,16,16,16,1.5915100574493408
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,2,32,3,80,0.9963465332984924,16,16,16,1.5647788047790527
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,3,32,0,80,0.9963381290435791,16,16,16,2.469996213912964
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,3,32,1,80,0.9963399171829224,16,16,16,2.4068539142608643
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,3,32,2,80,0.9963546395301819,16,16,16,2.3750646114349365
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a1,tanh,3,32,3,80,0.9963540434837341,16,16,16,2.516420841217041
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,square,1,32,0,80,0.9986453056335449,15,16,16,1.1077501773834229
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,square,1,32,1,80,0.9986546039581299,15,16,16,1.1048052310943604
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,square,1,32,2,80,0.9986528158187866,15,16,16,1.1350042819976807
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,square,1,32,3,80,0.9986839294433594,15,16,16,1.1334757804870605
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,square,1,64,0,80,0.998658299446106,15,16,16,2.6129329204559326
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,square,1,64,1,80,0.9986793994903564,15,16,16,2.6131443977355957
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,square,1,64,2,80,0.9986474514007568,15,16,16,2.5300214290618896
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,square,1,64,3,80,0.998673141002655,15,16,16,2.5187809467315674
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,1,32,0,80,0.9995518326759338,15,16,16,0.9407360553741455
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,1,32,1,80,0.9995547533035278,15,16,16,0.9118430614471436
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,1,32,2,80,0.9995527267456055,15,16,16,0.9037172794342041
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,1,32,3,80,0.9995549917221069,15,16,16,0.9264655113220215
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,2,32,0,80,0.9995590448379517,15,16,16,1.6968979835510254
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,2,32,1,80,0.9995630979537964,15,16,16,1.701390027999878
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,2,32,2,80,0.9995542764663696,15,16,16,1.6710305213928223
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,2,32,3,80,0.9995669722557068,15,16,16,1.6022429466247559
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,3,32,0,80,0.9995658993721008,15,16,16,2.5375494956970215
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,3,32,1,80,0.9995546936988831,15,16,16,2.418025493621826
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,3,32,2,80,0.9995701313018799,15,16,16,2.269334077835083
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,optimized_a2,tanh,3,32,3,80,0.9995718598365784,15,16,16,2.3045639991760254
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,square,1,32,0,80,0.7563932538032532,8,11,12,1.0920531749725342
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,square,1,32,1,80,0.7575055360794067,8,11,12,1.0589027404785156
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,square,1,32,2,80,0.7573224306106567,8,11,12,1.0401110649108887
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,square,1,32,3,80,0.7561435699462891,8,11,12,1.0620791912078857
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,square,1,64,0,80,0.7554078698158264,8,11,12,2.4560494422912598
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,square,1,64,1,80,0.7553330063819885,8,11,12,2.5428178310394287
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,square,1,64,2,80,0.7562137842178345,8,11,12,2.5889134407043457
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,square,1,64,3,80,0.7554565668106079,8,11,12,2.4198899269104004
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,1,32,0,80,0.9087667465209961,8,11,12,0.8916079998016357
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,1,32,1,80,0.9087647199630737,8,11,12,0.8522603511810303
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,1,32,2,80,0.908766508102417,8,11,12,0.8442864418029785
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,1,32,3,80,0.9087615013122559,8,11,12,0.8425612449645996
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,2,32,0,80,0.9088033437728882,8,11,12,1.6269762516021729
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,2,32,1,80,0.90885329246521,8,11,12,1.560136318206787
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,2,32,2,80,0.9088643789291382,8,11,12,1.6114857196807861
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,2,32,3,80,0.9088556170463562,8,11,12,1.5494630336761475
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,3,32,0,80,0.9092488288879395,8,11,12,2.473040819168091
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,3,32,1,80,0.9208087921142578,8,11,12,2.293509006500244
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,3,32,2,80,0.9196517467498779,8,11,12,2.205618381500244
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",1.0,random,tanh,3,32,3,80,0.9095873832702637,8,11,12,2.4431309700012207
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,square,1,32,0,80,0.835732102394104,9,11,12,1.0855326652526855
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,square,1,32,1,80,0.8360823392868042,9,11,12,1.2128663063049316
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,square,1,32,2,80,0.8360028266906738,9,11,12,1.048959493637085
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,square,1,32,3,80,0.8362523317337036,9,11,12,1.0696570873260498
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,square,1,64,0,80,0.8351097106933594,9,11,12,2.5559513568878174
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,square,1,64,1,80,0.8350957632064819,9,11,12,2.3436830043792725
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,square,1,64,2,80,0.8359407186508179,9,11,12,2.4924681186676025
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,square,1,64,3,80,0.8351338505744934,9,11,12,2.4542672634124756
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,1,32,0,80,0.943756103515625,9,11,12,0.8456554412841797
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,1,32,1,80,0.9437709450721741,9,11,12,0.8628256320953369
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,1,32,2,80,0.9437445998191833,9,11,12,0.8728563785552979
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,1,32,3,80,0.9437504410743713,9,11,12,0.8532695770263672
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,2,32,0,80,0.9438254237174988,9,11,12,1.5771279335021973
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,2,32,1,80,0.9438333511352539,9,11,12,1.5370125770568848
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,2,32,2,80,0.9438955783843994,9,11,12,1.5691449642181396
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,2,32,3,80,0.9438536167144775,9,11,12,1.570183515548706
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,3,32,0,80,0.9440769553184509,9,11,12,2.3072235584259033
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,3,32,1,80,0.944037675857544,9,11,12,2.306623935699463
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,3,32,2,80,0.9439601898193359,9,11,12,2.315781354904175
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,fixed_z,tanh,3,32,3,80,0.9441961050033569,9,11,12,2.353818416595459
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,square,1,32,0,80,0.9955439567565918,13,14,15,1.06494140625
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,square,1,32,1,80,0.9955512881278992,13,14,15,1.0720477104187012
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,square,1,32,2,80,0.995543360710144,13,14,15,1.0714688301086426
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,square,1,32,3,80,0.9955504536628723,13,14,15,1.0662548542022705
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,square,1,64,0,80,0.9955344200134277,13,14,15,2.344419002532959
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,square,1,64,1,80,0.995555579662323,13,14,15,2.3170838356018066
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,square,1,64,2,80,0.9955338835716248,13,14,15,2.083270311355591
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,square,1,64,3,80,0.9955441355705261,13,14,15,2.699775218963623
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,1,32,0,80,0.9992077350616455,13,14,15,0.9826028347015381
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,1,32,1,80,0.9992036819458008,13,14,15,1.005054235458374
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,1,32,2,80,0.9992057085037231,13,14,15,0.9083600044250488
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,1,32,3,80,0.9992032647132874,13,14,15,0.8969259262084961
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,2,32,0,80,0.9992116689682007,13,14,15,1.7428584098815918
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,2,32,1,80,0.9992082715034485,13,14,15,1.7086496353149414
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,2,32,2,80,0.9992091059684753,13,14,15,1.7016236782073975
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,2,32,3,80,0.9992219805717468,13,14,15,1.7187812328338623
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,3,32,0,80,0.9992295503616333,13,14,15,2.610163688659668
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,3,32,1,80,0.9992139935493469,13,14,15,2.6293692588806152
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,3,32,2,80,0.9992279410362244,13,14,15,2.534827470779419
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a0.5,tanh,3,32,3,80,0.9992246627807617,13,14,15,2.7607922554016113
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,square,1,32,0,80,0.9961249828338623,13,14,15,1.1156246662139893
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,square,1,32,1,80,0.9961376786231995,13,14,15,1.1228375434875488
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,square,1,32,2,80,0.9961272478103638,13,14,15,1.110943078994751
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,square,1,32,3,80,0.9961346983909607,13,14,15,1.1261801719665527
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,square,1,64,0,80,0.9961167573928833,13,14,15,2.664546251296997
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,square,1,64,1,80,0.996141791343689,13,14,15,2.61279034614563
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,square,1,64,2,80,0.996113657951355,13,14,15,2.76705002784729
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,square,1,64,3,80,0.9961296319961548,13,14,15,2.7084131240844727
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,1,32,0,80,0.9993235468864441,13,14,15,0.9271030426025391
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,1,32,1,80,0.9993210434913635,13,14,15,0.9285781383514404
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,1,32,2,80,0.9993228912353516,13,14,15,0.9384322166442871
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,1,32,3,80,0.9993207454681396,13,14,15,0.9314863681793213
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,2,32,0,80,0.999328076839447,13,14,15,1.7550098896026611
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,2,32,1,80,0.9993264079093933,13,14,15,1.7353315353393555
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,2,32,2,80,0.9993247985839844,13,14,15,1.8333468437194824
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,2,32,3,80,0.9993379712104797,13,14,15,1.7841238975524902
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,3,32,0,80,0.9993441700935364,13,14,15,2.757598876953125
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,3,32,1,80,0.9993327260017395,13,14,15,2.717942714691162
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,3,32,2,80,0.9993435740470886,13,14,15,2.8126351833343506
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a1,tanh,3,32,3,80,0.999339759349823,13,14,15,2.6962926387786865
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,square,1,32,0,80,0.9998502731323242,14,15,16,1.1327769756317139
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,square,1,32,1,80,0.9999845027923584,14,15,16,1.1517596244812012
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,square,1,32,2,80,0.9998491406440735,14,15,16,1.1443469524383545
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,square,1,32,3,80,0.9998545050621033,14,15,16,1.1343271732330322
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,square,1,64,0,80,0.99985271692276,14,15,16,2.610724687576294
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,square,1,64,1,80,0.9998552799224854,14,15,16,2.6867153644561768
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,square,1,64,2,80,0.9998481273651123,14,15,16,2.633824348449707
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,square,1,64,3,80,0.9998455047607422,14,15,16,2.5354249477386475
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,1,32,0,80,0.999993085861206,14,15,16,0.9391961097717285
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,1,32,1,80,0.999994158744812,14,15,16,0.9290885925292969
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,1,32,2,80,0.9999918937683105,14,15,16,0.9458844661712646
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,1,32,3,80,0.9999897480010986,14,15,16,0.9385008811950684
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,2,32,0,80,0.9999908804893494,14,15,16,1.7566266059875488
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,2,32,1,80,0.9999874234199524,14,15,16,1.7086498737335205
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,2,32,2,80,0.9999884963035583,14,15,16,1.7140522003173828
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,2,32,3,80,0.9999985694885254,14,15,16,1.7414090633392334
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,3,32,0,80,0.9999914169311523,14,15,16,2.5785906314849854
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,3,32,1,80,0.9999861717224121,14,15,16,2.497737407684326
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,3,32,2,80,1.0000054836273193,14,15,16,2.5161726474761963
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,optimized_a2,tanh,3,32,3,80,1.0000015497207642,14,15,16,2.942601442337036
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,square,1,32,0,80,0.7599804401397705,8,9,10,1.117553472518921
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,square,1,32,1,80,0.7603716254234314,8,9,10,1.1208949089050293
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,square,1,32,2,80,0.7603425979614258,8,9,10,1.1149983406066895
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,square,1,32,3,80,0.7595204710960388,8,9,10,1.1080396175384521
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,square,1,64,0,80,0.7591882944107056,8,9,10,2.6145527362823486
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,square,1,64,1,80,0.7592337727546692,8,9,10,2.395418882369995
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,square,1,64,2,80,0.7597286701202393,8,9,10,2.473693370819092
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,square,1,64,3,80,0.7594391107559204,8,9,10,2.674502372741699
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,1,32,0,80,0.918221652507782,8,9,10,0.9254782199859619
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,1,32,1,80,0.9182477593421936,8,9,10,0.9342420101165771
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,1,32,2,80,0.9182312488555908,8,9,10,0.9102520942687988
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,1,32,3,80,0.9182233810424805,8,9,10,0.9156215190887451
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,2,32,0,80,0.9182814359664917,8,9,10,1.728097677230835
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,2,32,1,80,0.9183670282363892,8,9,10,1.7301034927368164
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,2,32,2,80,0.9183391332626343,8,9,10,1.725398063659668
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,2,32,3,80,0.9183260202407837,8,9,10,1.701284408569336
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,3,32,0,80,0.9188520312309265,8,9,10,2.655184030532837
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,3,32,1,80,0.9340673089027405,8,9,10,2.4978251457214355
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,3,32,2,80,0.9337994456291199,8,9,10,2.7417471408843994
+mixed_field_ising,8,open,"{""g"": 0.8, ""h"": 0.2}",4.0,random,tanh,3,32,3,80,0.9200043678283691,8,9,10,2.7135865688323975

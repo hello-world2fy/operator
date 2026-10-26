@@ -1,0 +1,8 @@
+{
+  "code_hash": "a05dd1e0f48a80b2a35f804fdb1360c4557a12546bc017aba5e9269f30aa9e2a",
+  "python": "3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]",
+  "platform": "Linux-5.15.152.bsk.10-amd64-x86_64-with-glibc2.36",
+  "numpy": "2.3.5",
+  "tasks": 72,
+  "note": "W_log is the reported fixed-basis Walshness. chi and dt comparisons are screening checks."
+}

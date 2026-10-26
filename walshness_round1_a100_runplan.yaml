@@ -1,0 +1,133 @@
+# Research run specification, not a directly executable configuration.
+# Units: J = 1, beta in 1/J, alpha dimensionless.
+name: walshness_operator_round1_a100
+version: 1
+scope: exploratory_unbiased
+operator_definition:
+  vectorization: "O(s,t) as 2n Boolean variables; local physical site groups (s_i,t_i)"
+  fixed: "W_alpha(O) = (1/alpha) log(sum_{r,q} p_O(r,q) exp(alpha*(|r|+|q|)))"
+  physical_intrinsic: "min_{U=otimes U_i} W_alpha(U^dagger O U)"
+  normalization: frobenius
+  report_density: "W/(2*n)"
+  key_observables:
+    - fixed_W
+    - intrinsic_W_upper_bound
+    - degree_histogram_P0_to_P2n
+    - degree_tail_quantiles_D_eps
+    - walsh_degree_spatial_correlations
+    - optimal_local_axes
+    - optimizer_restart_spread
+    - half_chain_OSEE
+    - operator_schmidt_singular_values
+    - thermal_energy_magnetization_purity
+    - tensor_bond_and_trotter_convergence
+  matrix_element_storage: "Full p(r,q) only for small n; save P(k) always"
+
+coarse_grid:
+  alpha: [0.0, 0.25, 0.5, 1.0, 2.0]
+  beta: [0.0, 0.125, 0.25, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0]
+  sizes_exact: [6, 8, 10, 12]
+  sizes_exact_optional_after_benchmark: [14]
+  boundary: open
+  secondary_boundary_check: periodic
+  models:
+    - id: one_site_product
+      hamiltonian: "-g sum_i X_i"
+      g: [0.5, 1.0]
+      purpose: local_mixing_baseline
+    - id: disconnected_dimers
+      hamiltonian: "J sum_pairs (X_i X_j + Y_i Y_j + Z_i Z_j)/4"
+      J: 1.0
+      purpose: entangled_short_range_baseline
+    - id: commuting_zz_ising
+      hamiltonian: "-sum_i Z_i Z_{i+1}"
+      purpose: commuting_correlations_baseline
+    - id: transverse_field_ising
+      hamiltonian: "-sum_i Z_i Z_{i+1} -g sum_i X_i"
+      g: [0.5, 0.8, 1.0, 1.2, 1.5]
+      purpose: integrable_quantum_reference
+    - id: mixed_field_ising
+      hamiltonian: "-sum_i Z_i Z_{i+1} -g sum_i X_i -h sum_i Z_i"
+      pairs_g_h: [[0.8, 0.2], [1.05, 0.2], [1.05, 0.5], [1.2, 0.5]]
+      purpose: generic_nonintegrable_reference
+    - id: xxz_symmetry_negative_control
+      hamiltonian: "sum_i (X_i X_{i+1}+Y_i Y_{i+1}+Delta Z_i Z_{i+1})"
+      Delta: [0.5, 1.0]
+      purpose: fixed_charge_eigenstates_walsh_flatness
+
+optimized_bases:
+  for_n_up_to_12:
+    optimization: full_Bloch_sphere
+    random_restarts: 24
+    deterministic_seeds: [0, 1, 2, 3]
+    include_starts: [x_aligned, z_aligned, staggered, best_adjacent_beta]
+    optimizer_gradient_tol: 1.0e-7
+  for_larger_n:
+    begin_with: [uniform, two_sublattice, four_sublattice]
+    add_unconstrained_spot_checks: true
+    random_restarts: 8
+  warning: "best-found W is an upper bound for the intrinsic minimum"
+
+methods:
+  exact_dense:
+    main_n: [6, 8, 10, 12]
+    optional_n: [14]
+    target: "all eigenvectors and Gibbs matrices, two-axis FWHT, exact degree histogram"
+    forbid_explicit_hadamard_matmul_for_large_n: true
+    numerical_dtype: float64_or_complex128
+  mpo_tensor_network:
+    main_n: [12, 16, 32, 64, 128]
+    conditional_n: [256]
+    time_step_imaginary: [0.1, 0.05]
+    chi_sweep: [64, 128, 256, 512]
+    full_histogram_method: polynomial_generating_function_transfer
+    generator: "G_O(z) = Tr[O^dagger B(z) O B(z)]/Tr[O^dagger O]"
+    B_single: "(1+z)I/2 - (z-1)X/2"
+    note: "After local physical basis U, replace X by U X U^dagger"
+    normalization: log_contraction_with_rescaling
+  matrix_free_trace:
+    optional_n: [16, 18, 20, 22, 24]
+    random_probe_batches: [32, 128, 512]
+    purpose: "independent estimate of G(exp(alpha)) using exp(-beta H) action"
+    caution: "Optimize on training probes; validate with held-out probes; track Monte Carlo uncertainty"
+
+excited_ensemble_scan:
+  main_n: [8, 10, 12]
+  conditional_full_spectrum_n: [14]
+  evaluate: [eigenstate_W, half_chain_entropy, energy_density, microcanonical_projector_W]
+  microcanonical_ranks: [1, 2, 4, 8, 16, 32]
+  compare_to_gibbs_at_matched_mean_energy: true
+  report_symmetry_sector_and_degeneracies: true
+
+selective_operator_mlp_pilot:
+  stage: "after_spectrum_and_basis_scan"
+  n: [8, 10, 12]
+  beta: [0.25, 1.0, 4.0]
+  alpha_for_basis: [0.5, 1.0, 2.0]
+  depth: [1, 2, 3]
+  width: [32, 64, 128]
+  activation: [quadratic, tanh]
+  bases: [fixed_z, optimized, random_local]
+  loss: relative_frobenius_squared
+  train_seeds: 8
+  important: "Equal parameter/computation budget, exact held-out Frobenius evaluations where feasible"
+
+quality_controls:
+  exact_against_mpo_n: [8, 10, 12]
+  identities:
+    - "W_op(identity) = n*log((1+exp(2*alpha))/2)/alpha"
+    - "W_op(|psi><psi|) = 2*W(psi)"
+    - "W_op(scalar*O) = W_op(O)"
+    - "W_alpha0_op(Gibbs_beta) = sum_i(1 - |m_i(2*beta)|)"
+    - "P(k)>=0, sum_k P(k)=1"
+    - "Physical local-unitary invariance of intrinsic W"
+    - "OSEE unchanged by physical local-unitary basis changes"
+  validate_mpo: "Converge W, P(k), OSEE separately with chi and imaginary-time step"
+  adaptive_rule: "Only refine regions with stable systematic effects or unresolved error bars"
+  report_both: [raw_observable, physical_or_numerical_uncertainty]
+
+outputs:
+  scalars: parquet_or_csv
+  arrays: compressed_hdf5_or_zarr
+  metadata: [git_commit, software_versions, cuda_driver, gpu_type, model_parameters, seeds, precision, runtime_resources]
+  retain: [degree_histograms, walsh_correlations, axes, solver_residuals, mpo_discarded_weights, tensor_bond_dimensions]

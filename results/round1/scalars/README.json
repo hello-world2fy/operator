@@ -1,0 +1,3 @@
+{
+  "note": "W_upper is an upper bound except where certified_global is true. MPO W_abs_error is missing when reference_method is none. discarded_weight is the sum of per-SVD discarded fractions and can exceed 1."
+}
