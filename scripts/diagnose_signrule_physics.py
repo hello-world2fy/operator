@@ -166,8 +166,9 @@ def diagnose_F(job,out):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('track',choices=['B','D','F']);p.add_argument('--worker',type=int,default=0);p.add_argument('--workers',type=int,default=1)
+    p.add_argument('--job',type=int,help='Optional original registration job index')
     args=p.parse_args();out=ROOT/'results/signrule_round3';jobs=json.loads((out/'registration/jobs.json').read_text())
-    selected=[j for j in jobs if j['track']==args.track]
+    selected=[j for i,j in enumerate(jobs) if j['track']==args.track and (args.job is None or args.job==i)]
     for i,job in enumerate(selected):
         if i%args.workers!=args.worker:continue
         {'B':diagnose_B,'D':diagnose_D,'F':diagnose_F}[args.track](job,out)

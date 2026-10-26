@@ -1,0 +1,143 @@
+# Operator Walshness 第三轮：非 Marshall 符号结构探索实验方案
+
+**实验设计稿 | 不预设实验结果 | 不执行实验**
+
+**参考代码起点：** `hello-world2fy/operator` 的 `experiments/round2-first-wave-20261026` 分支（建议运行前固定实际 commit SHA、记录所有依赖版本）。本方案新增物理模型；现有仓库不具有全部 Double-Semion、Levin–Gu 和 t-J 构造，需新开发并校验。前两轮已修正 `align_direction_to_z @ H` 旋转约定：延续此约定。
+
+## 0. 科学问题与明确边界
+
+核心：从模型构造的 Hamiltonian / Gibbs 算符出发，**仅以 Operator Walshness 为优化目标**，不向优化器提供已知的 Huse–Elser、回路数、domain-wall loop、phase-string 标签。优化完成后冻结结果，再与这些结构比较。重心是找到 **非 Marshall 等价** 的已知重要符号/相位指纹。
+
+把“发现”拆成三类并分别报告：
+1. `basis_texture`：仅看到最优局域基底的模式（120°、交错等），不能据此说恢复了复杂 sign rule。
+2. `sign_fingerprint`：优化后、或在冻结的基底下，从留出数据恢复已知的非线性符号/相位指纹；相比最佳一次 Marshall 型相位拟合有显著改善。
+3. `operator_specific`：在**真正混合的 Gibbs 算符**中仍存在，而不仅是纯态投影（后者严格 `W_op(|ψ><ψ|)=2W_pure(ψ)`）。
+
+**必须区分**：波函数端点相位、Gibbs 矩阵元相位、QMC 路径相位。尤其 t-J phase string 是路径符号，不能假设可由静态 `sgn rho(s,t)` 表达。
+
+## 1. 通用定义与统一扫描
+
+对 n-qubit 非零算符 O，令 Q=H^{⊗n} O H^{⊗n}（归一化 Hadamard），`p_O(r,q)=|Q[r,q]|²/||O||_F²`，`K=|r|+|q|`。定义
+
+`W_α^{op,Z}(O)=(1/α) log Σ_{r,q} p_O(r,q) exp(αK)`。
+
+**物理基底优化**：`O -> U† O U`，其中 `U=⊗ U_i`，同一 U 作用于 bra/ket；实验 Level-2 允许结构受限、几何局域的 Z/CZ/CCZ 对角相位电路。对于三态 t-J，先以禁双占局域三态编码并使用 qutrit Fourier，不能直接把 qubit `W` 数值与 qutrit 数值混比。
+
+统一主网格：`α∈{0.5,1,2}`（α→0 为局域磁化控制），`β J ∈{0,0.25,0.5,1,2,4}`；根据物理能隙增加低温采样点，记录 `purity=Trρ²`, `R_eff=1/purity`，避免把不同模型的相同 β 视为相同混合度。`β=0` 是代码对照，不计入“sign discovery”。
+
+每个参数保留固定基、最优局域 SU2、最好受限对角电路、随机基、理论参考（**仅后验评估**）及 α=0 局域基。局域 SU2 在 n≤12 使用至少 16–32 个随机初值并记录全部目标值。受限相位电路先从一次（Z）到二次（相邻 CZ）再到三次（局域三角 CCZ），限制作用范围、门数和电路深度。计算资源要比较**相同门数量/函数评估预算**，避免单凭参数更多而声称显著收益。
+
+输出：`W`, `W/(2n)`, 全 degree `P(k)`（能算时）、`ΔW`, `purity`, `OSEE`, 最优 U/gates，优化种子/残差，算符完整矩阵元相位的可靠性掩码、符号恢复泛化、简并/对称 sector 标签。中心化 `Δβ=ρβ−I/d` 仅作为非正定 Fourier 诊断，不混称 Gibbs 态。
+
+## 2. 统一评估符号规则：盲优化之后才解码
+
+- **一次 Marshall 对照**：`f_1(s)=Σ_i a_i s_i (mod2)`；在相同表示基底的候选集合里找到最佳一次端点 gauge，作为最低门槛。
+- **二次和三次对照**：`f_2=f_1+Σ_{〈ij〉}b_ij s_i s_j`；`f_3=f_2+Σ_{〈ijk〉}c_ijk s_i s_j s_k`，仅允许几何局域边/三角，惩罚或约束非零项数。
+- **已知复杂参考（只用于测试集）**：TC/DS 的 `(-1)^#loops`；Levin–Gu 的 `(-1)^#domain-wall-loops`；三角格 Huse–Elser 相位模板和三自旋修正；t-J 的路径交换宇称。
+- 对于实算符，在已经确定的同一基底中，记 `E_sign(f)=Σ_{s,t} |O_st|² 1[sgn O_st != (-1)^(f(s)+f(t))]/Σ |O_st|²`，跳过低于误差阈值、被精确对称性强制为零的元素。
+- 复杂相位用 circular loss：`E_phase(f)=Σ |O_st|² |exp(i arg O_st)-exp(i(f(s)-f(t)))|²/(4 Σ|O_st|²)`；其中 f 为实相位函数，不能把真实 U(1) 相位压缩成 ±1。
+- 只在**原始或明确固定的配置编码**中测试已知 f；一般非对角 SU2 旋转会混合支持与振幅，不能把旋转后的自旋配置直接代入原始回路数量标签。
+- 非 Marshall 价值标准：二次/三次/回路/路径结构的留出误差显著好于最优一次规则；并通过独立大小/β/参数验证。若只有 120° 的局域轴排列，而没有残余 Huse–Elser 三体相位，不称为“恢复 Huse–Elser sign rule”。
+- 检查闭环 gauge 不变量：实矩阵的符号乘积 `sgn(O_st O_tu O_us)`；若支持图稀疏，检查**所有闭环**或构造带符号图的平衡性诊断，不能仅凭无负三角形认定没有阻碍。
+- 采用两组小矩阵元阈值、完整/加权精度指标；对临近零的复相位不能机械判定。
+
+## 3. A：正反控制（工具准入）
+
+模型：二分格 AFM Heisenberg（已知 Marshall），1D cluster/graph Hamiltonian `H=-Σ Z_{i-1} X_i Z_{i+1}`，独立自旋，正的随机矩阵/Gibbs 态，随机一次/二次 sign scramble。`n∈{6,8,10,12}`，`β∈{0.25,0.5,1,2,4}`。
+
+检验两件事：(i) 算符期待的规则是否可直接在原始基底识别；(ii) 只最小化 W 是否、何时找到规则。**两者可能不同**，不能当作程序失败。Cluster 用受限 `CZ` 门能够构造正确二次相位，是 Level-2 benchmark；不把这件事当新物理。保留纯态投影仅用于 `W_op=2W_pure` 回归测试。
+
+通过条件：Hermiticity、归一化、符号 oracle、物理旋转一致性、随机 local gauge 负对照均通过数值回归。
+
+## 4. B：三角格 AFM / Huse–Elser（最先开展真实探索）
+
+模型 `H=J1 Σ_nn S_i·S_j + J2 Σ_nnn S_i·S_j`；先 J2/J1∈{0,0.1,0.2}。用 `3×3` 周期格（需检查 K 点/三子格相容）及 `3×4` 开放格；全热密度矩阵优先小格，S^z/动量分块用于基态验证。对于三角格周期簇，严格检查几何是否与三子格 120° 有序相容，不能随意挑 n=12 PBC。
+
+优化采用完整 SU2 局域轴，盲初始化为均匀、随机、α0方向，不预设 120°。之后记录三子格轴内积（120° 理想值 -1/2）、K 点自旋结构因子、优化重复稳定性。**更强的后验识别**：在固定可比较的参考基底中，拟合最佳一次相位、三子格线性相位、以及 Huse–Elser 型三自旋相位，按留出相位误差比较；仅拟合三子格轴不算 HE phase recovery。
+
+特别控制有限格 SU2 对称性、近简并和净局域磁化为零导致的 α0 退化；考虑很小的对称性选择场作为另列诊断，不作为主结果。对照 Huse–Elser 变分态（有已知相位）与其保留模长、移除相位的版本，比较真实 Heisenberg 本征态/Gibbs 态。
+
+## 5. C：Toric Code vs Double-Semion（强物理对照）
+
+在同一 honeycomb edge 几何/相同回路支持与固定拓扑 sector 上构造两种理想基态：TC 正的闭合回路叠加；DS 闭合回路上 `(-1)^#loops` 权重。小簇如 `2×2` honeycomb torus 有 12 条边；`2×3` 有 18 条边（**18 仅先做纯波函数和稀疏作用，不构造 2^18×2^18 热态矩阵**）。验证回路约束、归一化、符号规则、Hamiltonian commute/projector relations 以及扇区的一致性。
+
+先盲优化 SU2，比较 TC/DS 的原始与优化 W、最优轴、Walsh degree 分布；再尝试有限深度、几何局域的 Z/CZ/CCZ 受限电路，不输入 #loops。**测试在原始回路编码中的剩余相位是否与 (-1)^#loops 相关**；已知 loop-rule 作为后验 oracle。加入随机 phase-scramble 以及仅幅度相同的正波函数对照。
+
+真正 Operator-specific 部分：在可行小簇（首选 n=12）构造各自准确的 Gibbs 算符，比较 β 扫描、纯度匹配与拓扑扇区，谨慎区分热激发使得 TC/DS 的矩阵元绝对值不再相同。理想零温项目不是热态新发现。Double-Semion 具有回路符号不能直接等同于“任意 QMC 都有 sign problem”（相关反例已见 2026 PRL）。
+
+## 6. D：Levin–Gu 2D Z2 SPT（对称性精细测试）
+
+选有严格闭合三角剖分的小格 `n≈9,12`，先检查周期边界、domain-wall loops 的定义与全局 Z2 翻转不变性，构造 `H_LG=D_LG(-Σ X_i)D_LG`，其中 D_LG 在 Z 基底作用为 domain-wall-loop-count sign。正参照为 trivial paramagnet `-Σ X_i`，二者在精确可解点的 Gibbs **逐元素模长相同**、相位不同（同样要确认边界与定义）。再加入保护 Z2 对称性的 `-g Σ X_i` 扰动，g∈{0,0.2,0.5,1}，β∈{0.25,0.5,1,2,4}。
+
+双线优化：I. 任意 SU2/浅的 Z/CZ/CCZ 电路；II. **逐个局域门都保持 Z2 保护对称性** 的浅电路。不能仅要求整体电路与全局对称生成元对易（否则可能错误地消除 SPT 符号结构）。比较两种受限类别达到的 W、相位残差和 gauge rule；额外算一个已知 SPT 诊断（边缘/对称 twist/strange correlator），不要仅靠 W 定义相位。
+
+若发现只有违反对称性的门能把符号压低，则可继续研究；若仅得到已知 D_LG 一键消相，也只是 benchmark。
+
+## 7. E：单空穴 t-J 与 phase string（高风险，路径诊断不可省）
+
+测试 1D 开链/周期环 `L∈{8,10,12}`，两腿梯子 `2×3,2×4`，必要时 2D `3×3`。局域态 `{hole, ↑, ↓}`，禁止双占据，在**固定空穴数及总 Sz 扇区**精确构造 Fock/graded Hamiltonian。推荐 t/J ∈ {1,2,3}，β∈{0.25,0.5,1,2,4}。使用相同的基态/传播核扫描 `t-J` 和 `σ·t-J`（去除 phase string 的精确文献对照）。
+
+**不可直接套用 qubit Walsh**。首轮对矩阵元使用统一受约束基的比较；若计算 Walshness，再实现局域 qutrit `Z3` Fourier 和频率-support-degree，并把 qudit 与 qubit 指标分开命名。优化基底应限制为保空穴数的局域 `U(1)_hole ⊕ SU(2)_spin`；任意 SU3 会破坏比较的物理意义。
+
+两种诊断并行：
+(a) 端点传播核 `K_τ(s,t)=⟨s|exp(-τH)|t⟩` 的相位/谱复杂度，比较 tJ 与 σ·tJ；
+(b) 真正的路径相位：在小簇的 hop 轨迹上记录每次空穴–↓自旋交换，检查路径符号是否遵循 `(-1)^{N_h^↓[c]}`，以及闭合路径的 gauge-invariant holonomy。选定路径长度/虚时间层进行小规模穷举或取样；不能用端点矩阵元的净正负直接代替 phase string。
+
+物理对照：空穴动量分布、谱权重、通量响应或自旋-空穴关联，至少选择一种与相位结构关联。检查样本的相位残差是否能区别 tJ 与 σ·tJ，且不是粒子数编码人为引入的信号。
+
+## 8. F：受挫 J1–J2、符号闭环与 QMC 补充
+
+沿用第二轮的 `J1–J2` Heisenberg `n∈{6,8,10,12}`, `J2/J1∈{0,0.3,0.5,1}`, `β∈{0.25,1,2,4}`。另有可控 `H(λ)=-Σ X_i -0.4 Σ Z_iZ_{i+1}-0.15 Σ Z_i +λ Σ X_iX_{i+1}`，`λ∈{0,0.05,0.1,0.2,0.4}`。先比较最优一次/二次/三次相位 gauge 的剩余带权 sign error，再比较存在负闭环的比例与长度分布。闭环负号作为“规则不可被对角 gauge 消去”的证据；基于完整支持图的平衡性检查为最终判据。
+
+QMC 只作为**控制性补充**：用上一轮连续时间 worldline 定义的 `γ = -(log Z - log Z_abs)/(β n)`，同一物理基底比较 `W` 最优、已知 gauge、直接 sign 最优。上一轮已发现 W 优化不普适缓解 sign severity，故只有在新模型出现明确正信号时才扩展到真正的大规模 QMC 采样。不要把 Gibbs 矩阵 sign-free 与 worldline sign-free 混为一谈。
+
+## 9. 跨模型的 blind discovery / 验收标准
+
+1. `registration`: 固定 convention、几何、Pauli/Fock 符号，所有 Hamiltonian、Gibbs 和局域变换有 unit tests。
+2. `blind_stage`: 仅用 W 目标优化（SU2 与受限相位门）。保存所有初值、f 候选、电路门表、优化值，不允许把 known sign labels 用于优化。
+3. `freeze_and_score`: 冻结最佳候选后才输入 Huse–Elser/loop/SPT/phase string 模板；在两个阈值下评价 weighted phase/sign accuracy，和最优一次 gauge 对照。
+4. `independent_validation`: 在不同 β、另一个 lattice size/geometry、无参与优化的数据上验证；统计多个随机/初值。
+5. `non_Marshall_certificate`: 明确给出二次/三次/回路/路径的**剩余相位证据**；局域基底 120° 纹理本身不算证书。若对称受保护，必须分别比较对称门与不对称门。
+6. `operator_specific`: 至少一个 β 的 `purity<0.95` 且仍有可解释的结果；纯基态投影成果需另标注为 pure-state carryover。
+7. `sign_problem_separation`: 不将符号回路与 QMC 平均符号、或表示误差互相替代。
+8. `numerical_controls`: 真空/零矩阵元掩码、谱归一化、实/复相位一致性、残余的误差条、β=0 identity、已知 oracle 测试。
+
+## 10. 神经网络应用（仅在有非 Marshall 物理结构后开展）
+
+固定发现的原始基底/局域最优/局域相位电路，比较普通 operator MLP、`phase-aware × positive-amplitude` 表示、以及已知 oracle phase-aware 上限。α∈{0.5,1,2}，网络宽度 {64,128}，深度 {1,2,3}，种子至少 8，训练检查点 {2k,10k,40k}，主要评价全矩阵相对 Frobenius 误差平方、非对角相位错误率、达到目标误差的参数/FLOPs。对 `t-J` 单独使用 qutrit/constrained Hilbert 模型，不与 qubit 模型直接相除。
+
+重点是能否带来**不同于原来 Marshall 型相位**的架构优势；普通 Walshness MLP 理论的自然推广不单列为主发现。
+
+## 11. GPU/方法约束
+
+8×A100 的建议分组：2 卡三角格、2 卡 TC/DS、2 卡 Levin–Gu、2 卡 t-J 和受挫符号闭环（动态重分配）。稀疏 Lanczos/对称 sector/block decomposition、纯波函数和 matrix-free exp action 应优先采用，不为占满 GPU 强行做 dense ED。`n=12` 热态完整 complex128 矩阵已约 256 MiB，另有多个工作数组与本征矢；`n=18` 热态完整 complex128 矩阵约 1 TiB，第一轮**绝对不要**尝试生成。
+
+Level 0：n≤10 的全部模型构造与正反控制。Level 1：各模型首批小簇的 α、β 扫描。Level 2：只有出现非 Marshall 指纹后才加密到 n12/14、β、门深或执行 sign-aware MLP。Level 3：若零温结果不过关，不扩大 2n operator 算符预算。
+
+数据结构：`results/signrule_round3/<model>/<geometry>/<size>/<params>/<beta>/<alpha>/<optimizer_seed>/`，写 `metadata.json`, `metrics.json`, `basis_or_circuit.json`, `sign_diagnostics.npz`, `walsh_spectrum.npz`（可行时）, `figures/`，以及全局 Parquet/CSV 指标表；附 `git SHA`, model convention, lattice periodicity, compiler/library版本。提供以 `python -m pytest` 可验证的自动接受测试。
+
+## 12. 研究结论的决策树
+
+**一级成功**：单比特或浅电路最小化 W 在真实物理模型中发现规律，跨温度/尺寸稳定；如果只是 120° 纹理或普通幅度模型，需要保守表述。
+
+**二级成功**：发现明显优于最优一次 Marshall gauge 的三体、闭合回路、对称性保护或路径相关指纹，且严格把发现过程与 oracle 后验验证分开。
+
+**三级成功**：这类非 Marshall 规则在有限温度的混合算符中稳定存在，并有明显可解释的物理/计算收益，例如 sign-aware 表示资源优势或可测的相位/路径响应。
+
+**负结果也有价值**：DS/Levin–Gu 在 SU2 下可能不显示回路结构；phase string 可能不由端点 Gibbs 算符捕捉。每个失败要报告允许的变换类、物理 sector、温度与优化预算。不要把“本轮优化没有找到”写成“不存在规则”。
+
+## 13. 主要研究参考
+
+- Huse & Elser, Phys. Rev. Lett. **60**, 2531 (1988), DOI 10.1103/PhysRevLett.60.2531.
+- Levin & Wen, Phys. Rev. B **71**, 045110 (2005), DOI 10.1103/PhysRevB.71.045110.
+- Levin & Gu, Phys. Rev. B **86**, 115109 (2012), DOI 10.1103/PhysRevB.86.115109.
+- Weng *et al.*, Phys. Rev. B **55**, 3894 (1997), DOI 10.1103/PhysRevB.55.3894.
+- Zhu *et al.*, Scientific Reports (2018), doi:10.1038/s41598-018-21775-2, σ·t-J 作为 phase-string-off 对照。
+- Shackleton, Phys. Rev. Lett. **136**, 186503 (2026), 关于 twisted quantum double 存在 sign-free SSE representation 的重要限定。
+
+
+## 14. 与此前 Operator Walshness 数据接轨（低成本辅助分析）
+
+所有新增体系在可行小尺寸同时保存：operator Walsh degree 分布 `P(k)`、半链 OSEE、跨空间区域 Walsh-degree 相关、纯度 `Trρ²`、平均热能与局域磁化。优先做同一几何/sector 的配对比较（TC vs DS、trivial vs Levin–Gu、t-J vs σ·t-J），减少振幅、边界和 rank 差异带来的混淆。在少量有正信号的点另做 20–100 个固定谱 Haar/实正交/扇区 Haar 基准作为阴性对照；无需对全部网格重复第二轮 R3。将 `operator_MLP` 训练放在物理筛选以后，避免重复第一轮已充分确认的“基底对学习很重要”的结论。
+
+对于 Gibbs 态，若基底优化显示随 β 的异常变化，先比较与其同纯度、同谱、同 sector 的随机基准，并分别报告固定基和优化基，避免把纯化接近基态或局域磁化造成的变化写成新温度相变。

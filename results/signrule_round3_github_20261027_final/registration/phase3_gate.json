@@ -1,0 +1,51 @@
+{
+  "registered_utc": "2026-10-26T19:49:05.132191+00:00",
+  "status": "enabled_for_bounded_controlled_frustration_application",
+  "evidence": {
+    "created_utc": "2026-10-26T19:25:03.965038+00:00",
+    "target_rows": 108,
+    "all_temperature_size_seed_threshold_targets_pass": true,
+    "all_perturbed_targets_pass": false,
+    "minimum_primary_improvement": 0.006914004400149677,
+    "minimum_primary_ci95_low": 0.0020308797229268943,
+    "minimum_perturbed_improvement": -0.011896184521067077,
+    "passed_mixed_primary_targets": 36,
+    "classification": "independent_boundary_phase_rule_validation; not a known topological/SPT/path rule",
+    "MLP_gate": "requires robust interpretation and null-control review in addition to these tests",
+    "no_target_optimization": true
+  },
+  "null_draws": 60,
+  "nulls_with_positive_ci95_lower_bound": 0,
+  "scope": "lambda0.4 open-chain boundary CZ correction; not a topological, SPT or phase-string discovery",
+  "coupling_caveat": "not all lambda0.35/0.45 targets pass; no claim across the full parameter interval",
+  "statistical_caveat": "20 draws per family and finite-entry bootstrap are descriptive; not a corrected discovery p-value",
+  "source_target": {
+    "n": 6,
+    "beta": 4.0
+  },
+  "independent_learning_target": {
+    "n": 8,
+    "beta": 3.0
+  },
+  "alpha": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "width": [
+    64,
+    128
+  ],
+  "depth": [
+    1,
+    2,
+    3
+  ],
+  "initializations": 8,
+  "checkpoints": [
+    2000,
+    10000,
+    40000
+  ],
+  "objective": "test compression benefit or failure of a frozen non-linear phase correction"
+}

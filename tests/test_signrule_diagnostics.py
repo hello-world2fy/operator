@@ -119,6 +119,7 @@ def test_pure_and_qutrit_optimized_candidates_reproduce_scores():
     result=optimize_pure_local(psi,1,starts=3,steps=5)
     rotated=rotate_pure(psi,directions_to_walsh_basis(result['axes_best']))
     assert result['W_best']==pytest.approx(2*state_walshness(rotated,1),abs=1e-10)
+    assert np.allclose(result['initial_axes'][1],result['alpha0_axes'])
     h,digits,*_=tj_hamiltonian(chain(4));rho=np.eye(h.shape[0])/h.shape[0]
     result=optimize_qutrit_local(rho,digits,1,starts=3,steps=5)
     raw=torch.tensor(result['quaternions_best'][None,:,:]);op=torch.tensor(rho,dtype=torch.complex128)

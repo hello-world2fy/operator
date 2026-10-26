@@ -19,12 +19,14 @@ from operator_walshness.signrule.physical_diagnostics import (tj_binary_encoding
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--geometry',type=int);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--geometry',type=int)
+    parser.add_argument('--t',type=float);parser.add_argument('--beta',type=float);args=parser.parse_args()
     out=ROOT/'results/signrule_round3'
     for geometry_index,g in enumerate([square(3,2),chain(8),chain(8,True),square(4,2)]):
         if args.geometry is not None and args.geometry!=geometry_index:continue
         geometry=g.name+'_'+'x'.join(map(str,g.shape))+'_'+g.boundary
         for t in [1.,2.,3.]:
+            if args.t is not None and t!=args.t:continue
             h,digits,fock,hops=tj_hamiltonian(g,t=t);sigma,*_=tj_hamiltonian(g,t=t,sigma=True)
             gauge=tj_marshall_gauge(g,digits);codes=tj_binary_encoding(digits)
             features,labels=constrained_features(digits,g.edges,2)
@@ -67,7 +69,11 @@ def main():
                         'caution':'finite-sector ground energy may have level crossings; curvature is descriptive'}
                 atomic_json(pairdir/'flux_response.json',response)
             systems={'tJ':block_eigensystem(h),'sigma_tJ':block_eigensystem(sigma)}
-            for beta in [0.,.25,.5,1.,2.,4.]:
+            available=[]
+            for model in systems:
+                available.append({float(p.name[4:]) for p in (out/model/geometry/f'n{g.n}'/f't{t:g}').glob('beta*')})
+            for beta in sorted(set.intersection(*available)):
+                if args.beta is not None and beta!=args.beta:continue
                 dest=pairdir/f'beta{beta:g}'
                 if (dest/'summary.json').exists():continue
                 # A source point for each model must be frozen before phase labels are scored.

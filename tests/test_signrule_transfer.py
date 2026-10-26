@@ -28,3 +28,22 @@ def test_open_target_catalog_matches_geometry():
     from operator_walshness.signrule.transfer import triangular_catalog
     g=triangular(3,4,False)
     assert {x[3] for x in triangular_catalog(3,4,False)}==set(local_gate_supports(g,3))
+
+
+def test_open_boundary_transfer_preserves_boundary_distance_without_new_gates():
+    from scripts.validate_signrule_frustration_transfer import boundary_transfer
+    r={'gate_supports':[(1,2),(3,4)],'coefficients_best':[1,1],'gate_count':2}
+    assert boundary_transfer(r,6,6)['gate_supports']==[(1,2),(3,4)]
+    t=boundary_transfer(r,6,12)
+    assert t['gate_supports']==[(1,2),(9,10)] and t['gate_count']==2
+    assert t['target_label_or_W_access'] is False
+
+
+def test_periodic_control_extension_uses_source_pattern_and_geometric_gate_cap():
+    from scripts.validate_signrule_large_controls import periodic_rule_extension
+    r={'gate_supports':[(i,) for i in range(6)]+[(i,i+1) for i in range(5)],
+       'coefficients_best':[1,0,1,0,1,0]+[0]*5}
+    t=periodic_rule_extension(r,6,10)
+    assert t['source_inferred_spatial_period']==2
+    assert t['coefficients_best'][:10]==[1,0]*5 and t['gate_count']==5
+    assert t['target_label_or_objective_access'] is False

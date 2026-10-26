@@ -1,0 +1,1879 @@
+[
+  {
+    "track": "A",
+    "model": "bipartite",
+    "n": 6,
+    "job_id": "adaptive_000_bipartite_n6_p0",
+    "betas": [
+      8.25
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.48059704810715276,
+        "R_eff": 2.080745197954363,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.6735356083616566,
+        "gap": 0.4915817769893893
+      },
+      "selected": {
+        "beta": 8.25,
+        "purity": 0.9036208477663874,
+        "R_eff": 1.106658840897537,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9501619614783715,
+        "gap": 0.4915817769893893
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "A",
+    "model": "bipartite",
+    "n": 8,
+    "job_id": "adaptive_005_bipartite_n8_p0",
+    "betas": [
+      10.32
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.3508247030666704,
+        "R_eff": 2.850426413130779,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.556464784350722,
+        "gap": 0.39269211092500456
+      },
+      "selected": {
+        "beta": 10.32,
+        "purity": 0.9034765967267672,
+        "R_eff": 1.106835532456436,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.950083581667644,
+        "gap": 0.39269211092500456
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "A",
+    "model": "random_positive",
+    "n": 6,
+    "job_id": "adaptive_010_random_positive_n6_p0",
+    "betas": [
+      6.95
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.2429380270874003,
+        "R_eff": 4.116276121894397,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.48848755820043777,
+        "gap": 0.9337737343528689
+      },
+      "selected": {
+        "beta": 6.95,
+        "purity": 0.9030896283840472,
+        "R_eff": 1.1073098046639738,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9502871805897293,
+        "gap": 0.9337737343528689
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "B",
+    "model": "triangular",
+    "n": 9,
+    "shape": [
+      3,
+      3
+    ],
+    "parameter": 0.1,
+    "job_id": "adaptive_012_triangular_n9_p0.1",
+    "betas": [
+      4.6
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.20624822082732436,
+        "R_eff": 4.848526673290542,
+        "ground_degeneracy": 4,
+        "ground_manifold_weight": 0.9076677891445811,
+        "gap": 1.049999999999998
+      },
+      "selected": {
+        "beta": 4.6,
+        "purity": 0.22579649885930742,
+        "R_eff": 4.428766633016283,
+        "ground_degeneracy": 4,
+        "ground_manifold_weight": 0.950177237583185,
+        "gap": 1.049999999999998
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "B",
+    "model": "triangular",
+    "n": 9,
+    "shape": [
+      3,
+      3
+    ],
+    "parameter": 0.2,
+    "job_id": "adaptive_013_triangular_n9_p0.2",
+    "betas": [
+      7.91
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.10090291622790537,
+        "R_eff": 9.910516339699639,
+        "ground_degeneracy": 4,
+        "ground_manifold_weight": 0.6200483693579879,
+        "gap": 0.5999999999999988
+      },
+      "selected": {
+        "beta": 7.91,
+        "purity": 0.225738524421435,
+        "R_eff": 4.429904034160706,
+        "ground_degeneracy": 4,
+        "ground_manifold_weight": 0.9500239301432457,
+        "gap": 0.5999999999999988
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "D",
+    "model": "levin_gu",
+    "n": 9,
+    "shape": [
+      3,
+      3
+    ],
+    "parameter": 1.0,
+    "job_id": "adaptive_017_levin_gu_n9_p1",
+    "betas": [
+      10.97
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.6199250839706897,
+        "R_eff": 1.6130981401734672,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.7451050566941817,
+        "gap": 0.26860768781066824
+      },
+      "selected": {
+        "beta": 10.97,
+        "purity": 0.9051868564878428,
+        "R_eff": 1.1047442777506022,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9501037971898727,
+        "gap": 0.26860768781066824
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "F",
+    "model": "j1j2",
+    "n": 6,
+    "parameter": 0.0,
+    "job_id": "adaptive_019_j1j2_n6_p0",
+    "betas": [
+      8.25
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.48059704810715276,
+        "R_eff": 2.080745197954363,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.6735356083616566,
+        "gap": 0.4915817769893893
+      },
+      "selected": {
+        "beta": 8.25,
+        "purity": 0.9036208477663874,
+        "R_eff": 1.106658840897537,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9501619614783715,
+        "gap": 0.4915817769893893
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "F",
+    "model": "j1j2",
+    "n": 6,
+    "parameter": 0.3,
+    "job_id": "adaptive_020_j1j2_n6_p0.3",
+    "betas": [
+      8.35
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.4215230349966728,
+        "R_eff": 2.37234959177947,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.6297931945592993,
+        "gap": 0.4904359536803604
+      },
+      "selected": {
+        "beta": 8.35,
+        "purity": 0.903596392625718,
+        "R_eff": 1.106688791767027,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9501810759046437,
+        "gap": 0.4904359536803604
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "F",
+    "model": "j1j2",
+    "n": 6,
+    "parameter": 0.5,
+    "job_id": "adaptive_021_j1j2_n6_p0.5",
+    "betas": [
+      8.02
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.386771215637804,
+        "R_eff": 2.5855078133230593,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.6060681681036687,
+        "gap": 0.529129476882432
+      },
+      "selected": {
+        "beta": 8.02,
+        "purity": 0.9035615056772807,
+        "R_eff": 1.106731521558604,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9502566637274452,
+        "gap": 0.529129476882432
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "F",
+    "model": "j1j2",
+    "n": 6,
+    "parameter": 1.0,
+    "job_id": "adaptive_022_j1j2_n6_p1",
+    "betas": [
+      6.14
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.5903615020280082,
+        "R_eff": 1.6938773896414363,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.763595614222496,
+        "gap": 0.7035834794500717
+      },
+      "selected": {
+        "beta": 6.14,
+        "purity": 0.9034601049438008,
+        "R_eff": 1.106855736659456,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9502438486614894,
+        "gap": 0.7035834794500717
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "F",
+    "model": "controlled_frustration",
+    "n": 6,
+    "parameter": 0.4,
+    "job_id": "adaptive_027_controlled_frustration_n6_p0.4",
+    "betas": [
+      4.35
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.8672865675196617,
+        "R_eff": 1.1530214319586238,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9305738713070518,
+        "gap": 0.9067074444416265
+      },
+      "selected": {
+        "beta": 4.35,
+        "purity": 0.9040816191390286,
+        "R_eff": 1.1060948246600966,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9504566646569953,
+        "gap": 0.9067074444416265
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "F",
+    "model": "j1j2",
+    "n": 8,
+    "parameter": 0.0,
+    "job_id": "adaptive_028_j1j2_n8_p0",
+    "betas": [
+      10.32
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.3508247030666704,
+        "R_eff": 2.850426413130779,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.556464784350722,
+        "gap": 0.39269211092500456
+      },
+      "selected": {
+        "beta": 10.32,
+        "purity": 0.9034765967267672,
+        "R_eff": 1.106835532456436,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.950083581667644,
+        "gap": 0.39269211092500456
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "F",
+    "model": "j1j2",
+    "n": 8,
+    "parameter": 0.3,
+    "job_id": "adaptive_029_j1j2_n8_p0.3",
+    "betas": [
+      10.52
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.27327911288094314,
+        "R_eff": 3.6592624641447085,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.48775411354156467,
+        "gap": 0.38859346936517714
+      },
+      "selected": {
+        "beta": 10.52,
+        "purity": 0.9034547681604727,
+        "R_eff": 1.1068622749494181,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9501010299112456,
+        "gap": 0.38859346936517714
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "F",
+    "model": "j1j2",
+    "n": 8,
+    "parameter": 0.5,
+    "job_id": "adaptive_030_j1j2_n8_p0.5",
+    "betas": [
+      9.69
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.22656375293861586,
+        "R_eff": 4.413768694372464,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.44921498838741536,
+        "gap": 0.4434789093374043
+      },
+      "selected": {
+        "beta": 9.69,
+        "purity": 0.9030908469710228,
+        "R_eff": 1.1073083105138444,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500325802186494,
+        "gap": 0.4434789093374043
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "F",
+    "model": "j1j2",
+    "n": 8,
+    "parameter": 1.0,
+    "job_id": "adaptive_031_j1j2_n8_p1",
+    "betas": [
+      6.88
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.43956311911492285,
+        "R_eff": 2.274986131715368,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.6556388962143748,
+        "gap": 0.7082288974624422
+      },
+      "selected": {
+        "beta": 6.88,
+        "purity": 0.9030813695161265,
+        "R_eff": 1.1073199312436295,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.950147394150193,
+        "gap": 0.7082288974624422
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "track": "F",
+    "model": "controlled_frustration",
+    "n": 8,
+    "parameter": 0.4,
+    "job_id": "adaptive_036_controlled_frustration_n8_p0.4",
+    "betas": [
+      4.45
+    ],
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ],
+    "local_starts": 24,
+    "local_steps": 150,
+    "local_polish": 30,
+    "circuit_starts": 16,
+    "circuit_flips": 2000,
+    "gate_budget_per_site": 1,
+    "kind": "qubit",
+    "temperature_selection": {
+      "initial": {
+        "beta": 4.0,
+        "purity": 0.8504459284283493,
+        "R_eff": 1.1758537098860962,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9214720833491177,
+        "gap": 0.9073687883240229
+      },
+      "selected": {
+        "beta": 4.45,
+        "purity": 0.9031746154817224,
+        "R_eff": 1.1072056088142317,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500353336331026,
+        "gap": 0.9073687883240229
+      },
+      "add_temperature": true,
+      "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+      "target_ground_weight": 0.95,
+      "energy_only_selection": true,
+      "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+    }
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry0_t1",
+    "geometry_index": 0,
+    "t": 1.0,
+    "betas": [
+      17.0
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.3208850283704026,
+          "R_eff": 3.11638098255455,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.4832031599783364,
+          "gap": 0.19915239575926602
+        },
+        "selected": {
+          "beta": 17.0,
+          "purity": 0.9039234099649547,
+          "R_eff": 1.1062884188813853,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500400101679851,
+          "gap": 0.19915239575926602
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.898083456312848,
+          "R_eff": 1.1134822637815625,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9471426417918685,
+          "gap": 0.8654986226843606
+        },
+        "selected": {
+          "beta": 4.06,
+          "purity": 0.9039615745908939,
+          "R_eff": 1.1062417121574777,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.950292289195712,
+          "gap": 0.8654986226843606
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 17.0,
+        "purity": 0.9039234099649547,
+        "R_eff": 1.1062884188813853,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500400101679851,
+        "gap": 0.19915239575926602
+      },
+      "sigma_tJ": {
+        "beta": 17.0,
+        "purity": 0.9999991805802816,
+        "R_eff": 1.0000008194203898,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9999995902899739,
+        "gap": 0.8654986226843606
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry0_t2",
+    "geometry_index": 0,
+    "t": 2.0,
+    "betas": [
+      41.24
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.2910653474193288,
+          "R_eff": 3.435654600818321,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.3889615240728373,
+          "gap": 0.07374749709357875
+        },
+        "selected": {
+          "beta": 41.24,
+          "purity": 0.9046188224014826,
+          "R_eff": 1.1054379759038286,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500200410728483,
+          "gap": 0.07374749709357875
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.9668706741717257,
+          "R_eff": 1.0342644851201581,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9832405839119568,
+          "gap": 1.163800025832881
+        },
+        "selected": {
+          "beta": 4.0,
+          "purity": 0.9668706741717257,
+          "R_eff": 1.0342644851201581,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9832405839119568,
+          "gap": 1.163800025832881
+        },
+        "add_temperature": false,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 41.24,
+        "purity": 0.9046188224014826,
+        "R_eff": 1.1054379759038286,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500200410728483,
+        "gap": 0.07374749709357875
+      },
+      "sigma_tJ": {
+        "beta": 41.24,
+        "purity": 1.0,
+        "R_eff": 1.0,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 1.0,
+        "gap": 1.163800025832881
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry0_t3",
+    "geometry_index": 0,
+    "t": 3.0,
+    "betas": [
+      102.94
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.26305768782134903,
+          "R_eff": 3.801447539062733,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.3354432316349595,
+          "gap": 0.028630243400401767
+        },
+        "selected": {
+          "beta": 102.94,
+          "purity": 0.9049959734480207,
+          "R_eff": 1.104977291987295,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500050961265051,
+          "gap": 0.028630243400401767
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.9798534285748126,
+          "R_eff": 1.0205608010725546,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9898511980593947,
+          "gap": 1.2546886504654307
+        },
+        "selected": {
+          "beta": 4.0,
+          "purity": 0.9798534285748126,
+          "R_eff": 1.0205608010725546,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9898511980593947,
+          "gap": 1.2546886504654307
+        },
+        "add_temperature": false,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 102.94,
+        "purity": 0.9049959734480207,
+        "R_eff": 1.104977291987295,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500050961265051,
+        "gap": 0.028630243400401767
+      },
+      "sigma_tJ": {
+        "beta": 102.94,
+        "purity": 1.0,
+        "R_eff": 1.0,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 1.0,
+        "gap": 1.2546886504654307
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry1_t1",
+    "geometry_index": 1,
+    "t": 1.0,
+    "betas": [
+      11.86
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.3399917851974974,
+          "R_eff": 2.941247534610612,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.5396603752791356,
+          "gap": 0.25652867441312033
+        },
+        "selected": {
+          "beta": 11.86,
+          "purity": 0.9046305818803089,
+          "R_eff": 1.1054236060884237,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500326720316433,
+          "gap": 0.25652867441312033
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.3399917851974974,
+          "R_eff": 2.941247534610612,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.5396603752791356,
+          "gap": 0.25652867441312033
+        },
+        "selected": {
+          "beta": 11.86,
+          "purity": 0.9046305818803089,
+          "R_eff": 1.1054236060884237,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500326720316433,
+          "gap": 0.25652867441312033
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 11.86,
+        "purity": 0.9046305818803089,
+        "R_eff": 1.1054236060884237,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500326720316433,
+        "gap": 0.25652867441312033
+      },
+      "sigma_tJ": {
+        "beta": 11.86,
+        "purity": 0.9046305818803089,
+        "R_eff": 1.1054236060884237,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500326720316433,
+        "gap": 0.25652867441312033
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry1_t2",
+    "geometry_index": 1,
+    "t": 2.0,
+    "betas": [
+      7.25
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.5380329219895174,
+          "R_eff": 1.858622324266401,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.7211029226220024,
+          "gap": 0.4668976038925692
+        },
+        "selected": {
+          "beta": 7.25,
+          "purity": 0.9040744520366616,
+          "R_eff": 1.1061035932906205,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9502196350092164,
+          "gap": 0.4668976038925692
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.5380329219895174,
+          "R_eff": 1.858622324266401,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.7211029226220024,
+          "gap": 0.4668976038925692
+        },
+        "selected": {
+          "beta": 7.25,
+          "purity": 0.9040744520366616,
+          "R_eff": 1.1061035932906205,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9502196350092164,
+          "gap": 0.4668976038925692
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 7.25,
+        "purity": 0.9040744520366616,
+        "R_eff": 1.1061035932906205,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9502196350092164,
+        "gap": 0.4668976038925692
+      },
+      "sigma_tJ": {
+        "beta": 7.25,
+        "purity": 0.9040744520366616,
+        "R_eff": 1.1061035932906205,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9502196350092164,
+        "gap": 0.4668976038925692
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry1_t3",
+    "geometry_index": 1,
+    "t": 3.0,
+    "betas": [
+      6.73
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.6139877173063698,
+          "R_eff": 1.628697076200657,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.7734829146631388,
+          "gap": 0.4760964628886555
+        },
+        "selected": {
+          "beta": 6.73,
+          "purity": 0.9041123379040303,
+          "R_eff": 1.1060572431942057,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500419424673328,
+          "gap": 0.4760964628886555
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.6139877173063698,
+          "R_eff": 1.628697076200657,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.7734829146631388,
+          "gap": 0.4760964628886555
+        },
+        "selected": {
+          "beta": 6.73,
+          "purity": 0.9041123379040303,
+          "R_eff": 1.1060572431942057,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500419424673328,
+          "gap": 0.4760964628886555
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 6.73,
+        "purity": 0.9041123379040303,
+        "R_eff": 1.1060572431942057,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500419424673328,
+        "gap": 0.4760964628886555
+      },
+      "sigma_tJ": {
+        "beta": 6.73,
+        "purity": 0.9041123379040303,
+        "R_eff": 1.1060572431942057,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500419424673328,
+        "gap": 0.4760964628886555
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry2_t1",
+    "geometry_index": 2,
+    "t": 1.0,
+    "betas": [
+      13.51
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.24058624005579357,
+          "R_eff": 4.156513688264521,
+          "ground_degeneracy": 2,
+          "ground_manifold_weight": 0.6387734801151255,
+          "gap": 0.2181546521932196
+        },
+        "selected": {
+          "beta": 13.51,
+          "purity": 0.45257097500883997,
+          "R_eff": 2.2095981740332933,
+          "ground_degeneracy": 2,
+          "ground_manifold_weight": 0.9500819076638548,
+          "gap": 0.2181546521932196
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.46908766529955864,
+          "R_eff": 2.131797687243389,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.6735433828814723,
+          "gap": 0.5563472349815832
+        },
+        "selected": {
+          "beta": 7.31,
+          "purity": 0.9034798031125895,
+          "R_eff": 1.106831604375535,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9501996409339398,
+          "gap": 0.5563472349815832
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 13.51,
+        "purity": 0.45257097500883997,
+        "R_eff": 2.2095981740332933,
+        "ground_degeneracy": 2,
+        "ground_manifold_weight": 0.9500819076638548,
+        "gap": 0.2181546521932196
+      },
+      "sigma_tJ": {
+        "beta": 13.51,
+        "purity": 0.9974775679957383,
+        "R_eff": 1.002528810757449,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9987376865697775,
+        "gap": 0.5563472349815832
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry2_t2",
+    "geometry_index": 2,
+    "t": 2.0,
+    "betas": [
+      6.59
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.3364110714271315,
+          "R_eff": 2.972553774041309,
+          "ground_degeneracy": 2,
+          "ground_manifold_weight": 0.8100265916457323,
+          "gap": 0.4706206791904739
+        },
+        "selected": {
+          "beta": 6.59,
+          "purity": 0.4522639389884961,
+          "R_eff": 2.2110982410769573,
+          "ground_degeneracy": 2,
+          "ground_manifold_weight": 0.9500905778576253,
+          "gap": 0.4706206791904739
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.7333594417114284,
+          "R_eff": 1.3635878167277933,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.8547416437601002,
+          "gap": 0.8378866935877669
+        },
+        "selected": {
+          "beta": 5.19,
+          "purity": 0.9029770846883505,
+          "R_eff": 1.1074478156277194,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500387692245216,
+          "gap": 0.8378866935877669
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 6.59,
+        "purity": 0.4522639389884961,
+        "R_eff": 2.2110982410769573,
+        "ground_degeneracy": 2,
+        "ground_manifold_weight": 0.9500905778576253,
+        "gap": 0.4706206791904739
+      },
+      "sigma_tJ": {
+        "beta": 6.59,
+        "purity": 0.972706000584503,
+        "R_eff": 1.0280598653643505,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.986239706149174,
+        "gap": 0.8378866935877669
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry2_t3",
+    "geometry_index": 2,
+    "t": 3.0,
+    "betas": [
+      5.14
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.3912291217895715,
+          "R_eff": 2.5560469410502247,
+          "ground_degeneracy": 2,
+          "ground_manifold_weight": 0.8820181726289568,
+          "gap": 0.713633070109088
+        },
+        "selected": {
+          "beta": 5.14,
+          "purity": 0.4520470158156321,
+          "R_eff": 2.212159277715155,
+          "ground_degeneracy": 2,
+          "ground_manifold_weight": 0.9503334541011116,
+          "gap": 0.713633070109088
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.8306396541180467,
+          "R_eff": 1.2038914769386684,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9107198084646773,
+          "gap": 0.9586474252827983
+        },
+        "selected": {
+          "beta": 4.57,
+          "purity": 0.9031696251341188,
+          "R_eff": 1.1072117265364212,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9501296795637438,
+          "gap": 0.9586474252827983
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 5.14,
+        "purity": 0.4520470158156321,
+        "R_eff": 2.212159277715155,
+        "ground_degeneracy": 2,
+        "ground_manifold_weight": 0.9503334541011116,
+        "gap": 0.713633070109088
+      },
+      "sigma_tJ": {
+        "beta": 5.14,
+        "purity": 0.9454948094761709,
+        "R_eff": 1.0576472657253682,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9722928004207216,
+        "gap": 0.9586474252827983
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry3_t1",
+    "geometry_index": 3,
+    "t": 1.0,
+    "betas": [
+      30.79
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.19570790806864727,
+          "R_eff": 5.109655556939662,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.30885935982577195,
+          "gap": 0.10192155906803446
+        },
+        "selected": {
+          "beta": 30.79,
+          "purity": 0.9043171634957571,
+          "R_eff": 1.105806723975434,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500378850702451,
+          "gap": 0.10192155906803446
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.7764525260863193,
+          "R_eff": 1.2879087470298585,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.8772497554730316,
+          "gap": 0.5949210477718214
+        },
+        "selected": {
+          "beta": 5.29,
+          "purity": 0.9046736101994572,
+          "R_eff": 1.1053710296462895,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9502568218386103,
+          "gap": 0.5949210477718214
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 30.79,
+        "purity": 0.9043171634957571,
+        "R_eff": 1.105806723975434,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500378850702451,
+        "gap": 0.10192155906803446
+      },
+      "sigma_tJ": {
+        "beta": 30.79,
+        "purity": 0.9999999778287929,
+        "R_eff": 1.0000000221712075,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9999999889143963,
+        "gap": 0.5949210477718214
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry3_t2",
+    "geometry_index": 3,
+    "t": 2.0,
+    "betas": [
+      70.23
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.21236742819079324,
+          "R_eff": 4.708820031957014,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.295375815609571,
+          "gap": 0.04233507131695191
+        },
+        "selected": {
+          "beta": 70.23,
+          "purity": 0.9048848115465526,
+          "R_eff": 1.1051130345429099,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500118385668681,
+          "gap": 0.04233507131695191
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.9317288100590846,
+          "R_eff": 1.0732736706258832,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9650471605396221,
+          "gap": 0.9898104790458504
+        },
+        "selected": {
+          "beta": 4.0,
+          "purity": 0.9317288100590846,
+          "R_eff": 1.0732736706258832,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9650471605396221,
+          "gap": 0.9898104790458504
+        },
+        "add_temperature": false,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 70.23,
+        "purity": 0.9048848115465526,
+        "R_eff": 1.1051130345429099,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500118385668681,
+        "gap": 0.04233507131695191
+      },
+      "sigma_tJ": {
+        "beta": 70.23,
+        "purity": 1.0,
+        "R_eff": 1.0,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 1.0,
+        "gap": 0.9898104790458504
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  },
+  {
+    "kind": "qutrit_pair",
+    "track": "E",
+    "job_id": "adaptive_E_geometry3_t3",
+    "geometry_index": 3,
+    "t": 3.0,
+    "betas": [
+      135.77
+    ],
+    "paired_temperature_rule": "max energy-selected beta of the two models; compare at the same temperature",
+    "temperature_selection": {
+      "tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.20143947515449953,
+          "R_eff": 4.964270281348889,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.2637783489100231,
+          "gap": 0.023955952918376155
+        },
+        "selected": {
+          "beta": 135.77,
+          "purity": 0.9040466122165592,
+          "R_eff": 1.1061376553894497,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9500110866264017,
+          "gap": 0.023955952918376155
+        },
+        "add_temperature": true,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      },
+      "sigma_tJ": {
+        "initial": {
+          "beta": 4.0,
+          "purity": 0.9556345310469989,
+          "R_eff": 1.04642514215596,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9774672476825728,
+          "gap": 1.0842476895525408
+        },
+        "selected": {
+          "beta": 4.0,
+          "purity": 0.9556345310469989,
+          "R_eff": 1.04642514215596,
+          "ground_degeneracy": 1,
+          "ground_manifold_weight": 0.9774672476825728,
+          "gap": 1.0842476895525408
+        },
+        "add_temperature": false,
+        "selection": "smallest beta reaching 95% ground-manifold weight, rounded upward to 0.01",
+        "target_ground_weight": 0.95,
+        "energy_only_selection": true,
+        "degeneracy_note": "ground-manifold weight is not purity; asymptotic effective rank equals ground degeneracy"
+      }
+    },
+    "paired_thermal_targets": {
+      "tJ": {
+        "beta": 135.77,
+        "purity": 0.9040466122165592,
+        "R_eff": 1.1061376553894497,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 0.9500110866264017,
+        "gap": 0.023955952918376155
+      },
+      "sigma_tJ": {
+        "beta": 135.77,
+        "purity": 1.0,
+        "R_eff": 1.0,
+        "ground_degeneracy": 1,
+        "ground_manifold_weight": 1.0,
+        "gap": 1.0842476895525408
+      }
+    },
+    "local_starts": 24,
+    "local_steps": 150,
+    "alphas": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      20261027,
+      20261028,
+      20261029
+    ]
+  }
+]

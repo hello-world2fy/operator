@@ -1,0 +1,35 @@
+{
+  "reason": "uniform Lanczos start could lie in a restricted symmetry sector; replaced all n8 flux energies by exact dense sector eigh",
+  "comparisons": [
+    {
+      "path": "results/signrule_round3/physical_E/chain_8_periodic/n8/t3/flux_response.json",
+      "model": "tJ",
+      "max_energy_correction": 1.4210854715202004e-14
+    },
+    {
+      "path": "results/signrule_round3/physical_E/chain_8_periodic/n8/t3/flux_response.json",
+      "model": "sigma_tJ",
+      "max_energy_correction": 1.4210854715202004e-14
+    },
+    {
+      "path": "results/signrule_round3/physical_E/chain_8_periodic/n8/t1/flux_response.json",
+      "model": "tJ",
+      "max_energy_correction": 1.509903313490213e-14
+    },
+    {
+      "path": "results/signrule_round3/physical_E/chain_8_periodic/n8/t1/flux_response.json",
+      "model": "sigma_tJ",
+      "max_energy_correction": 1.3322676295501878e-14
+    },
+    {
+      "path": "results/signrule_round3/physical_E/chain_8_periodic/n8/t2/flux_response.json",
+      "model": "tJ",
+      "max_energy_correction": 1.9539925233402755e-14
+    },
+    {
+      "path": "results/signrule_round3/physical_E/chain_8_periodic/n8/t2/flux_response.json",
+      "model": "sigma_tJ",
+      "max_energy_correction": 1.0474220729548014
+    }
+  ]
+}

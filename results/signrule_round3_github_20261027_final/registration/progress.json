@@ -1,0 +1,75 @@
+{
+  "status": "scientific_work_complete_pending_corrected_snapshot_publication",
+  "last_update_utc": "2026-10-26T20:58:58.720059+00:00",
+  "specification": "registration/specification.yaml",
+  "design": "registration/design.txt",
+  "points_by_track": {
+    "A": 621,
+    "C": 144,
+    "E": 1512,
+    "F": 1062,
+    "D": 279,
+    "B": 180
+  },
+  "first_scan_expected": 3438,
+  "first_scan_completed": 3438,
+  "phase1": {
+    "A": "594 native n6/8 control points complete; n10/12 frozen-rule validation complete, not a native blind grid",
+    "B": "162 n9 thermal points plus 54 ground/excited projector optimizations and frozen n12 open-geometry transfer complete",
+    "C": "36 pure n12/18 points and 108 full n12 Gibbs points complete; no dense n18 thermal operator",
+    "D": "270 n9 thermal points complete; frozen g0 transfer to new temperatures and n12 complete, failed all-target criterion",
+    "E": "1296 qutrit points complete, including 2x4 ladder; 72 n10/12 physical diagnostic cases use 64 exact propagator columns and 64 stochastic trace probes",
+    "F": "972 native n6/8 points complete; controlled-frustration frozen boundary-rule validation extends through n12",
+    "adaptive": "360 energy-selected low-temperature points complete; total primary grid 3798"
+  },
+  "phase2": {
+    "posthoc": "All 2286 qubit/C point-level posthoc records complete; E endpoint/path scoring stored under physical_E.",
+    "B": "HE thermal phase fits, structure factors, pure controls and independent projector transfer complete; no stable HE discovery",
+    "C": "sector topology, thermal purity/spectrum/modulus pairing and 40 same-amplitude random-phase controls complete",
+    "D": "all 28 distinct preliminary LG candidates fail independent-temperature common criterion; selected n12 transfer also fails",
+    "E": "96 true closed-path diagnostic rows, no phase-string identity violations; endpoint phase and path phase remain distinct",
+    "F": "single- and double-boundary CZ rules pass lambda0.4 independent sizes/temperatures through n12; nearby couplings not uniformly positive",
+    "null_controls": "120 fixed-spectrum Haar/real/sector controls complete, 20 per family per selected model",
+    "baselines": "All 3798 frozen primary points have random and alpha0/reference baseline records."
+  },
+  "phase3": {
+    "gate": "registration/phase3_gate.json",
+    "status": "1728 training instances complete; 768 distinct conditions after accounting for repeated alpha-independent inputs",
+    "scope": "bounded lambda0.4 correction; not a topological, SPT or path-rule discovery",
+    "interpretation": "paired equal-architecture/FLOP analysis complete; local-SU2 MLP is superior in all tested matched conditions"
+  },
+  "delivery": {
+    "status": "final scientific report and 339-leaf requirement mapping ready",
+    "tests": "109 tests passed; registration/final_pytest.xml",
+    "large_artifacts": "local only: dense/NPZ arrays, masks, optimizer initialization histories and NN checkpoints",
+    "hash_policy": "no additional full raw-result hash sweep"
+  },
+  "remaining_scope_audit": [
+    "Publish corrected compact snapshot and verify remote branch."
+  ],
+  "hard_limits": [
+    "never construct 18-qubit dense thermal operator",
+    "never mix Z3 and qubit W",
+    "never use oracle labels in blind objective",
+    "pure-state results are not operator-specific",
+    "same active-gate budget and evaluation cap across phase-gate levels",
+    "no claimed global optimum",
+    "keep prior rounds unchanged"
+  ],
+  "spectrum_serialization_fix": {
+    "issue": "Initial block Gibbs probabilities were saved in component order while energies were sorted. rho and W are unaffected.",
+    "fixed_in_source": true,
+    "required_after_live_v1_workers_finish": "re-sort all thermal_spectrum eigenvalues descending to match energies ascending; validate p=exp(-beta E)/Z; record repair counts",
+    "already_running_workers_use_initial_imports": true,
+    "final_repair": "All 3438 artifacts checked with zero errors; final pass repaired 492 derived spectra. No freeze digest sweep was run."
+  },
+  "continuation": {
+    "branch": "experiments/signrule-round3-20261027",
+    "native_blind_workers": "all terminal",
+    "adaptive_workers": "all terminal",
+    "precision_workers": "all 84 groups complete; never restart",
+    "next": "publish corrected compact snapshot and verify remote branch"
+  },
+  "prior_goal_turn_classification": "progress: pushed first scan; added adaptive temperature scans and completed precision corrections",
+  "primary_grid_completed": 3798
+}

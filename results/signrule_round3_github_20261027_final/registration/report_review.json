@@ -1,0 +1,14 @@
+{
+  "reviewed_utc": "2026-10-26T21:09:39.672960+00:00",
+  "status": "scientific_report_ready_for_publication",
+  "numerical_audit_checks": 15,
+  "claims": {
+    "Huse_Elser": "not recovered by the tested blind circuits",
+    "TC_DS_loop": "not robustly recovered by the tested blind candidates",
+    "Levin_Gu": "28 distinct preliminary candidates all fail at least one independent-temperature criterion",
+    "tJ_phase_string": "path identity verified independently; not discovered from static endpoint W optimization"
+  },
+  "main_positive": "bounded one/two-boundary CZ corrections at lambda0.4; no uniform nearby-coupling or computational-advantage claim",
+  "scoped_negative": "tested finite geometries, gate classes, sectors and multistart budgets only",
+  "remaining": "publish corrected compact snapshot and verify remote branch"
+}

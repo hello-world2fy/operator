@@ -72,17 +72,17 @@ def scan_loops(out,device):
                     print('FROZEN C',model,shape,alpha,seed,flush=True)
 
 
-def scan_tj(out,device,geometries=None):
+def scan_tj(out,device,geometries=None,*,betas=None,t_values=None):
     # Full planned sizes remain registered for adaptive continuation; start with
     # the smallest ladder and the first open/periodic chains, all t/J and beta.
     for g in (geometries if geometries is not None else [square(3,2),chain(8),chain(8,True)]):
         n=g.n;geometry=g.name+'_'+'x'.join(map(str,g.shape))+'_'+g.boundary
-        for t in [1.,2.,3.]:
+        for t in ([1.,2.,3.] if t_values is None else t_values):
             for sigma in [False,True]:
                 model='sigma_tJ' if sigma else 'tJ'
                 h,digits,fock,hops=tj_hamiltonian(g,t=t,sigma=sigma)
                 blocks=block_eigensystem(h)
-                for beta in [0.,.25,.5,1.,2.,4.]:
+                for beta in ([0.,.25,.5,1.,2.,4.] if betas is None else betas):
                     rho,thermal=block_gibbs(blocks,beta,len(digits))
                     for alpha in [.5,1.,2.]:
                         fixed=np.log(qutrit_moment(rho,digits,alpha))/alpha
@@ -111,8 +111,9 @@ def scan_tj(out,device,geometries=None):
                 gauge=tj_marshall_gauge(g,digits)
                 rows,records=path_phase_samples(physical,off,physical_hops,gauge,samples=5000,seed=20261027)
                 base=out/model/geometry/f'n{n}'/f't{t:g}'/'path_diagnostics'
-                atomic_json(base/'summary.json',{'rows':rows,'path_not_endpoint':True,'QMC_average_sign':False})
-                atomic_json(base/'closed_paths.json',records)
+                if not (base/'summary.json').exists():
+                    atomic_json(base/'summary.json',{'rows':rows,'path_not_endpoint':True,'QMC_average_sign':False})
+                    atomic_json(base/'closed_paths.json',records)
 
 
 def main():

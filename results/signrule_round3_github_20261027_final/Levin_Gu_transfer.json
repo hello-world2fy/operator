@@ -1,0 +1,32 @@
+{
+  "created_utc": "2026-10-26T18:59:23.203184+00:00",
+  "certificates": {
+    "circuit_L1": {
+      "passed_all_target_seeds_temperatures_sizes_thresholds": false,
+      "rows": 24,
+      "minimum_improvement": -0.024804029882003576,
+      "minimum_ci95_low": -0.03872563483623128
+    },
+    "circuit_L2": {
+      "passed_all_target_seeds_temperatures_sizes_thresholds": false,
+      "rows": 24,
+      "minimum_improvement": -0.024500326941867778,
+      "minimum_ci95_low": -0.03128097983721744
+    },
+    "circuit_L3": {
+      "passed_all_target_seeds_temperatures_sizes_thresholds": false,
+      "rows": 24,
+      "minimum_improvement": -0.024892591835351176,
+      "minimum_ci95_low": -0.031375753675636824
+    },
+    "circuit_symmetric": {
+      "passed_all_target_seeds_temperatures_sizes_thresholds": false,
+      "rows": 24,
+      "minimum_improvement": -0.006426804629390097,
+      "minimum_ci95_low": -0.012795047947315041
+    }
+  },
+  "screening_scope": "frozen circuits at g0, n9 beta0.5 alpha1, transferred to beta0.75/1.5 and n12",
+  "not_a_global_nonexistence_claim": true,
+  "needs_perturbation_validation_before_MLP_gate": true
+}

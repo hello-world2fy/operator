@@ -220,7 +220,15 @@ def supported_pure_moment(psi,configurations,axes,alpha):
 def optimize_pure_local(psi,alpha,*,starts=24,steps=150,seed=0,device='cpu'):
     """Pure-state carryover, using O(n 2^n) contractions; never form |psi><psi|."""
     begin=time.monotonic();psi=np.asarray(psi,dtype=complex);n=int(np.log2(len(psi)))
-    rng=np.random.default_rng(seed);initial=blind_starts(n,starts,rng)
+    states_np=np.arange(len(psi));prob=abs(psi)**2;bloch=[]
+    for i in range(n):
+        z=1.-2*((states_np>>i)&1);off=psi.conj()*psi[states_np^(1<<i)]
+        bloch.append([off.sum().real,np.sum(-1j*z*off).real,prob@z])
+    bloch=np.asarray(bloch)/np.vdot(psi,psi).real;lengths=np.linalg.norm(bloch,axis=1)
+    axes0=np.tile([1.,0.,0.],(n,1));good=lengths>1e-12;axes0[good]=bloch[good]/lengths[good,None]
+    # When every Bloch vector vanishes, the uniform first start already covers
+    # the alpha0 manifold. Keep the remaining generic starts in that case.
+    rng=np.random.default_rng(seed);initial=blind_starts(n,starts,rng,axes0 if good.any() else None)
     occupied=np.flatnonzero(psi);restricted=len(occupied)<len(psi)//4
     vector=torch.tensor(psi[occupied] if restricted else psi,dtype=torch.complex128,device=device)
     states=torch.tensor(occupied,dtype=torch.int64,device=device)
@@ -243,6 +251,7 @@ def optimize_pure_local(psi,alpha,*,starts=24,steps=150,seed=0,device='cpu'):
             'W_best':float(best_values[index]),'gradient_norm':raw.grad.norm(dim=-1).detach().cpu().numpy(),
             'pure_projector_objective':True,'objective':'Operator_Walshness_only',
             'steps':steps,'seconds':time.monotonic()-begin,'certified_global':False,
+            'alpha0_axes':axes0,'alpha0_W':float(n-lengths.sum()),'alpha0_is_degenerate':not bool(good.any()),
             'backend':'exact_supported_pure_kernel' if restricted else 'full_wavefunction_contractions'}
 
 
@@ -268,7 +277,7 @@ def qutrit_batched_moment(op,digits,alpha,vectors):
     kernel=torch.ones((batch,d,d),dtype=torch.complex128,device=op.device)
     for i in range(n):
         v=vectors[:,i];local=(1-np.exp(alpha))*v[:,:,None]*v[:,None,:].conj()
-        local=local+np.exp(alpha)*torch.eye(3,device=op.device)
+        local=local+np.exp(alpha)*torch.eye(3,dtype=torch.float64,device=op.device)
         kernel=kernel*local[:,digits[:,i,None],digits[None,:,i]]
     transformed=kernel@op@kernel
     return torch.einsum('ij,bij->b',op.conj(),transformed).real/torch.vdot(op.ravel(),op.ravel()).real
@@ -297,4 +306,5 @@ def optimize_qutrit_local(operator,digits,alpha,*,starts=24,steps=150,seed=0,dev
             'quaternions_best':best[index],'W_restarts':best_values,'W_best':float(best_values[index]),
             'alpha':alpha,'seed':seed,'steps':steps,'seconds':time.monotonic()-begin,
             'metric':'Z3_frequency_support_degree','objective':'Operator_Walshness_only',
+            'numerical_convention':'float64_Z3_kernel_constants',
             'certified_global':False}

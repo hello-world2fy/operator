@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-10-26T18:13:45.784613+00:00",
+  "git_base": "a392c34abd42c8a308d3b06d7161df7ab7cbfc44",
+  "round3_source_sha256_at_registration": "a809f4fa7da76df4f7acdae7ef3fe00634a6110c97480e3d44021896af333478",
+  "python": "3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]",
+  "platform": "Linux-5.15.152.bsk.10-amd64-x86_64-with-glibc2.36",
+  "libraries": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.1",
+    "torch": "2.9.1",
+    "pandas": "3.0.5",
+    "pytest": "9.1.1"
+  },
+  "conventions": {
+    "S": "sigma/2",
+    "qubit_site_order": "little endian",
+    "basis": "same U: Udagger O U",
+    "diagonal_circuit": "geometric supports only; no known labels in blind search",
+    "entropy_log": 2,
+    "tJ": "canonical interleaved Fock orbitals; fixed one-hole, fixed Sz",
+    "TC_DS": "H=-sum Q_v-sum B_p; B_p includes all adjacent vertex projectors"
+  },
+  "output_hash_policy": "one registration source digest; per-freeze digest, not raw-matrix rehash loops",
+  "completion_status": "active: not all phases implemented or executed"
+}

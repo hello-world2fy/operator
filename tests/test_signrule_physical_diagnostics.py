@@ -20,6 +20,17 @@ def test_worldline_phase_ratio_gauge_invariance_and_complex_extension():
     assert worldline_phase_severity(heisenberg(chain(4)).toarray(),1,4)['gamma']==pytest.approx(0,abs=1e-12)
 
 
+def test_controlled_frustration_has_an_explicit_local_stoquastic_basis():
+    from operator_walshness.signrule.models import frustrated
+    from operator_walshness.walsh import rotate_operator
+    hadamard=np.array([[1.,1.],[1.,-1.]])/np.sqrt(2)
+    for lam in [0.,.05,.1,.2,.4]:
+        h=rotate_operator(frustrated(chain(4),lam).toarray(),[hadamard]*4)
+        off=h.copy();np.fill_diagonal(off,0)
+        assert np.max(off.real)<1e-13 and np.max(abs(off.imag))<1e-13
+        assert worldline_phase_severity(h,2,4)['gamma']==pytest.approx(0,abs=1e-12)
+
+
 def test_constrained_linear_gauge_recovered_without_qubit_W_interpretation():
     _,digits,*_=tj_hamiltonian(chain(4));codes=tj_binary_encoding(digits)
     phase=1.-2*(np.bitwise_count(codes.astype(np.uint64)&0b10010101)%2).astype(float)
@@ -42,6 +53,31 @@ def test_qutrit_exact_spectrum_matches_kernel_moments_and_OSEE_embedding():
     corr=spin_hole_correlations(rho,digits)
     assert corr['hole_density'].sum()==pytest.approx(1)
     assert np.max(abs(np.diag(corr['hole_spin_raw'])))==0
+
+
+def test_rotated_qutrit_spectrum_matches_constrained_complex_kernel():
+    h,digits,*_=tj_hamiltonian(chain(4));rho,_=block_gibbs(block_eigensystem(h),.6,len(digits))
+    rng=np.random.default_rng(82);unitaries=[]
+    for _ in range(4):
+        q=rng.normal(size=4);q/=np.linalg.norm(q);a=q[0]+1j*q[1];b=q[2]+1j*q[3]
+        u=np.eye(3,dtype=complex);u[0,0]=np.exp(.37j);u[1:,1:]=[[a,b],[-b.conjugate(),a.conjugate()]];unitaries.append(u)
+    spectrum=qutrit_full_spectrum(rho,digits,unitaries)
+    for alpha in [.5,1,2]:
+        assert walshness_from_spectrum(spectrum,alpha)==pytest.approx(np.log(qutrit_moment(rho,digits,alpha,unitaries))/alpha,abs=1e-11)
+
+
+def test_batched_qutrit_kernel_keeps_exponential_identity_in_float64():
+    import torch
+    from operator_walshness.signrule.blind import qutrit_batched_moment,qutrit_local_vectors
+    h,digits,*_=tj_hamiltonian(chain(4));rho,_=block_gibbs(block_eigensystem(h),.6,len(digits))
+    rng=np.random.default_rng(65);raw=rng.normal(size=(1,4,4));unitaries=[]
+    for q in raw[0]:
+        q=q/np.linalg.norm(q);a=q[0]+1j*q[1];b=q[2]+1j*q[3]
+        u=np.eye(3,dtype=complex);u[1:,1:]=[[a,b],[-b.conjugate(),a.conjugate()]];unitaries.append(u)
+    for alpha in [.5,1,2]:
+        value=qutrit_batched_moment(torch.tensor(rho,dtype=torch.complex128),torch.tensor(digits,dtype=torch.int64),alpha,
+            qutrit_local_vectors(torch.tensor(raw,dtype=torch.float64)))
+        assert float(value[0])==pytest.approx(qutrit_moment(rho,digits,alpha,unitaries),rel=1e-13)
 
 
 def test_sparse_spatial_Gram_entropy_matches_dense_SVD():

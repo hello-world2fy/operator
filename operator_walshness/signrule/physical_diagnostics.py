@@ -113,12 +113,19 @@ def constrained_operator_entropy(rho,digits,cut=None):
             'Schmidt_weights':weights,'compressed_shape':shape,'cut':cut}
 
 
-def qutrit_full_spectrum(rho,digits):
+def qutrit_full_spectrum(rho,digits,unitaries=None):
     """Exact feasible small-system Fourier spectrum, named separately from Walsh."""
     n=digits.shape[1]
     if n>6:raise ValueError('full qutrit Fourier matrix limited to n<=6; use kernel moments otherwise')
     d=3**n;codes=digits@(3**np.arange(n));full=np.zeros((d,d),complex)
     full[np.ix_(codes,codes)]=rho
+    if unitaries is not None:
+        tensor=full.reshape([3]*(2*n))
+        for site,u in enumerate(unitaries):
+            for axis,local in [(n-1-site,np.asarray(u).conj().T),(2*n-1-site,np.asarray(u).T)]:
+                moved=np.moveaxis(tensor,axis,0)
+                tensor=np.moveaxis(np.tensordot(local,moved,axes=(1,0)),0,axis)
+        full=tensor.reshape(d,d)
     tensor=full.reshape([3]*(2*n))
     # Unitary Fourier on row and inverse Fourier on column; degree ignores +/-1.
     for axis in range(n):tensor=np.fft.fft(tensor,axis=axis,norm='ortho')

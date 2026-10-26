@@ -1,0 +1,3133 @@
+{
+  "checked_utc": "2026-10-26T21:09:37.705127+00:00",
+  "status": "numerical_evidence_verified_report_review_pending",
+  "checks": [
+    {
+      "id": "numerical_tests",
+      "criterion": "Independent model, phase, rotation, precision and symmetry regressions pass",
+      "status": "verified",
+      "evidence": [
+        "registration/final_pytest.xml",
+        "tests/test_signrule_*.py"
+      ],
+      "detail": {
+        "passed_test_cases": 109,
+        "required_regressions": [
+          "test_random_local_gauge_preserves_spectrum_but_invalidates_raw_sign_labels",
+          "test_batched_qutrit_kernel_keeps_exponential_identity_in_float64",
+          "test_controlled_frustration_has_an_explicit_local_stoquastic_basis",
+          "test_blind_optimizer_import_boundary",
+          "test_individual_symmetric_gate_truth_tables",
+          "test_closed_paths_use_actual_hop_spin_events",
+          "test_adaptive_temperature_preserves_degenerate_ground_rank_and_energy_shift"
+        ]
+      }
+    },
+    {
+      "id": "small_grid_and_adaptive",
+      "criterion": "All registered small-system alpha/beta/seed grids and energy-selected additions exist",
+      "status": "verified",
+      "evidence": [
+        "registration/jobs.json",
+        "registration/adaptive_jobs.json",
+        "registration/adaptive_temperature_decisions.json"
+      ],
+      "detail": {
+        "primary_points": 3798,
+        "by_track": {
+          "A": 621,
+          "C": 144,
+          "E": 1512,
+          "F": 1062,
+          "D": 279,
+          "B": 180
+        },
+        "adaptive_points": 360,
+        "adaptive_jobs": 28
+      }
+    },
+    {
+      "id": "saved_candidates_spectra_baselines",
+      "criterion": "Budgets, restart arrays, W reconstruction, density spectra and generic/reference baselines are consistent",
+      "status": "verified",
+      "evidence": [
+        "<point>/basis_or_circuit.json",
+        "<point>/thermal_spectrum.npz",
+        "<point>/walsh_spectrum.npz",
+        "<point>/representation_baselines.json"
+      ],
+      "detail": {
+        "thermal_spectra_checked": 3762,
+        "degree_spectra_checked": 2664,
+        "local_candidates": 3447,
+        "phase_circuits": 4572,
+        "digest_policy": "freeze digest fields checked; no new content hashing"
+      }
+    },
+    {
+      "id": "qutrit_precision",
+      "criterion": "Every legacy float32-constant optimization is archived and replaced by a full float64-kernel run",
+      "status": "verified",
+      "evidence": [
+        "registration/qutrit_precision_correction.json",
+        "registration/qutrit_precision_jobs.json",
+        "jobs/qutrit_precision_*.json"
+      ],
+      "detail": {
+        "repeated_points": 1512,
+        "maximum_full_rerun_W_change": 1.239341765213453e-06,
+        "note": "optimization trajectories can amplify a small arithmetic change; archived results are superseded"
+      }
+    },
+    {
+      "id": "posthoc_and_QMC",
+      "criterion": "Frozen candidates have phase masks/scores, conservative best-linear comparisons, and F basis-matched worldline diagnostics",
+      "status": "verified",
+      "evidence": [
+        "<point>/posthoc.json",
+        "<beta>/posthoc_base",
+        "<point>/worldline_phase.json",
+        "<beta>/physics_F"
+      ],
+      "detail": {
+        "point_phase_records": 2286,
+        "preliminary_positive_points_by_model": {
+          "cluster": 90,
+          "random_quadratic": 90,
+          "controlled_frustration": 12,
+          "levin_gu": 16
+        },
+        "threshold_scope": "two cutoffs; uniform supported pure-loop amplitudes give identical retained sets"
+      }
+    },
+    {
+      "id": "B_physics",
+      "criterion": "Triangular Gibbs/ground/excited cases, genuine HE controls/fits, textures, K structure factor and frozen open-n12 transfer",
+      "status": "verified",
+      "evidence": [
+        "physical_B",
+        "triangular/3x3_periodic",
+        "operator_walshness/signrule/huse_elser.py"
+      ],
+      "detail": {
+        "source_projectors": 54,
+        "alpha0_full_budget_rechecks": 54,
+        "HE_objects": 6,
+        "HE_control_phase_loss": 2.5289430540144073e-12
+      }
+    },
+    {
+      "id": "C_physics",
+      "criterion": "TC/DS matched support/topology, full n12 Gibbs/purity pairing and n18 wavefunctions without dense operators",
+      "status": "verified",
+      "evidence": [
+        "physical_C",
+        "toric_code",
+        "double_semion",
+        "negative_controls/loop_phase_scramble"
+      ],
+      "detail": {
+        "thermal_points": 108,
+        "pure_points": 36,
+        "phase_scrambles": 40,
+        "full_thermal_n": 12,
+        "pure_only_n": 18,
+        "oracle_scope": "closed-loop sectors with independently checked residual; not vertex-defect configurations"
+      }
+    },
+    {
+      "id": "D_physics",
+      "criterion": "Gatewise symmetry plus independent SPT diagnostics and n9-to-n12 frozen validation, without W-defined phase claims",
+      "status": "verified",
+      "evidence": [
+        "levin_gu",
+        "independent_validation/Levin_Gu_transfer",
+        "tests/test_signrule_diagnostics.py"
+      ],
+      "detail": {
+        "LG_thermal_physics_records": 25,
+        "all_distinct_preliminary_candidates_screened": 28,
+        "independent_transfer": "failed all-target criterion for all four gate classes",
+        "native_n12_perturbed_grid": "conditional gate not met"
+      }
+    },
+    {
+      "id": "E_physics",
+      "criterion": "t-J/sigma-t-J all stated chain/ring sizes and ladders: endpoint, true paths, spin-hole and flux diagnostics",
+      "status": "verified",
+      "evidence": [
+        "physical_E",
+        "physical_E_large",
+        "tests/test_signrule_models.py"
+      ],
+      "detail": {
+        "small_exact_thermal_pairs": 84,
+        "large_sampled_kernel_pairs": 72,
+        "true_path_rows": 96,
+        "large_scope": "64 exact propagator columns plus 64 random trace probes, full H graph; no full thermal-support certificate",
+        "qudit_metric": "Z3 support degree only, U1-hole plus SU2-spin rotations"
+      }
+    },
+    {
+      "id": "F_physics",
+      "criterion": "Frustration loops and exact worldline gamma; bounded rule validated in independent temperatures/sizes through n12",
+      "status": "verified",
+      "evidence": [
+        "controlled_frustration",
+        "j1j2",
+        "independent_validation/frustration*",
+        "independent_validation/j1j2_large"
+      ],
+      "detail": {
+        "primary_mixed_validation_rows": 48,
+        "all_target_rows": 120,
+        "minimum_primary_phase_gain": 0.005522016814876589,
+        "interpretation": "bounded lambda0.4 open-boundary CZ correction; fails uniform neighboring-coupling validation",
+        "large_J1J2": "8 exact sector-spectrum/H-support checks; native large blind grid remains gated"
+      }
+    },
+    {
+      "id": "A_controls",
+      "criterion": "Known Marshall/cluster/positive/scramble controls across stated sizes, with recovery and oracle validity distinguished",
+      "status": "verified",
+      "evidence": [
+        "independent_validation/large_known_controls",
+        "bipartite",
+        "cluster",
+        "random_positive",
+        "tests/test_signrule_references.py"
+      ],
+      "detail": {
+        "native_blind_sizes": [
+          6,
+          8
+        ],
+        "full_operator_control_sizes": [
+          10,
+          12
+        ],
+        "native_large_blind_grid": false,
+        "meaning": "known identity/oracle and frozen-rule tests are distinguished from native blind universal recovery"
+      }
+    },
+    {
+      "id": "same_spectrum_nulls",
+      "criterion": "Selected-point 20-draw Haar, real and symmetry-sector controls at matched blind budgets",
+      "status": "verified",
+      "evidence": [
+        "negative_controls",
+        "tables/same_spectrum_nulls.csv"
+      ],
+      "detail": {
+        "controlled_frustration/complex_Haar": 20,
+        "controlled_frustration/real_orthogonal_Haar": 20,
+        "controlled_frustration/sector_Haar": 20,
+        "levin_gu/complex_Haar": 20,
+        "levin_gu/real_orthogonal_Haar": 20,
+        "levin_gu/sector_Haar": 20
+      }
+    },
+    {
+      "id": "conditional_learning",
+      "criterion": "Gate-approved six representations, all widths/depths/seeds/checkpoints, phase/Frobenius errors and observed resources",
+      "status": "verified",
+      "evidence": [
+        "registration/phase3_gate.json",
+        "learning",
+        "tables/learning_*.csv"
+      ],
+      "detail": {
+        "training_instances": 1728,
+        "distinct_conditions": 768,
+        "matched_architecture_paired_seed_statistics": true,
+        "claim": "no universal learned-phase resource advantage; per-entry oracle storage and phase-error floor explicit"
+      }
+    },
+    {
+      "id": "provenance",
+      "criterion": "Source commit, dependency/compiler conventions and implementation corrections remain reconstructible",
+      "status": "verified",
+      "evidence": [
+        "registration/provenance.json",
+        "registration/execution_revisions.json",
+        "registration/source_v1",
+        "registration/source_v3_small_offdiagonal"
+      ],
+      "detail": {
+        "initial_base": "a392c34abd42c8a308d3b06d7161df7ab7cbfc44",
+        "source_digest_policy": "one registration source digest; per-freeze digest, not raw-matrix rehash loops",
+        "old_precision_results_archived": true,
+        "previous_rounds": "no round1/2 artifacts modified by this experiment"
+      }
+    },
+    {
+      "id": "delivery",
+      "criterion": "Human report, JSON, per-track tables, spectra/tails, figures and pytest log exist with current counts",
+      "status": "verified",
+      "evidence": [
+        "report.html",
+        "summary.json",
+        "tables",
+        "figures",
+        "registration/final_pytest.xml"
+      ],
+      "detail": {
+        "root": "results/signrule_round3",
+        "report_status": "scientific finalization and compact publication are checked separately before closing the goal"
+      }
+    }
+  ],
+  "yaml_leaf_requirements_mapped": 339,
+  "requirements": [
+    {
+      "requirement": "project",
+      "specified_value": "operator_walshness_round3_non_marshall_sign_discovery",
+      "evidence_checks": [
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "status",
+      "specified_value": "design_only_not_executed",
+      "evidence_checks": [
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "repo.url",
+      "specified_value": "https://github.com/hello-world2fy/operator",
+      "evidence_checks": [
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "repo.reference_branch",
+      "specified_value": "experiments/round2-first-wave-20261026",
+      "evidence_checks": [
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "repo.pin_actual_commit_sha_at_execution",
+      "specified_value": true,
+      "evidence_checks": [
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "repo.do_not_mutate_previous_rounds",
+      "specified_value": true,
+      "evidence_checks": [
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "scientific_question",
+      "specified_value": "Can minimizing physical-basis Operator Walshness, without putting known sign formulas into the objective, reveal non-Marshall phase/sign structure in important many-body models?",
+      "evidence_checks": [
+        "posthoc_and_QMC",
+        "F_physics",
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "physics_definition.operator_vectorization",
+      "specified_value": "O(s,t) over paired input/output configurations",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "physics_definition.p_rq",
+      "specified_value": "abs((H^tensor_n) O (H^tensor_n)[r,q])^2 / Tr(O^dagger O)",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "physics_definition.degree",
+      "specified_value": "hamming_weight(r) + hamming_weight(q)",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "physics_definition.W",
+      "specified_value": "log(sum_(r,q) p_rq exp(alpha*degree))/alpha",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "physics_definition.physical_basis",
+      "specified_value": "O -> U^dagger O U; same U on both sides",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "physics_definition.units",
+      "specified_value": "Pauli_S_is_sigma_over_2_in_Heisenberg_and_tJ",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "physics_definition.separate_qudit_and_qubit_W",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "physics_definition.avoid_fixed_basis_ambiguity",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "scan_default.alpha[0]",
+      "specified_value": 0.5,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.alpha[1]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.alpha[2]",
+      "specified_value": 2.0,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.beta[0]",
+      "specified_value": 0.0,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.beta[1]",
+      "specified_value": 0.25,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.beta[2]",
+      "specified_value": 0.5,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.beta[3]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.beta[4]",
+      "specified_value": 2.0,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.beta[5]",
+      "specified_value": 4.0,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.random_seeds[0]",
+      "specified_value": 20261027,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.random_seeds[1]",
+      "specified_value": 20261028,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.random_seeds[2]",
+      "specified_value": 20261029,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.optimized_local_SU2_starts",
+      "specified_value": 24,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.circuit_phase_starts",
+      "specified_value": 16,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.circuit_candidate_flips_per_start",
+      "specified_value": 2000,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.zero_element_relative_thresholds[0]",
+      "specified_value": 1e-08,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.zero_element_relative_thresholds[1]",
+      "specified_value": 1e-12,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.purity_gate_for_operator_specific_claim",
+      "specified_value": "Tr(rho^2)<0.95 at >=one target point",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.record_beta_gap",
+      "specified_value": true,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "scan_default.adapt_beta_to_effective_rank",
+      "specified_value": true,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "optimization.blind_vs_oracle_split",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.blind_objective",
+      "specified_value": "minimum_Operator_Walshness_only",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.no_prior_sign_patterns_as_warm_starts_during_blind_phase",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.local_basis.allowed",
+      "specified_value": "SU2_tensor_product",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.local_basis.starts[0]",
+      "specified_value": "uniform",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.local_basis.starts[1]",
+      "specified_value": "random_Haar_local",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.local_basis.starts[2]",
+      "specified_value": "alpha0_Bloch",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.local_basis.save_all_restarts",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[0].level",
+      "specified_value": 1,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[0].gates[0]",
+      "specified_value": "Z",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[0].max_support_sites",
+      "specified_value": 1,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[1].level",
+      "specified_value": 2,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[1].gates[0]",
+      "specified_value": "Z",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[1].gates[1]",
+      "specified_value": "nearest_neighbor_CZ",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[1].max_support_sites",
+      "specified_value": 2,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[2].level",
+      "specified_value": 3,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[2].gates[0]",
+      "specified_value": "Z",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[2].gates[1]",
+      "specified_value": "nearest_neighbor_CZ",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[2].gates[2]",
+      "specified_value": "local_triangle_CCZ",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.hierarchy[2].max_support_sites",
+      "specified_value": 3,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.control_parameter_count_and_gate_depth",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.algorithms[0]",
+      "specified_value": "discrete_coordinate_search",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.algorithms[1]",
+      "specified_value": "simulated_annealing",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.algorithms[2]",
+      "specified_value": "beam_search_optional",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.diagonal_phase_circuit.do_not_include_loop_count_or_phase_string_as_optimizer_inputs",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.posthoc_oracle.compare_best_Marshall_linear_phase",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.posthoc_oracle.compare_quadratic_and_cubic_local_Boolean_phases",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.posthoc_oracle.compare_known_physical_phase_only_after_optimization",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.posthoc_oracle.exact_sign_correctness_is_not_assumed",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.posthoc_oracle.nontriviality_requires_more_than_basis_texture",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.symmetry_rules.for_Levin_Gu.enforce_symmetry_gate_by_gate",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.symmetry_rules.for_Levin_Gu.do_not_only_check_whole_circuit_commutator",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "optimization.symmetry_rules.for_tJ.preserve_hole_number_and_total_charge",
+      "specified_value": true,
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[0]",
+      "specified_value": "W_fixed_and_optimized",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[1]",
+      "specified_value": "W_per_2n_or_appropriate_qudit_normalization",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[2]",
+      "specified_value": "degree_spectrum_and_tail_where_feasible",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[3]",
+      "specified_value": "all_basis_directions_and_phase_circuit_gate_lists",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[4]",
+      "specified_value": "source_and_rotated_operator_purity",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[5]",
+      "specified_value": "normalized_spectrum_eigenvalues_and_sector_labels",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[6]",
+      "specified_value": "numerical_restart_distribution",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[7]",
+      "specified_value": "full_complex_matrix_element_phase_sample_with_error_mask",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[8]",
+      "specified_value": "nonMarshall_residual_phase_beyond_best_linear_rule",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[9]",
+      "specified_value": "phase_prediction_on_independent_heldout_entries",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.common[10]",
+      "specified_value": "operator_entanglement_entropy",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.sign_metrics[0]",
+      "specified_value": "weighted_sign_mismatch",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.sign_metrics[1]",
+      "specified_value": "circular_complex_phase_loss",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.sign_metrics[2]",
+      "specified_value": "phase_locking_quality",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.sign_metrics[3]",
+      "specified_value": "negative_cycle_statistics_with_support_graph_check",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.sign_metrics[4]",
+      "specified_value": "independent_small_element_cutoff_sensitivity",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.qmc_only_if_applicable[0]",
+      "specified_value": "sign_quenched_partition_function_ratio",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.qmc_only_if_applicable[1]",
+      "specified_value": "severity_gamma",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.qmc_only_if_applicable[2]",
+      "specified_value": "same_physical_basis_comparison",
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.stats.bootstrap_or_seed_confidence_intervals",
+      "specified_value": true,
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.stats.random_phase_control",
+      "specified_value": true,
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "measurements.stats.same_parameter_budget_for_compared_ansatz_classes",
+      "specified_value": true,
+      "evidence_checks": [
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC",
+        "B_physics",
+        "C_physics",
+        "D_physics",
+        "E_physics",
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.role",
+      "specified_value": "verify_method_does_not_claim_universal_recovery",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.models[0]",
+      "specified_value": "bipartite_Heisenberg_Marshall",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.models[1]",
+      "specified_value": "one_dimensional_cluster_graph",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.models[2]",
+      "specified_value": "independent_spins",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.models[3]",
+      "specified_value": "random_sign_scramble",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.sizes[0]",
+      "specified_value": 6,
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.sizes[1]",
+      "specified_value": 8,
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.sizes[2]",
+      "specified_value": 10,
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.sizes[3]",
+      "specified_value": 12,
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.beta[0]",
+      "specified_value": 0.25,
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.beta[1]",
+      "specified_value": 0.5,
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.beta[2]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.beta[3]",
+      "specified_value": 2.0,
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.beta[4]",
+      "specified_value": 4.0,
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.oracle_posthoc[0]",
+      "specified_value": "linear_Marshall",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.oracle_posthoc[1]",
+      "specified_value": "quadratic_CZ_cluster",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.gates[0]",
+      "specified_value": "SU2_local",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.gates[1]",
+      "specified_value": "Z",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.gates[2]",
+      "specified_value": "CZ",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.regression_tests[0]",
+      "specified_value": "W_projector_equals_2W_pure",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.regression_tests[1]",
+      "specified_value": "thermal_sign_formula",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.regression_tests[2]",
+      "specified_value": "identities",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.A_known_controls.regression_tests[3]",
+      "specified_value": "basis_alignment",
+      "evidence_checks": [
+        "A_controls"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.role",
+      "specified_value": "noncollinear_bases_and_nontrivial_three_spin_phase",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.hamiltonian",
+      "specified_value": "J1*sum_nn S_i.S_j + J2*sum_nnn S_i.S_j",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.geometries[0].shape[0]",
+      "specified_value": 3,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.geometries[0].shape[1]",
+      "specified_value": 3,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.geometries[0].boundary",
+      "specified_value": "periodic",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.geometries[0].check_three_sublattice_commensurability",
+      "specified_value": true,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.geometries[1].shape[0]",
+      "specified_value": 3,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.geometries[1].shape[1]",
+      "specified_value": 4,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.geometries[1].boundary",
+      "specified_value": "open",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.j2_over_j1[0]",
+      "specified_value": 0.0,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.j2_over_j1[1]",
+      "specified_value": 0.1,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.j2_over_j1[2]",
+      "specified_value": 0.2,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.beta[0]",
+      "specified_value": 0.25,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.beta[1]",
+      "specified_value": 0.5,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.beta[2]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.beta[3]",
+      "specified_value": 2.0,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.beta[4]",
+      "specified_value": 4.0,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.source_objects[0]",
+      "specified_value": "ground_state",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.source_objects[1]",
+      "specified_value": "exact_gibbs",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.source_objects[2]",
+      "specified_value": "selected_excited_projectors",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.no_120_degree_structured_start_in_blind_stage",
+      "specified_value": true,
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.posthoc_diagnostics[0]",
+      "specified_value": "triangle_three_sublattice_axis_dot_products",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.posthoc_diagnostics[1]",
+      "specified_value": "static_structure_factor_at_K",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.posthoc_diagnostics[2]",
+      "specified_value": "best_linear_and_three_sublattice_phase_vs_Huse_Elser_three_spin_phase",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.posthoc_diagnostics[3]",
+      "specified_value": "optional_chirality_with_time_reversal_control",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.controls[0]",
+      "specified_value": "Huse_Elser_trial_wavefunction",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.controls[1]",
+      "specified_value": "same_moduli_without_variational_phase",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.B_triangular_Huse_Elser.caution",
+      "specified_value": "A 120-degree basis texture alone is not Huse-Elser phase recovery.",
+      "evidence_checks": [
+        "B_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.role",
+      "specified_value": "topological_loop_sign_under_identical_ground_state_support",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.lattice",
+      "specified_value": "honeycomb_edges",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.geometries[0].unit_cells[0]",
+      "specified_value": 2,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.geometries[0].unit_cells[1]",
+      "specified_value": 2,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.geometries[0].qubits",
+      "specified_value": 12,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.geometries[0].exact_thermal_matrix",
+      "specified_value": true,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.geometries[1].unit_cells[0]",
+      "specified_value": 2,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.geometries[1].unit_cells[1]",
+      "specified_value": 3,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.geometries[1].qubits",
+      "specified_value": 18,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.geometries[1].exact_thermal_matrix",
+      "specified_value": false,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.geometries[1].pure_wavefunction_only_first",
+      "specified_value": true,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.pure_state_sector",
+      "specified_value": "fixed_matched_topological_sector",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.targets[0]",
+      "specified_value": "toric_code",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.targets[1]",
+      "specified_value": "double_semion",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.compare_same_closed_loop_moduli_in_ideal_ground_sector",
+      "specified_value": true,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.oracle_posthoc",
+      "specified_value": "minus_one_per_contractible_loop",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.gates[0]",
+      "specified_value": "SU2_local",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.gates[1]",
+      "specified_value": "Z",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.gates[2]",
+      "specified_value": "CZ",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.gates[3]",
+      "specified_value": "local_CCZ",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.beta[0]",
+      "specified_value": 0.25,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.beta[1]",
+      "specified_value": 0.5,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.beta[2]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.beta[3]",
+      "specified_value": 2.0,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.beta[4]",
+      "specified_value": 4.0,
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.checks[0]",
+      "specified_value": "valid_loop_sector",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.checks[1]",
+      "specified_value": "commuting_projectors",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.checks[2]",
+      "specified_value": "hermiticity",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.checks[3]",
+      "specified_value": "ground_degeneracy",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.checks[4]",
+      "specified_value": "matched_support",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.caveats[0]",
+      "specified_value": "pure_projector_is_not_new_operator_specific_physics",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.caveats[1]",
+      "specified_value": "loop_oracle_not_used_in_blind_optimization",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.C_toric_code_vs_double_semion.caveats[2]",
+      "specified_value": "distinguish_SSE_sign_free_from_stoquasticity",
+      "evidence_checks": [
+        "C_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.role",
+      "specified_value": "symmetry_protected_domain_wall_loop_sign",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.lattice",
+      "specified_value": "triangular_vertices_with_valid_periodic_triangulation",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.sizes[0]",
+      "specified_value": 9,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.sizes[1]",
+      "specified_value": 12,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.models[0]",
+      "specified_value": "trivial_Z2_paramagnet",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.models[1]",
+      "specified_value": "Levin_Gu_SPT",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.perturbation",
+      "specified_value": "-g*sum_i X_i (protecting Z2 symmetry preserved)",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.g[0]",
+      "specified_value": 0.0,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.g[1]",
+      "specified_value": 0.2,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.g[2]",
+      "specified_value": 0.5,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.g[3]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.beta[0]",
+      "specified_value": 0.25,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.beta[1]",
+      "specified_value": 0.5,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.beta[2]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.beta[3]",
+      "specified_value": 2.0,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.beta[4]",
+      "specified_value": 4.0,
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.oracle_posthoc",
+      "specified_value": "minus_one_per_domain_wall_loop",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.gates[0]",
+      "specified_value": "SU2_local",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.gates[1]",
+      "specified_value": "Z",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.gates[2]",
+      "specified_value": "CZ",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.gates[3]",
+      "specified_value": "local_CCZ",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.dual_optimization_constraints[0]",
+      "specified_value": "unrestricted_gates",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.dual_optimization_constraints[1]",
+      "specified_value": "individually_Z2_symmetric_local_gates",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.independent_physics_diagnostic[0]",
+      "specified_value": "symmetry_twist",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.independent_physics_diagnostic[1]",
+      "specified_value": "strange_correlator_or_boundary_response",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.checks[0]",
+      "specified_value": "global_Z2",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.checks[1]",
+      "specified_value": "valid_closed_domain_walls",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.checks[2]",
+      "specified_value": "thermal_phase_reference_at_exactly_solvable_point",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.D_Levin_Gu_SPT.caveat",
+      "specified_value": "Symmetry protected means symmetric local gates layer-by-layer; global commutation alone is insufficient.",
+      "evidence_checks": [
+        "D_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.role",
+      "specified_value": "path_dependent_phase_and_doped_Mott_physics",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.local_hilbert[0]",
+      "specified_value": "hole",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.local_hilbert[1]",
+      "specified_value": "up",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.local_hilbert[2]",
+      "specified_value": "down",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.forbid_double_occupancy",
+      "specified_value": true,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.global_sector",
+      "specified_value": "one_hole_and_fixed_total_Sz",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[0].1d_chain_open[0]",
+      "specified_value": 8,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[0].1d_chain_open[1]",
+      "specified_value": 10,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[0].1d_chain_open[2]",
+      "specified_value": 12,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[1].1d_ring_periodic[0]",
+      "specified_value": 8,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[1].1d_ring_periodic[1]",
+      "specified_value": 10,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[1].1d_ring_periodic[2]",
+      "specified_value": 12,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[2].two_leg_ladder[0][0]",
+      "specified_value": 2,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[2].two_leg_ladder[0][1]",
+      "specified_value": 3,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[2].two_leg_ladder[1][0]",
+      "specified_value": 2,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[2].two_leg_ladder[1][1]",
+      "specified_value": 4,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[3].square_2d[0][0]",
+      "specified_value": 3,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.geometries[3].square_2d[0][1]",
+      "specified_value": 3,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.t_over_J[0]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.t_over_J[1]",
+      "specified_value": 2.0,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.t_over_J[2]",
+      "specified_value": 3.0,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.beta[0]",
+      "specified_value": 0.25,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.beta[1]",
+      "specified_value": 0.5,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.beta[2]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.beta[3]",
+      "specified_value": 2.0,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.beta[4]",
+      "specified_value": 4.0,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.paired_models[0]",
+      "specified_value": "tJ",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.paired_models[1]",
+      "specified_value": "sigma_dot_tJ_phase_string_off",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.allowed_local_rotations",
+      "specified_value": "U1_hole_block_plus_SU2_spin",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.operator_spectrum.qudit_Fourier_local_dimension",
+      "specified_value": 3,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.operator_spectrum.do_not_compare_directly_to_qubit_W",
+      "specified_value": true,
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.posthoc_diagnostics[0]",
+      "specified_value": "imaginary_time_propagator_matrix_elements",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.posthoc_diagnostics[1]",
+      "specified_value": "closed_hole_path_sign_holonomy",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.posthoc_diagnostics[2]",
+      "specified_value": "parity_of_hole_down_spin_exchange",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.posthoc_diagnostics[3]",
+      "specified_value": "spin_hole_correlations",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.posthoc_diagnostics[4]",
+      "specified_value": "momentum_or_flux_response",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.E_tJ_phase_string.caveat",
+      "specified_value": "phase string depends on paths, not just endpoint Gibbs matrix signs",
+      "evidence_checks": [
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.role",
+      "specified_value": "negative_controls_and_interaction_stability",
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.j1j2_heisenberg.sizes[0]",
+      "specified_value": 6,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.j1j2_heisenberg.sizes[1]",
+      "specified_value": 8,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.j1j2_heisenberg.sizes[2]",
+      "specified_value": 10,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.j1j2_heisenberg.sizes[3]",
+      "specified_value": 12,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.j1j2_heisenberg.j2_over_j1[0]",
+      "specified_value": 0.0,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.j1j2_heisenberg.j2_over_j1[1]",
+      "specified_value": 0.3,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.j1j2_heisenberg.j2_over_j1[2]",
+      "specified_value": 0.5,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.j1j2_heisenberg.j2_over_j1[3]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.controllably_frustrated.H",
+      "specified_value": "-sum X -0.4 sum ZZ -0.15 sum Z + lambda sum XX",
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.controllably_frustrated.lambda[0]",
+      "specified_value": 0.0,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.controllably_frustrated.lambda[1]",
+      "specified_value": 0.05,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.controllably_frustrated.lambda[2]",
+      "specified_value": 0.1,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.controllably_frustrated.lambda[3]",
+      "specified_value": 0.2,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.controllably_frustrated.lambda[4]",
+      "specified_value": 0.4,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.beta[0]",
+      "specified_value": 0.25,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.beta[1]",
+      "specified_value": 1.0,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.beta[2]",
+      "specified_value": 2.0,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.beta[3]",
+      "specified_value": 4.0,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.diagnostics[0]",
+      "specified_value": "negative_closed_config_space_loops",
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.diagnostics[1]",
+      "specified_value": "weighted_mismatch",
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.diagnostics[2]",
+      "specified_value": "QMC_worldline_gamma",
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "tracks.F_frustrated_sign_obstruction_and_QMC_control.no_new_large_scale_QMC_unless_positive_signal",
+      "specified_value": true,
+      "evidence_checks": [
+        "F_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.reuse_round1_round2_observables[0]",
+      "specified_value": "degree_histogram",
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.reuse_round1_round2_observables[1]",
+      "specified_value": "spatial_walsh_degree_correlations",
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.reuse_round1_round2_observables[2]",
+      "specified_value": "half_chain_operator_entanglement",
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.reuse_round1_round2_observables[3]",
+      "specified_value": "thermal_purity_energy_and_local_magnetization",
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.matched_pairs[0]",
+      "specified_value": "toric_code_vs_double_semion",
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.matched_pairs[1]",
+      "specified_value": "trivial_vs_Levin_Gu",
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.matched_pairs[2]",
+      "specified_value": "tJ_vs_sigma_dot_tJ",
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.random_same_spectrum_control.selected_points_only",
+      "specified_value": true,
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.random_same_spectrum_control.draws_initial[0]",
+      "specified_value": 20,
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.random_same_spectrum_control.draws_initial[1]",
+      "specified_value": 100,
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.random_same_spectrum_control.null_families[0]",
+      "specified_value": "complex_Haar",
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.random_same_spectrum_control.null_families[1]",
+      "specified_value": "real_orthogonal_Haar",
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.random_same_spectrum_control.null_families[2]",
+      "specified_value": "symmetry_sector_preserving_Haar",
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_cross_model_controls.do_not_repeat_full_previous_round2_grid",
+      "specified_value": true,
+      "evidence_checks": [
+        "same_spectrum_nulls",
+        "saved_candidates_spectra_baselines",
+        "C_physics",
+        "E_physics"
+      ]
+    },
+    {
+      "requirement": "secondary_application.only_after_nonMarshall_fingerprint",
+      "specified_value": true,
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.representations[0]",
+      "specified_value": "plain_Operator_MLP",
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.representations[1]",
+      "specified_value": "learned_phase_times_amplitude",
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.representations[2]",
+      "specified_value": "oracle_phase_times_amplitude",
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.widths[0]",
+      "specified_value": 64,
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.widths[1]",
+      "specified_value": 128,
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.hidden_layers[0]",
+      "specified_value": 1,
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.hidden_layers[1]",
+      "specified_value": 2,
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.hidden_layers[2]",
+      "specified_value": 3,
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.train_steps_checkpoints[0]",
+      "specified_value": 2000,
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.train_steps_checkpoints[1]",
+      "specified_value": 10000,
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.train_steps_checkpoints[2]",
+      "specified_value": 40000,
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.initializations",
+      "specified_value": 8,
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.errors[0]",
+      "specified_value": "Frobenius_relative_squared",
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.errors[1]",
+      "specified_value": "non_diagonal_sign_weighted_error",
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "secondary_application.errors[2]",
+      "specified_value": "per_parameter_and_FLOPs",
+      "evidence_checks": [
+        "conditional_learning"
+      ]
+    },
+    {
+      "requirement": "execution.status",
+      "specified_value": "design_only",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[0].phase",
+      "specified_value": 0,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[0].action",
+      "specified_value": "build_and_test_new_geometries_Hamiltonians_gauge_conventions",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[0].condition_for_next",
+      "specified_value": "all_basic_tests_pass",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[1].phase",
+      "specified_value": 1,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[1].action",
+      "specified_value": "small_system_blind_operator_W_scan_every_track",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[1].max_qubits_for_full_dense_thermal",
+      "specified_value": 12,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[2].phase",
+      "specified_value": 2,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[2].action",
+      "specified_value": "posthoc_nonMarshall_fingerprint_and_temperature_size_validation",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[2].condition_for_next",
+      "specified_value": "nontrivial_or_unresolved_signal",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[3].phase",
+      "specified_value": 3,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[3].action",
+      "specified_value": "selective_larger_scale_and_sign_aware_learning",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.phases[3].condition_for_next",
+      "specified_value": "clear_robust_fingerprint",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.gpu_allocation_suggestion.B_triangular",
+      "specified_value": 2,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.gpu_allocation_suggestion.C_TC_DS",
+      "specified_value": 2,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.gpu_allocation_suggestion.D_Levin_Gu",
+      "specified_value": 2,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.gpu_allocation_suggestion.E_tJ_and_F_obstruction",
+      "specified_value": 2,
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.limitations[0]",
+      "specified_value": "no_18_qubit_dense_Gibbs_operator",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.limitations[1]",
+      "specified_value": "prefer_sparse_and_symmetry_sector_methods",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.limitations[2]",
+      "specified_value": "no_claim_of_global_minimum_from_multistart",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "execution.limitations[3]",
+      "specified_value": "exact_operator_matrix_needs_memory_and_eigensolver_budget",
+      "evidence_checks": [
+        "small_grid_and_adaptive",
+        "numerical_tests",
+        "provenance"
+      ]
+    },
+    {
+      "requirement": "outputs.directory",
+      "specified_value": "results/signrule_round3",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.keep[0]",
+      "specified_value": "source_commit_and_software_versions",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.keep[1]",
+      "specified_value": "geometry_and_boundary_sector_metadata",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.keep[2]",
+      "specified_value": "all_best_and_restart_basis_directors",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.keep[3]",
+      "specified_value": "phase_circuit_and_gate_count_depth",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.keep[4]",
+      "specified_value": "spectrum_and_weighted_phase_sign_diagnostics",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.keep[5]",
+      "specified_value": "beta_rank_purity_and_spectrum",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.keep[6]",
+      "specified_value": "statistical_uncertainty_and_numerical_residuals",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.keep[7]",
+      "specified_value": "negative_outcomes_with_parameter_ranges",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.keep[8]",
+      "specified_value": "blind_optimization_manifest_prior_to_oracle_scoring",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.reports[0]",
+      "specified_value": "human_readable_main_report",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.reports[1]",
+      "specified_value": "JSON_summary",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.reports[2]",
+      "specified_value": "per_track_tables",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.reports[3]",
+      "specified_value": "figures",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "outputs.reports[4]",
+      "specified_value": "pytest_log",
+      "evidence_checks": [
+        "delivery",
+        "provenance",
+        "saved_candidates_spectra_baselines"
+      ]
+    },
+    {
+      "requirement": "validation.important_assertions[0]",
+      "specified_value": "W_op_pure_projector_equals_2_W_pure",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "validation.important_assertions[1]",
+      "specified_value": "correct_Udagger_O_U_and_axis_alignment",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "validation.important_assertions[2]",
+      "specified_value": "positive_semidefinite_Hermitian_Gibbs_and_purity_consistency",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "validation.important_assertions[3]",
+      "specified_value": "operator_W_beta0_has_identity_formula",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "validation.important_assertions[4]",
+      "specified_value": "term_Hamiltonian_sector_and_fermion_sign_reference_consistency",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "validation.important_assertions[5]",
+      "specified_value": "symmetry_gate_locality_and_support_check",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "validation.important_assertions[6]",
+      "specified_value": "no_oracle_phase_access_in_blind_optimizer",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "validation.important_assertions[7]",
+      "specified_value": "nonMarshall_label_requires_beyond_linear_phase_fit",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "validation.important_assertions[8]",
+      "specified_value": "path_sign_not_conflated_with_endpoint_sign",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    },
+    {
+      "requirement": "validation.important_assertions[9]",
+      "specified_value": "source_and_output_hash_logging",
+      "evidence_checks": [
+        "numerical_tests",
+        "saved_candidates_spectra_baselines",
+        "posthoc_and_QMC"
+      ]
+    }
+  ],
+  "conditional_scope_decisions": [
+    {
+      "item": "native n10/n12 control/frustrated and n12 perturbed-LG blind grids",
+      "rule": "design section11 and YAML execution phases: enlarge selectively after a non-Marshall signal",
+      "decision": "small blind grids plus exact/frozen large checks completed; only controlled-frustration lambda0.4 passed the expansion gate, and it was extended through n12"
+    },
+    {
+      "item": "2D 3x3 t-J",
+      "rule": "design section7: necessary only if indicated; phase3 conditional on clear robust fingerprint",
+      "decision": "not indicated by a blind endpoint fingerprint; all mandatory chains/rings/ladders covered, path identity checked independently"
+    },
+    {
+      "item": "large-scale QMC sampling",
+      "rule": "F no_new_large_scale_QMC_unless_positive_signal; W is not a universal sign-severity reducer",
+      "decision": "exact worldline partition controls suffice; no favorable QMC signal established"
+    },
+    {
+      "item": "dense n18 Gibbs, n>6 full qutrit FFT and complete large thermal-support certificate",
+      "rule": "explicit n18 prohibition and feasible-spectrum/memory budgets",
+      "decision": "n18 wavefunctions only; n8 qutrit exact kernel moments/covariances; n10/12 t-J exact selected columns with sampling scope disclosed"
+    },
+    {
+      "item": "optional beam search, chirality, weak symmetry-selection fields",
+      "rule": "explicitly optional in design/config",
+      "decision": "not invoked; no conclusions rely on these unperformed diagnostics"
+    }
+  ],
+  "full_research_goal_complete": false,
+  "completion_note": "numerical audit is necessary, not sufficient: final scientific report and published corrected snapshot must also be reviewed"
+}

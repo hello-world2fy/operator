@@ -1,0 +1,9 @@
+{
+  "moment_relative_error": 4.0489827781828323e-16,
+  "gradient_relative_error": 1.045382739350305e-15,
+  "phase_objective_max_error": 0.0,
+  "full_24_start_local_seconds": 12.867548502981663,
+  "W_local": 14.22776075462258,
+  "full_16x2000_circuit_seconds": 18.77626109868288,
+  "W_circuit": 14.914225137177711
+}

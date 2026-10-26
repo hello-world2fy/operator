@@ -60,6 +60,8 @@ def write_qubit_points(base,rho,device,reference=None,reference_name=None,sparse
 
 def qubits(out,device):
     jobs=json.loads((out/'registration/jobs.json').read_text())
+    adaptive=out/'registration/adaptive_jobs.json'
+    if adaptive.exists():jobs += [j for j in json.loads(adaptive.read_text()) if j.get('kind')=='qubit']
     for job in jobs:
         g,h=build_qubit_job(job);blocks=block_eigensystem(h);reference,name=posthoc_oracle(job,g)
         geometry=('x'.join(map(str,job['shape'])) if 'shape' in job else 'chain')+'_'+job.get('boundary','periodic' if 'shape' in job else 'open')
@@ -108,13 +110,14 @@ def loops(out,device):
         print('BASELINES',model,flush=True)
 
 
-def qutrits(out,device):
-    for g in [square(3,2),chain(8),chain(8,True),square(4,2)]:
+def qutrits(out,device,*,geometries=None,t_values=None,betas=None):
+    for g in ([square(3,2),chain(8),chain(8,True),square(4,2)] if geometries is None else geometries):
         geometry=g.name+'_'+'x'.join(map(str,g.shape))+'_'+g.boundary
-        for t in [1.,2.,3.]:
+        for t in ([1.,2.,3.] if t_values is None else t_values):
             for model,sigma in [('tJ',False),('sigma_tJ',True)]:
                 h,digits,*_=tj_hamiltonian(g,t=t,sigma=sigma);blocks=block_eigensystem(h);gauge=tj_marshall_gauge(g,digits)
-                for beta in [0.,.25,.5,1.,2.,4.]:
+                selected=sorted(float(p.name[4:]) for p in (out/model/geometry/f'n{g.n}'/f't{t:g}').glob('beta*')) if betas is None else betas
+                for beta in selected:
                     base=out/model/geometry/f'n{g.n}'/f't{t:g}'/f'beta{beta:g}'
                     ready=[p.parent for p in base.glob('alpha*/seed*/metrics.json') if not (p.parent/'representation_baselines.json').exists()]
                     if not ready:continue

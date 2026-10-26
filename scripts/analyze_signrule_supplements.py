@@ -99,7 +99,9 @@ def main():
             FLOPs=('estimated_training_FLOPs','first')).reset_index()
         grouped.to_csv(tables/'learning_seed_summary.csv',index=False)
         summary['learning']={'completed_architecture_batches':len(learning)//144,'planned_architecture_batches':36,
-            'completed_independent_networks':len(learning)//3,'planned_independent_networks':1728,
+            'completed_network_training_instances':len(learning)//3,'planned_network_training_instances':1728,
+            'distinct_representation_architecture_seed_conditions':768,
+            'alpha_repetition_caveat':'only local-SU2 inputs depend on alpha; other representations repeat the same conditions',
             'phase_floor_checked':True,'Hermitian_partners_share_holdout_split':True,
             'interpretation':'test a bounded phase correction; oracle lookup storage and nonzero learned-phase error floor are reported'}
         fig,axes=plt.subplots(1,2,figsize=(12,4),constrained_layout=True)

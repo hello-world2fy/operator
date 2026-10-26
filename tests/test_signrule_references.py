@@ -36,3 +36,19 @@ def test_hs_row_alpha0_and_symmetric_single_site_W_invariance():
     x=np.array([[0,1],[1,0]]);unitaries=[np.cos(t)*np.eye(2)-1j*np.sin(t)*x for t in [.3,.5,.2,.7]]
     rotated=rotate_operator(a,unitaries)
     for alpha in [.5,1,2]:assert walshness(rotated,alpha)==pytest.approx(walshness(a,alpha),abs=1e-12)
+
+
+def test_random_local_gauge_preserves_spectrum_but_invalidates_raw_sign_labels():
+    from operator_walshness.signrule.models import paramagnet_gibbs,boolean_phase
+    from operator_walshness.signrule.diagnostics import score_phase
+    rng=np.random.default_rng(711);phase=boolean_phase(4,[(0,1),(1,2),(2,3)])
+    rho=paramagnet_gibbs(4,.8,phase);unitaries=[]
+    for _ in range(4):
+        raw=rng.normal(size=(2,2))+1j*rng.normal(size=(2,2));u,_=np.linalg.qr(raw);unitaries.append(u)
+    changed=rotate_operator(rho,unitaries)
+    restored=rotate_operator(changed,[u.conj().T for u in unitaries])
+    assert np.allclose(restored,rho,atol=1e-14)
+    assert np.allclose(np.linalg.eigvalsh(changed),np.linalg.eigvalsh(rho),atol=1e-14)
+    assert score_phase(phase_entries(rho),phase)['circular_loss']<1e-25
+    assert score_phase(phase_entries(changed),phase)['circular_loss']>.05
+    for alpha in [.5,1,2]:assert walshness(restored,alpha)==pytest.approx(walshness(rho,alpha),abs=1e-12)

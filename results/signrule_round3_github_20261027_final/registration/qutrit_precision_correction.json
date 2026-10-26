@@ -1,0 +1,17 @@
+{
+  "registered_utc": "2026-10-26T20:41:45.814206+00:00",
+  "status": "complete_all_1512_points_repeated",
+  "issue": "np.exp(alpha) times torch.eye(3) used a float32 identity before addition to a complex128 kernel",
+  "observed_independent_FWHT_residual": 5.552289739085836e-07,
+  "affected": "optimized Z3 W values, gradients and baseline kernel evaluations; Hamiltonian, Gibbs spectrum and fixed-basis NumPy moments unaffected",
+  "repair": "explicit float64 identity; repeat the same 24 starts and 150 steps for every affected point, then recompute baselines",
+  "old_records": "precision_archive/<original point path>; original freeze files retained byte-for-byte",
+  "points": 1512,
+  "jobs": 84,
+  "known_labels_used": false,
+  "phase_path_diagnostics": "same Hamiltonians/operators and encoding; existing independent physical diagnostics remain valid",
+  "published_old_snapshot_commit": "2459177e2a5fc0c89c04aa4d87c44ea9162230b6",
+  "completed_utc": "2026-10-26T20:58:58.719784+00:00",
+  "max_optimized_W_change": 1.239341765213453e-06,
+  "full_precision_kernel_reconstruction": "all 378 n6 optimized Z3 spectra independently reconstructed and checked against stored W to <1e-8; n8 constrained kernel verified by complex-rotation unit tests"
+}

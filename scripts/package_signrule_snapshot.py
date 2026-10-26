@@ -9,6 +9,7 @@ import html
 import json
 from pathlib import Path
 import shutil
+import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 OMIT = {
@@ -41,6 +42,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--test-report', type=Path)
+    parser.add_argument('--final', action='store_true', help='Export the accepted scientific report and corrected results')
     args = parser.parse_args()
     out = args.out
     if out.exists():
@@ -48,6 +50,9 @@ def main():
     source = ROOT / 'results/signrule_round3'
     out.mkdir(parents=True)
     summary = json.loads((source / 'summary.json').read_text())
+    if args.final:
+        review=json.loads((source/'registration/report_review.json').read_text())
+        assert review['status']=='scientific_report_ready_for_publication'
     # The table fixes the point set, even while more GPU jobs finish.
     import csv
     with (source / 'tables/points.csv').open() as f:
@@ -73,6 +78,9 @@ def main():
             posthoc_count += 1
         if (directory / 'representation_baselines.json').exists():
             record['representation_baselines'] = json.loads((directory / 'representation_baselines.json').read_text())
+        if (directory / 'walsh_spectrum.npz').exists():
+            with np.load(directory / 'walsh_spectrum.npz') as saved:
+                record['degree_spectra_and_correlations']={k:saved[k].tolist() for k in saved.files}
         grouped[metrics['track']].append(record)
     for track, records in sorted(grouped.items()):
         # Keep each file well below typical GitHub large-file limits.
@@ -101,6 +109,12 @@ def main():
             target = out / 'registration' / name
             target.parent.mkdir(exist_ok=True)
             shutil.copyfile(p, target)
+    if args.final:
+        for name in ['provenance.json','execution_revisions.json','requirements_audit.json','report_review.json',
+                     'adaptive_jobs.json','adaptive_temperature_decisions.json','qutrit_precision_correction.json']:
+            shutil.copyfile(source/'registration'/name,out/'registration'/name)
+        (out/'learning').mkdir(exist_ok=True)
+        shutil.copyfile(source/'learning/comparison_summary.json',out/'learning/comparison_summary.json')
     if args.test_report:
         shutil.copyfile(args.test_report, out / 'registration/publish_tests.xml')
     (out / 'figures').mkdir()
@@ -166,6 +180,27 @@ def main():
 <a href="Levin_Gu_transfer.json">独立迁移检验</a> · <a href="registration/publish_tests.xml">测试记录</a></p>
 <p><a href="supplementary_summary.json">物理与学习补充汇总</a> · <a href="tables/learning_seed_summary.csv.gz">学习对照</a> · <a href="registration/progress.json">范围与未完成项</a></p>
 <p>快照包含最优轴/电路、各初值目标值、预算、种子与已有物理诊断。大型矩阵、可靠性掩码、优化轨迹和训练检查点未上传。</p></html>''')
+    if args.final:
+        summary['status']='completed_staged_experiment_corrected_snapshot'
+        summary['scope_register_note']='See registration/requirements_audit.json and report.html for verified evidence and conditional expansion decisions.'
+        summary['qutrit_precision_notice']='Supersedes earlier snapshots for optimized qutrit W and baselines; all 1512 points repeated with float64 kernel constants.'
+        write_json(out/'summary.json',summary)
+        report=(source/'report.html').read_text().replace('registration/final_pytest.xml','registration/publish_tests.xml')
+        for p in (source/'tables').glob('*.csv'):report=report.replace('tables/'+p.name,'tables/'+p.name+'.gz')
+        (out/'report.html').write_text(report)
+        (out/'README.txt').write_text(
+            'Operator Walshness round 3: completed staged experiment, corrected compact results\n\n'
+            'Read report.html for scientific conclusions, actual coverage and conditional size/gate limits.\n'
+            '3798 primary points; 54 triangular pure scans plus 54 alpha0-start checks; 160 random controls.\n'
+            '1728 learning training instances represent 768 distinct representation/architecture/seed conditions.\n'
+            'All 1512 qutrit optimizations were repeated with float64 kernel constants; older snapshots are superseded for these W values.\n'
+            'Records retain best axes/circuits, all restart W values, metadata, budgets, scalar baselines, feasible degree spectra and posthoc scores.\n'
+            'Use gzip.open(path, "rt") plus json.loads(line) for records/*.jsonl.gz and diagnostics/*.jsonl.gz.\n'
+            'pandas.read_csv reads tables/*.csv.gz directly.\n'
+            'Large density arrays, full reliability masks, initialization histories, checkpoints and archived legacy results remain local.\n'
+            'Freeze hashes refer to original unabridged candidate files; no full raw-result digest sweep was run.\n'
+            'The boundary-CZ correction at lambda0.4 has bounded phase benefits; there is no claimed topological/SPT/path-rule recovery or universal learning advantage.\n'
+            'Reproduce with the YAML budgets and scripts; begin with python -m pytest and inspect registration/requirements_audit.json.\n')
     inventory = [{'path': str(p.relative_to(out)), 'bytes': p.stat().st_size}
                  for p in sorted(out.rglob('*')) if p.is_file()]
     assert all(row['bytes'] < 2 * 1024**2 for row in inventory)

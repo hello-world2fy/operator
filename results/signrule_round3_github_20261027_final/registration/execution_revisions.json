@@ -1,0 +1,56 @@
+{
+  "captured_utc": "2026-10-26T21:09:02.327663+00:00",
+  "base_commit_for_current_uncommitted_corrections": "2459177e2a5fc0c89c04aa4d87c44ea9162230b6",
+  "source_snapshot": "registration/source_v4_acceptance",
+  "source_bundle_sha256": "3e74d3cf4d61f84e0b586a2dd23aa6c0bccb4dc777c410798d4ef9b0c661a386",
+  "source_files": 61,
+  "hash_scope": "one source-bundle digest only; no raw-data sweep",
+  "cuda_runtime": "12.9",
+  "gpu_driver_and_models": [
+    "NVIDIA A100-SXM4-80GB, 81920 MiB, 535.261.03",
+    "NVIDIA A100-SXM4-80GB, 81920 MiB, 535.261.03",
+    "NVIDIA A100-SXM4-80GB, 81920 MiB, 535.261.03",
+    "NVIDIA A100-SXM4-80GB, 81920 MiB, 535.261.03",
+    "NVIDIA A100-SXM4-80GB, 81920 MiB, 535.261.03",
+    "NVIDIA A100-SXM4-80GB, 81920 MiB, 535.261.03",
+    "NVIDIA A100-SXM4-80GB, 81920 MiB, 535.261.03",
+    "NVIDIA A100-SXM4-80GB, 81920 MiB, 535.261.03"
+  ],
+  "stages": [
+    {
+      "stage": "initial blind scan",
+      "source": "registration/source_v1",
+      "provenance": "registration/provenance.json"
+    },
+    {
+      "stage": "exact sparse contraction acceleration",
+      "source": "registration/source_v3_small_offdiagonal",
+      "validation": "registration/small_offdiagonal_backend_validation.json"
+    },
+    {
+      "stage": "derived thermal eigenvalue ordering",
+      "validation": "registration/spectrum_repairs.jsonl",
+      "physical_operator_changed": false
+    },
+    {
+      "stage": "t-J flux solver",
+      "validation": "registration/flux_solver_validation.json"
+    },
+    {
+      "stage": "pure-projector alpha0 starts",
+      "new_results": "physical_B/projector_alpha0_recheck",
+      "originals_preserved": true
+    },
+    {
+      "stage": "float64 qutrit kernel constants",
+      "validation": "registration/qutrit_precision_correction.json",
+      "old_results": "precision_archive",
+      "repeat_full_budget": true
+    },
+    {
+      "stage": "energy-selected low temperatures",
+      "manifest": "registration/adaptive_jobs.json",
+      "selection": "registration/adaptive_temperature_decisions.json"
+    }
+  ]
+}
