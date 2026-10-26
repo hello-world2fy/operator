@@ -1,0 +1,262 @@
+# Research specification for Codex. NOT directly executable without implementing the new builders.
+project: operator_walshness_round3_non_marshall_sign_discovery
+status: design_only_not_executed
+repo:
+  url: https://github.com/hello-world2fy/operator
+  reference_branch: experiments/round2-first-wave-20261026
+  pin_actual_commit_sha_at_execution: true
+  do_not_mutate_previous_rounds: true
+scientific_question: >-
+  Can minimizing physical-basis Operator Walshness, without putting known sign formulas
+  into the objective, reveal non-Marshall phase/sign structure in important many-body models?
+physics_definition:
+  operator_vectorization: O(s,t) over paired input/output configurations
+  p_rq: "abs((H^tensor_n) O (H^tensor_n)[r,q])^2 / Tr(O^dagger O)"
+  degree: hamming_weight(r) + hamming_weight(q)
+  W: "log(sum_(r,q) p_rq exp(alpha*degree))/alpha"
+  physical_basis: "O -> U^dagger O U; same U on both sides"
+  units: Pauli_S_is_sigma_over_2_in_Heisenberg_and_tJ
+  separate_qudit_and_qubit_W: true
+  avoid_fixed_basis_ambiguity: true
+scan_default:
+  alpha: [0.5, 1.0, 2.0]
+  beta: [0.0, 0.25, 0.5, 1.0, 2.0, 4.0]
+  random_seeds: [20261027, 20261028, 20261029]
+  optimized_local_SU2_starts: 24
+  circuit_phase_starts: 16
+  circuit_candidate_flips_per_start: 2000
+  zero_element_relative_thresholds: [1.0e-8, 1.0e-12]
+  purity_gate_for_operator_specific_claim: "Tr(rho^2)<0.95 at >=one target point"
+  record_beta_gap: true
+  adapt_beta_to_effective_rank: true
+optimization:
+  blind_vs_oracle_split: true
+  blind_objective: minimum_Operator_Walshness_only
+  no_prior_sign_patterns_as_warm_starts_during_blind_phase: true
+  local_basis:
+    allowed: SU2_tensor_product
+    starts: [uniform, random_Haar_local, alpha0_Bloch]
+    save_all_restarts: true
+  diagonal_phase_circuit:
+    hierarchy:
+      - level: 1
+        gates: [Z]
+        max_support_sites: 1
+      - level: 2
+        gates: [Z, nearest_neighbor_CZ]
+        max_support_sites: 2
+      - level: 3
+        gates: [Z, nearest_neighbor_CZ, local_triangle_CCZ]
+        max_support_sites: 3
+    control_parameter_count_and_gate_depth: true
+    algorithms: [discrete_coordinate_search, simulated_annealing, beam_search_optional]
+    do_not_include_loop_count_or_phase_string_as_optimizer_inputs: true
+  posthoc_oracle:
+    compare_best_Marshall_linear_phase: true
+    compare_quadratic_and_cubic_local_Boolean_phases: true
+    compare_known_physical_phase_only_after_optimization: true
+    exact_sign_correctness_is_not_assumed: true
+    nontriviality_requires_more_than_basis_texture: true
+  symmetry_rules:
+    for_Levin_Gu:
+      enforce_symmetry_gate_by_gate: true
+      do_not_only_check_whole_circuit_commutator: true
+    for_tJ:
+      preserve_hole_number_and_total_charge: true
+measurements:
+  common:
+    - W_fixed_and_optimized
+    - W_per_2n_or_appropriate_qudit_normalization
+    - degree_spectrum_and_tail_where_feasible
+    - all_basis_directions_and_phase_circuit_gate_lists
+    - source_and_rotated_operator_purity
+    - normalized_spectrum_eigenvalues_and_sector_labels
+    - numerical_restart_distribution
+    - full_complex_matrix_element_phase_sample_with_error_mask
+    - nonMarshall_residual_phase_beyond_best_linear_rule
+    - phase_prediction_on_independent_heldout_entries
+    - operator_entanglement_entropy
+  sign_metrics:
+    - weighted_sign_mismatch
+    - circular_complex_phase_loss
+    - phase_locking_quality
+    - negative_cycle_statistics_with_support_graph_check
+    - independent_small_element_cutoff_sensitivity
+  qmc_only_if_applicable:
+    - sign_quenched_partition_function_ratio
+    - severity_gamma
+    - same_physical_basis_comparison
+  stats:
+    bootstrap_or_seed_confidence_intervals: true
+    random_phase_control: true
+    same_parameter_budget_for_compared_ansatz_classes: true
+tracks:
+  A_known_controls:
+    role: verify_method_does_not_claim_universal_recovery
+    models: [bipartite_Heisenberg_Marshall, one_dimensional_cluster_graph, independent_spins, random_sign_scramble]
+    sizes: [6, 8, 10, 12]
+    beta: [0.25, 0.5, 1.0, 2.0, 4.0]
+    oracle_posthoc: [linear_Marshall, quadratic_CZ_cluster]
+    gates: [SU2_local, Z, CZ]
+    regression_tests: [W_projector_equals_2W_pure, thermal_sign_formula, identities, basis_alignment]
+  B_triangular_Huse_Elser:
+    role: noncollinear_bases_and_nontrivial_three_spin_phase
+    hamiltonian: "J1*sum_nn S_i.S_j + J2*sum_nnn S_i.S_j"
+    geometries:
+      - shape: [3, 3]
+        boundary: periodic
+        check_three_sublattice_commensurability: true
+      - shape: [3, 4]
+        boundary: open
+    j2_over_j1: [0.0, 0.1, 0.2]
+    beta: [0.25, 0.5, 1.0, 2.0, 4.0]
+    source_objects: [ground_state, exact_gibbs, selected_excited_projectors]
+    no_120_degree_structured_start_in_blind_stage: true
+    posthoc_diagnostics:
+      - triangle_three_sublattice_axis_dot_products
+      - static_structure_factor_at_K
+      - best_linear_and_three_sublattice_phase_vs_Huse_Elser_three_spin_phase
+      - optional_chirality_with_time_reversal_control
+    controls: [Huse_Elser_trial_wavefunction, same_moduli_without_variational_phase]
+    caution: "A 120-degree basis texture alone is not Huse-Elser phase recovery."
+  C_toric_code_vs_double_semion:
+    role: topological_loop_sign_under_identical_ground_state_support
+    lattice: honeycomb_edges
+    geometries:
+      - unit_cells: [2, 2]
+        qubits: 12
+        exact_thermal_matrix: true
+      - unit_cells: [2, 3]
+        qubits: 18
+        exact_thermal_matrix: false
+        pure_wavefunction_only_first: true
+    pure_state_sector: fixed_matched_topological_sector
+    targets: [toric_code, double_semion]
+    compare_same_closed_loop_moduli_in_ideal_ground_sector: true
+    oracle_posthoc: minus_one_per_contractible_loop
+    gates: [SU2_local, Z, CZ, local_CCZ]
+    beta: [0.25, 0.5, 1.0, 2.0, 4.0]
+    checks: [valid_loop_sector, commuting_projectors, hermiticity, ground_degeneracy, matched_support]
+    caveats:
+      - pure_projector_is_not_new_operator_specific_physics
+      - loop_oracle_not_used_in_blind_optimization
+      - distinguish_SSE_sign_free_from_stoquasticity
+  D_Levin_Gu_SPT:
+    role: symmetry_protected_domain_wall_loop_sign
+    lattice: triangular_vertices_with_valid_periodic_triangulation
+    sizes: [9, 12]
+    models: [trivial_Z2_paramagnet, Levin_Gu_SPT]
+    perturbation: "-g*sum_i X_i (protecting Z2 symmetry preserved)"
+    g: [0.0, 0.2, 0.5, 1.0]
+    beta: [0.25, 0.5, 1.0, 2.0, 4.0]
+    oracle_posthoc: minus_one_per_domain_wall_loop
+    gates: [SU2_local, Z, CZ, local_CCZ]
+    dual_optimization_constraints: [unrestricted_gates, individually_Z2_symmetric_local_gates]
+    independent_physics_diagnostic: [symmetry_twist, strange_correlator_or_boundary_response]
+    checks: [global_Z2, valid_closed_domain_walls, thermal_phase_reference_at_exactly_solvable_point]
+    caveat: "Symmetry protected means symmetric local gates layer-by-layer; global commutation alone is insufficient."
+  E_tJ_phase_string:
+    role: path_dependent_phase_and_doped_Mott_physics
+    local_hilbert: [hole, up, down]
+    forbid_double_occupancy: true
+    global_sector: one_hole_and_fixed_total_Sz
+    geometries:
+      - 1d_chain_open: [8, 10, 12]
+      - 1d_ring_periodic: [8, 10, 12]
+      - two_leg_ladder: [[2, 3], [2, 4]]
+      - square_2d: [[3, 3]]
+    t_over_J: [1.0, 2.0, 3.0]
+    beta: [0.25, 0.5, 1.0, 2.0, 4.0]
+    paired_models: [tJ, sigma_dot_tJ_phase_string_off]
+    allowed_local_rotations: U1_hole_block_plus_SU2_spin
+    operator_spectrum:
+      qudit_Fourier_local_dimension: 3
+      do_not_compare_directly_to_qubit_W: true
+    posthoc_diagnostics:
+      - imaginary_time_propagator_matrix_elements
+      - closed_hole_path_sign_holonomy
+      - parity_of_hole_down_spin_exchange
+      - spin_hole_correlations
+      - momentum_or_flux_response
+    caveat: "phase string depends on paths, not just endpoint Gibbs matrix signs"
+  F_frustrated_sign_obstruction_and_QMC_control:
+    role: negative_controls_and_interaction_stability
+    j1j2_heisenberg:
+      sizes: [6, 8, 10, 12]
+      j2_over_j1: [0.0, 0.3, 0.5, 1.0]
+    controllably_frustrated:
+      H: "-sum X -0.4 sum ZZ -0.15 sum Z + lambda sum XX"
+      lambda: [0.0, 0.05, 0.1, 0.2, 0.4]
+    beta: [0.25, 1.0, 2.0, 4.0]
+    diagnostics: [negative_closed_config_space_loops, weighted_mismatch, QMC_worldline_gamma]
+    no_new_large_scale_QMC_unless_positive_signal: true
+secondary_cross_model_controls:
+  reuse_round1_round2_observables:
+    - degree_histogram
+    - spatial_walsh_degree_correlations
+    - half_chain_operator_entanglement
+    - thermal_purity_energy_and_local_magnetization
+  matched_pairs: [toric_code_vs_double_semion, trivial_vs_Levin_Gu, tJ_vs_sigma_dot_tJ]
+  random_same_spectrum_control:
+    selected_points_only: true
+    draws_initial: [20, 100]
+    null_families: [complex_Haar, real_orthogonal_Haar, symmetry_sector_preserving_Haar]
+  do_not_repeat_full_previous_round2_grid: true
+secondary_application:
+  only_after_nonMarshall_fingerprint: true
+  representations: [plain_Operator_MLP, learned_phase_times_amplitude, oracle_phase_times_amplitude]
+  widths: [64, 128]
+  hidden_layers: [1, 2, 3]
+  train_steps_checkpoints: [2000, 10000, 40000]
+  initializations: 8
+  errors: [Frobenius_relative_squared, non_diagonal_sign_weighted_error, per_parameter_and_FLOPs]
+execution:
+  status: design_only
+  phases:
+    - phase: 0
+      action: build_and_test_new_geometries_Hamiltonians_gauge_conventions
+      condition_for_next: all_basic_tests_pass
+    - phase: 1
+      action: small_system_blind_operator_W_scan_every_track
+      max_qubits_for_full_dense_thermal: 12
+    - phase: 2
+      action: posthoc_nonMarshall_fingerprint_and_temperature_size_validation
+      condition_for_next: nontrivial_or_unresolved_signal
+    - phase: 3
+      action: selective_larger_scale_and_sign_aware_learning
+      condition_for_next: clear_robust_fingerprint
+  gpu_allocation_suggestion:
+    B_triangular: 2
+    C_TC_DS: 2
+    D_Levin_Gu: 2
+    E_tJ_and_F_obstruction: 2
+  limitations:
+    - no_18_qubit_dense_Gibbs_operator
+    - prefer_sparse_and_symmetry_sector_methods
+    - no_claim_of_global_minimum_from_multistart
+    - exact_operator_matrix_needs_memory_and_eigensolver_budget
+outputs:
+  directory: results/signrule_round3
+  keep:
+    - source_commit_and_software_versions
+    - geometry_and_boundary_sector_metadata
+    - all_best_and_restart_basis_directors
+    - phase_circuit_and_gate_count_depth
+    - spectrum_and_weighted_phase_sign_diagnostics
+    - beta_rank_purity_and_spectrum
+    - statistical_uncertainty_and_numerical_residuals
+    - negative_outcomes_with_parameter_ranges
+    - blind_optimization_manifest_prior_to_oracle_scoring
+  reports: [human_readable_main_report, JSON_summary, per_track_tables, figures, pytest_log]
+validation:
+  important_assertions:
+    - W_op_pure_projector_equals_2_W_pure
+    - correct_Udagger_O_U_and_axis_alignment
+    - positive_semidefinite_Hermitian_Gibbs_and_purity_consistency
+    - operator_W_beta0_has_identity_formula
+    - term_Hamiltonian_sector_and_fermion_sign_reference_consistency
+    - symmetry_gate_locality_and_support_check
+    - no_oracle_phase_access_in_blind_optimizer
+    - nonMarshall_label_requires_beyond_linear_phase_fit
+    - path_sign_not_conflated_with_endpoint_sign
+    - source_and_output_hash_logging

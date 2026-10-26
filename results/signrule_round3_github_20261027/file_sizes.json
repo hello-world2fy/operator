@@ -1,0 +1,137 @@
+{
+  "files": [
+    {
+      "path": "Levin_Gu_transfer.json",
+      "bytes": 1147
+    },
+    {
+      "path": "README.txt",
+      "bytes": 1704
+    },
+    {
+      "path": "figures/walsh_gain_vs_purity.png",
+      "bytes": 149105
+    },
+    {
+      "path": "physical_diagnostics.jsonl.gz",
+      "bytes": 156377
+    },
+    {
+      "path": "records/A_00.jsonl.gz",
+      "bytes": 157367
+    },
+    {
+      "path": "records/A_01.jsonl.gz",
+      "bytes": 141083
+    },
+    {
+      "path": "records/A_02.jsonl.gz",
+      "bytes": 63156
+    },
+    {
+      "path": "records/B_00.jsonl.gz",
+      "bytes": 101695
+    },
+    {
+      "path": "records/C_00.jsonl.gz",
+      "bytes": 47138
+    },
+    {
+      "path": "records/D_00.jsonl.gz",
+      "bytes": 265928
+    },
+    {
+      "path": "records/E_00.jsonl.gz",
+      "bytes": 135253
+    },
+    {
+      "path": "records/E_01.jsonl.gz",
+      "bytes": 131623
+    },
+    {
+      "path": "records/E_02.jsonl.gz",
+      "bytes": 104641
+    },
+    {
+      "path": "records/F_00.jsonl.gz",
+      "bytes": 148423
+    },
+    {
+      "path": "records/F_01.jsonl.gz",
+      "bytes": 28551
+    },
+    {
+      "path": "registration/design.txt",
+      "bytes": 17474
+    },
+    {
+      "path": "registration/flux_solver_validation.json",
+      "bytes": 1267
+    },
+    {
+      "path": "registration/jobs.json",
+      "bytes": 18485
+    },
+    {
+      "path": "registration/progress.json",
+      "bytes": 6422
+    },
+    {
+      "path": "registration/publish_tests.xml",
+      "bytes": 5148
+    },
+    {
+      "path": "registration/references.json",
+      "bytes": 720
+    },
+    {
+      "path": "registration/specification.yaml",
+      "bytes": 11305
+    },
+    {
+      "path": "report.html",
+      "bytes": 1544
+    },
+    {
+      "path": "summary.json",
+      "bytes": 2541
+    },
+    {
+      "path": "tables/A_metrics.csv.gz",
+      "bytes": 59008
+    },
+    {
+      "path": "tables/B_metrics.csv.gz",
+      "bytes": 18233
+    },
+    {
+      "path": "tables/C_metrics.csv.gz",
+      "bytes": 6506
+    },
+    {
+      "path": "tables/D_metrics.csv.gz",
+      "bytes": 46934
+    },
+    {
+      "path": "tables/E_metrics.csv.gz",
+      "bytes": 44545
+    },
+    {
+      "path": "tables/F_metrics.csv.gz",
+      "bytes": 29663
+    },
+    {
+      "path": "tables/all_metrics.csv.gz",
+      "bytes": 204139
+    },
+    {
+      "path": "tables/phase_scores.csv.gz",
+      "bytes": 43176
+    },
+    {
+      "path": "tables/points.csv.gz",
+      "bytes": 25204
+    }
+  ],
+  "total_bytes": 2175505
+}

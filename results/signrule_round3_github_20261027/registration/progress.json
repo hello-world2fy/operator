@@ -1,0 +1,100 @@
+{
+  "status": "active_not_complete",
+  "specification": "registration/specification.yaml",
+  "design": "registration/design.txt",
+  "previous_goal_turn_classification": "progress: implemented and tested builders; launched live scans",
+  "phase0": {
+    "state": "in_progress",
+    "evidence": [
+      "registration/full_pytest.xml",
+      "registration/admission_tests.xml",
+      "registration/reference_tests.xml"
+    ],
+    "remaining": [
+      "formal registration of reference conventions and all negative controls",
+      "complete end-to-end acceptance suite"
+    ]
+  },
+  "phase1": {
+    "A": "n6/8 full beta alpha seed grid running; n10/12 extension pending",
+    "B": "3x3 PBC J2 grid running; ground/excited and HE diagnostics pending",
+    "C": "12/18-qubit matched-sector pure scans running; n12 full Gibbs scan pending",
+    "D": "n9 g grid running; gatewise symmetric diagonal circuits included; n12 and symmetry diagnostics pending",
+    "E": "6-site ladder and 8-site chain/ring all t/beta/alpha/seeds running; larger listed geometries pending",
+    "F": "n6/8 grids queued/running; signed support graph, gamma and n10/12 validation pending"
+  },
+  "phase2_pending": [
+    "score all frozen candidates at both thresholds",
+    "independent beta validation with frozen phase coefficients",
+    "independent size/geometry transfer",
+    "Huse-Elser genuine three-spin phase reference and controls",
+    "TC/DS topology thermal-sector and same-purity comparisons",
+    "Levin-Gu gatewise-symmetry comparison and independent SPT diagnostic",
+    "tJ actual closed paths, endpoint fits and physical response",
+    "random phase and selected 20-100 same-spectrum Haar controls",
+    "bootstrap/restart intervals and conservative discovery certificates"
+  ],
+  "phase3_conditional": [
+    "selectively enlarge only after validated non-Marshall signal",
+    "sign-aware MLP if clear robust physical fingerprint; 8 seeds and 2k/10k/40k checkpoints"
+  ],
+  "delivery_pending": [
+    "human-readable report",
+    "JSON summary",
+    "per-track CSV/Parquet tables",
+    "figures",
+    "reproducibility acceptance tests and logs"
+  ],
+  "hard_limits": [
+    "never construct 18-qubit dense thermal operator",
+    "never mix Z3 and qubit W",
+    "never use oracle labels in blind objective",
+    "pure-state results are not operator-specific",
+    "same active-gate budget and evaluation cap across phase-gate levels",
+    "no claimed global optimum",
+    "keep prior rounds unchanged"
+  ],
+  "spectrum_serialization_fix": {
+    "issue": "Initial block Gibbs probabilities were saved in component order while energies were sorted. rho and W are unaffected.",
+    "fixed_in_source": true,
+    "required_after_live_v1_workers_finish": "re-sort all thermal_spectrum eigenvalues descending to match energies ascending; validate p=exp(-beta E)/Z; record repair counts",
+    "already_running_workers_use_initial_imports": true
+  },
+  "last_update_utc": "2026-10-26T18:34:56.158913+00:00",
+  "continuation": {
+    "branch": "experiments/signrule-round3-20261027",
+    "live_workers": "registration/workers.json (8 ordinary ABDF) and registration/special_workers.json (C on cuda:2; E on cuda:5)",
+    "do_not_restart_live_workers": "Poll /proc/PID/cmdline from these manifests and recent output; process state wins over JSON status.",
+    "ordinary_total_points": 1998,
+    "C_pure_total_points": 36,
+    "E_initial_total_points": 972,
+    "initial_scans": "Ordinary jobs run assigned indexes modulo 8; A done, B/D running, F follows. All 3 seeds, 24 local starts,16 circuit starts x2000 flips.",
+    "scoring_done": "A cluster n6 all54 points v2; D g0.2 first17 points; first20 C pure points; more candidates are now ready.",
+    "scoring_commands": [
+      "python scripts/score_signrule_round3.py --job INDEX",
+      "python scripts/score_signrule_loops.py",
+      "python scripts/analyze_signrule_round3.py",
+      "python scripts/validate_signrule_round3.py --repair-spectrum-order"
+    ],
+    "scoring_efficiency": "score_qubit_job currently repeats per-beta fitting when new points arrive; cache shared posthoc_base for future incremental scans.",
+    "physical_notes": [
+      "TC and DS 2x2 fixed vacuum sectors have only8 configurations; DS phase is linearly representable on this tiny support, so cannot certify non-Marshall. 2x3 18-qubit wavefunction run is needed.",
+      "Blind W circuits can worsen agreement with the known positive TC reference; do not equate W minimization to sign removal.",
+      "No validated physical non-Marshall candidate yet. Cluster recovery is only a benchmark.",
+      "Triangular Huse-Elser module now implements documented open-wedge triplets and continuous circular fitting; not yet integrated into scoring or run."
+    ],
+    "performance": "n9 local24starts150steps ~22s, each16x2000 circuit~6.7s; n12 thermal short local2starts5steps+polish1 ~80s, circuit4starts20flips~2.86s. Do not launch blind full n12 thermal grid without assessing zero-T screening gate and runtime.",
+    "critical_fix": "Live workers imported old block_gibbs: stored eigenvalue probabilities in component order vs sorted energies. Simulation rho/W correct. Source fixed and extra regression test added. Run spectrum repair after all finish; 138 already repaired.",
+    "source_snapshot": "registration/source_v1 captures initial special workers and phase1 n<=9 implementation; recent added helpers do not alter running objects.",
+    "next_implementation": [
+      "Integrate HE posthoc fits, structure factors, axis textures, ground/excited projector controls.",
+      "C mixed Gibbs thermal and same-purity/sector analysis (screen first; mandatory pending, do not claim completion).",
+      "E endpoint/supervised phases, full support graph and actual path diagnostics; spin-hole/flux observables; further sizes/geometries.",
+      "F worldline gamma in same bases and signed support-cycle validation.",
+      "D individual symmetric SU2 analytic control (Rx leaves W invariant), strange correlator, independent n12 validation.",
+      "Freeze and transfer actual candidate rules to new beta and geometry; add random local gauge and same-spectrum Haar negatives.",
+      "Conditional sign-aware MLP only after a robust physical fingerprint; A benchmarks do not trigger.",
+      "Finish full requirement audit, final report/JSON/CSV/plots and acceptance; keep goal active until satisfied."
+    ]
+  }
+}
